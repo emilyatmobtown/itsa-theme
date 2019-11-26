@@ -30,8 +30,8 @@ require_once ITSA_THEME_INC . 'utility.php';
 require_once ITSA_THEME_INC . 'blocks.php';
 
 // Run the setup functions.
-ITSATheme\Core\setup();
-ITSATheme\Blocks\setup();
+Core\setup();
+Blocks\setup();
 
 // Require Composer autoloader if it exists.
 if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {

@@ -135,12 +135,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/emilyatmobtown/els-php-standard.git",
-                "reference": "c93e8a7904528ae1f913a6ecfe5117b774b942c9"
+                "reference": "7f30cee2d4a7ce9f858b2aa7c31b6431a7d59faf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/emilyatmobtown/els-php-standard/zipball/c93e8a7904528ae1f913a6ecfe5117b774b942c9",
-                "reference": "c93e8a7904528ae1f913a6ecfe5117b774b942c9",
+                "url": "https://api.github.com/repos/emilyatmobtown/els-php-standard/zipball/7f30cee2d4a7ce9f858b2aa7c31b6431a7d59faf",
+                "reference": "7f30cee2d4a7ce9f858b2aa7c31b6431a7d59faf",
                 "shasum": ""
             },
             "require": {
@@ -150,7 +150,7 @@
             "type": "phpcodesniffer-standard",
             "notification-url": "https://packagist.org/downloads/",
             "description": "Package contains Emily's coding standards",
-            "time": "2019-09-08T01:13:18+00:00"
+            "time": "2019-11-26T21:20:06+00:00"
         },
         {
             "name": "myclabs/deep-copy",

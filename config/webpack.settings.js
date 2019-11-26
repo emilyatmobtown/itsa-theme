@@ -9,7 +9,7 @@ module.exports = {
 		'frontend': './assets/js/frontend/frontend.js',
 		'shared': './assets/js/shared/shared.js',
 		'styleguide': './assets/js/styleguide/styleguide.js',
-		'blocks-editor': './includes/blocks/blocks-editor.js',
+		'blocks-editor': './inc/blocks/blocks-editor.js',
 
 		// CSS files.
 		'admin-style': './assets/css/admin/admin-style.css',
