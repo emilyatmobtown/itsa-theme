@@ -2,6 +2,22 @@
  * Colors
  */
 :root {
+
+	/* Solid colors */
 	--c-black: #000;
 	--c-white: #fff;
+	--c-alto: #ddd;
+	--c-midnight: #001940;
+	--c-midnight-alt: #001333;
+	--c-prussian-blue: #002a4e;
+	--c-regal-blue: #003a6c;
+	--c-keppel: #36a5ae;
+	--c-viking: #51cfd9;
+	--c-matisse: #206fb2;
+
+	/* Gradients and fallbacks */
+	--g-prussian-blue: linear-gradient(0deg, var(--c-prussian-blue) 0%, var(--c-regal-blue) 100%);
+	--g-prussian-blue-fallback: var(--c-prussian-blue);
+	--g-midnight: linear-gradient(0deg, var(--c-midnight) 0%, var(@--c-midnight-alt) 100%);
+	--g-midnight-fallback: var(@--c-midnight);
 }

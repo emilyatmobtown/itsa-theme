@@ -9,6 +9,7 @@
 	@custom-media --bp-large ( min-width: 64em ); /* 1024px */
 	@custom-media --bp-xlarge ( min-width: 80em ); /* 1280px */
 	@custom-media --bp-xxlarge ( min-width: 90em ); /* 1440px */
+	@custom-media --bp-xxxlarge ( min-width: 120em ); /* 1920px */
 
 	/* WP Core Breakpoints (used for the admin bar for example) */
 	@custom-media --wp-small ( min-width: 600px );

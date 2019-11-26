@@ -58,7 +58,8 @@ function theme_setup() {
 	// This theme uses wp_nav_menu() in three locations.
 	register_nav_menus(
 		array(
-			'primary' => esc_html__( 'Primary Menu', 'tenup' ),
+			// translators: This is the name of the primary menu used in the theme.
+			'primary' => esc_html__( 'Primary Menu', 'itsa-theme' ),
 		)
 	);
 }
