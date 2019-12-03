@@ -54,7 +54,7 @@ module.exports = {
 	BrowserSyncConfig: {
 		host: 'localhost',
 		port: 3000,
-		proxy: 'http://itsa-theme.test',
+		proxy: 'http://itsa.test',
 		open: false,
 		files: [
 			'**/*.php',

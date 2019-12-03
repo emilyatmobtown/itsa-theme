@@ -3,12 +3,29 @@
  */
 :root {
 
+	/* Theme colors */
+	--c-body-text: var(--c-black);
+	--c-body-text-reverse: var(--c-white);
+	--c-header-text: var(--c-black);
+	--c-header-text-reverse: var(--c-white);
+	--c-body-background: var(--c-white);
+	--c-nav-text-solid: var(--c-white);
+	--c-nav-text-reverse: var(--c-midnight-alt-2);
+	--c-nav-background-transparent: var(--c-transparent);
+	--c-nav-background-solid: var(--c-midnight-alt);
+	--c-nav-submenu-background: linear-gradient(0deg, rgba(0, 26, 64, 0.7) 0%, rgba(0, 19, 51, 0,7) 100%);
+	--c-nav-submenu-background-fallback: var(--g-midnight-fallback);
+	--c-link: var(--c-viking);
+	--c-link-alt: var(--c-keppel);
+
 	/* Solid colors */
+	--c-transparent: rgba(0, 0, 0, 0);
 	--c-black: #000;
 	--c-white: #fff;
 	--c-alto: #ddd;
 	--c-midnight: #001940;
 	--c-midnight-alt: #001333;
+	--c-midnight-alt-2: #00183f;
 	--c-prussian-blue: #002a4e;
 	--c-regal-blue: #003a6c;
 	--c-keppel: #36a5ae;
@@ -19,5 +36,5 @@
 	--g-prussian-blue: linear-gradient(0deg, var(--c-prussian-blue) 0%, var(--c-regal-blue) 100%);
 	--g-prussian-blue-fallback: var(--c-prussian-blue);
 	--g-midnight: linear-gradient(0deg, var(--c-midnight) 0%, var(@--c-midnight-alt) 100%);
-	--g-midnight-fallback: var(@--c-midnight);
+	--g-midnight-fallback: var(--c-midnight);
 }

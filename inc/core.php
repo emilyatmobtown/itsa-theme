@@ -44,6 +44,7 @@ function i18n() {
  * Sets up theme defaults and registers support for various WordPress features.
  */
 function theme_setup() {
+	add_theme_support( 'align-wide' );
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
@@ -54,6 +55,14 @@ function theme_setup() {
 			'gallery',
 		)
 	);
+
+	$logo_defaults = array(
+		'height'      => 36,
+		'width'       => 183,
+		'flex-height' => true,
+		'flex-width'  => true,
+	);
+	add_theme_support( 'custom-logo', $logo_defaults );
 
 	// This theme uses wp_nav_menu() in three locations.
 	register_nav_menus(

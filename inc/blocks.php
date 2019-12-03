@@ -2,7 +2,7 @@
 /**
  * Gutenberg Blocks setup
  *
- * @package ITSATheme\Core
+ * @package ITSATheme\Blocks
  */
 
 namespace ITSATheme\Blocks;
@@ -82,7 +82,7 @@ function blocks_categories( $categories, $post ) {
 		array(
 			array(
 				'slug'  => 'itsa-blocks',
-				'title' => __( 'Custom Blocks', 'itsa-theme' ),
+				'title' => __( 'ITSA Custom Blocks', 'itsa-theme' ),
 			),
 		)
 	);

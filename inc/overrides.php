@@ -2,7 +2,7 @@
 /**
  * This file contains hooks and functions that override the behavior of WP Core.
  *
- * @package SampleTheme
+ * @package ITSATheme
  */
 
 namespace ITSATheme\Overrides;

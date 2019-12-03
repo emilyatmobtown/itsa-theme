@@ -1,0 +1,9 @@
+/*
+ * Dimensions
+ */
+:root {
+	
+	/* Nav */
+	--d-nav-top-bottom-padding: 12px;
+	--d-grid-padding: 20px;
+}

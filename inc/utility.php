@@ -8,7 +8,7 @@
  * to Namespaces.
  *
  * @link https://developer.wordpress.org/themes/basics/template-tags/
- * @package ITSATheme
+ * @package ITSATheme\Utility
  */
 
 namespace ITSATheme\Utility;

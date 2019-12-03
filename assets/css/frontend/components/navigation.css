@@ -1,0 +1,134 @@
+/* Navigation */
+.main-navigation {
+	width: 100%;
+	position: absolute;
+	top: 60px;
+	right: -100%;
+	z-index: 5;
+	background-color: var(--c-nav-submenu-background-fallback);
+	background-image: var(--c-nav-submenu-background);
+	padding: var(--d-grid-padding);
+	display: block;
+	-webkit-font-smoothing: subpixel-antialiased;
+	transition: right 0.2s linear 0s;
+}
+
+.menu-toggled .main-navigation {
+	right: 0;
+}
+
+@media (--bp-large) {
+
+	.main-navigation {
+		width: auto;
+		display: inline-block;
+		vertical-align: middle;
+		background-color: var(--c-transparent);
+		background-image: none;
+		position: relative;
+		top: auto;
+		right: auto;
+		transition: right 0 linear 0s;
+		padding: 0;
+		margin-left: 1.5rem;
+	}
+}
+
+.header-nav ul {
+	color: var(--c-nav-text-solid);
+	font-size: 1rem;
+    line-height: 2em;
+	font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+.header-nav ul ul {
+	margin-left: 1.5rem;
+	display: none;
+}
+
+.header-nav ul li.submenu-toggled > ul {
+	display: block;
+}
+
+@media (--bp-large) {
+
+	.header-nav ul {
+		display: block;
+	}
+
+	.header-nav ul ul {
+		position: absolute;
+		top: calc(100% + 10px);
+		left: -22px;
+		width: auto;
+		min-width: 7rem;
+		background-color: var(--c-nav-submenu-background-fallback);
+		background-image: var(--c-nav-submenu-background);
+		padding: 10px var(--d-grid-padding) var(--d-grid-padding);
+		margin-left: 0;
+	}
+}
+
+.header-nav li {
+	list-style-type: none;
+	font-size: 1em;
+	line-height: inherit;
+}
+
+.page_item_has_children > a {
+	position: relative;
+}
+
+.page_item_has_children > a:after {
+	content: '>';
+	margin-left: 0.25rem;
+	transform: rotate(90deg);
+	transition: transform 0.2s linear 0s;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.submenu-toggled > a:after {
+	transform: rotate(-90deg);
+}
+
+@media (--bp-large) {
+
+	.header-nav li {
+		display: inline-block;
+		margin: 0 0.75rem;
+		position: relative;
+	}
+
+	.header-nav li li {
+		display: block;
+		margin: 0;
+	}
+}
+
+.header-nav li a {
+	display: inline-block;
+	color: var(--c-nav-text-solid);
+    font-weight: 400;
+	text-decoration: none;
+	white-space: nowrap;
+	border-top: 2px solid var(--c-transparent);
+	border-bottom: 2px solid var(--c-transparent);
+	padding: 0;
+	margin: 0.25rem 0;
+	transition: border-color 0.2s linear 0s;
+	cursor: pointer;
+}
+
+@media (--bp-large) {
+
+	.header-nav li a {
+		margin: 0;
+	}
+}
+
+.header-nav li a:hover {
+	border-bottom-color: var(--c-link);
+}

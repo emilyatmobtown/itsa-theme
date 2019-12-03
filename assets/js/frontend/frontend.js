@@ -1,1 +1,3 @@
-// import foo from './components/bar';
+import Navigation from './components/navigation';
+
+new Navigation();

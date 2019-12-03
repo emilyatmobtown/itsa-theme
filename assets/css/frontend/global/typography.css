@@ -1,0 +1,12 @@
+/* Typography */
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+	color: var(--c-body-text);
+	font-family: Lato, Arial, sans-serif;
+	font-size: 1.25rem;
+	line-height: 1.5em;
+}
