@@ -21,6 +21,33 @@ function setup() {
 	add_action( 'enqueue_block_editor_assets', $n( 'blocks_editor_scripts' ) );
 
 	add_filter( 'block_categories', $n( 'blocks_categories' ), 10, 2 );
+
+	add_action( 'acf/init', $n( 'register_blocks' ) );
+}
+
+/**
+ * Register Blocks
+ *
+ * @link https://www.billerickson.net/building-gutenberg-block-acf/#register-block
+ * @return void
+ */
+function register_blocks() {
+	if ( ! function_exists( 'acf_register_block_type' ) ) {
+		return;
+	}
+
+	acf_register_block_type(
+		array(
+			'name'            => 'quotes',
+			// translators: This is the name of the Quote block.
+			'title'           => __( 'Quote Block', 'itsa-theme' ),
+			'render_template' => 'partials/block-quotes-slider.php',
+			'category'        => 'formatting',
+			'icon'            => 'admin-users',
+			'mode'            => 'auto',
+			'keywords'        => array( 'testimonial', 'quote' ),
+		)
+	);
 }
 
 /**

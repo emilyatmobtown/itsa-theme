@@ -193,7 +193,7 @@ function add_settings() {
 						$titles[ $field_name ],
 						__NAMESPACE__ . '\\' . $field_name . '_callback',
 						'itsa-settings',
-						'itsa_setting_section_1',
+						'itsa_setting_section_1'
 					);
 					break;
 

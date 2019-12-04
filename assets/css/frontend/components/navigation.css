@@ -1,20 +1,30 @@
 /* Navigation */
+.nav-bgrd {
+	background: var(--c-nav-background-solid);
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 5;
+}
+
 .main-navigation {
 	width: 100%;
 	position: absolute;
-	top: 60px;
-	right: -100%;
-	z-index: 5;
+	top: -300px;
+	right: 0;
+	z-index: 1;
 	background-color: var(--c-nav-submenu-background-fallback);
 	background-image: var(--c-nav-submenu-background);
 	padding: var(--d-grid-padding);
 	display: block;
 	-webkit-font-smoothing: subpixel-antialiased;
-	transition: right 0.2s linear 0s;
+	transition: top 0.2s linear 0s;
 }
 
 .menu-toggled .main-navigation {
-	right: 0;
+	top: 60px;
 }
 
 @media (--bp-large) {
@@ -28,19 +38,20 @@
 		position: relative;
 		top: auto;
 		right: auto;
-		transition: right 0 linear 0s;
+		transition: top 0 linear 0s;
 		padding: 0;
 		margin-left: 1.5rem;
+		z-index: 10;
 	}
 }
 
 .header-nav ul {
 	color: var(--c-nav-text-solid);
 	font-size: 1rem;
-    line-height: 2em;
+	line-height: 1.5;
 	font-weight: 400;
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 .header-nav ul ul {
@@ -61,13 +72,20 @@
 	.header-nav ul ul {
 		position: absolute;
 		top: calc(100% + 10px);
-		left: -22px;
+		left: -32px;
 		width: auto;
 		min-width: 7rem;
 		background-color: var(--c-nav-submenu-background-fallback);
 		background-image: var(--c-nav-submenu-background);
 		padding: 10px var(--d-grid-padding) var(--d-grid-padding);
 		margin-left: 0;
+		display: block;
+		opacity: 0;
+		transition: opacity 0.1s linear 0s;
+	}
+
+	.header-nav ul li.submenu-toggled > ul {
+		opacity: 1;
 	}
 }
 
@@ -81,8 +99,8 @@
 	position: relative;
 }
 
-.page_item_has_children > a:after {
-	content: '>';
+.page_item_has_children > a::after {
+	content: ">";
 	margin-left: 0.25rem;
 	transform: rotate(90deg);
 	transition: transform 0.2s linear 0s;
@@ -90,7 +108,7 @@
 	vertical-align: middle;
 }
 
-.submenu-toggled > a:after {
+.submenu-toggled > a::after {
 	transform: rotate(-90deg);
 }
 
@@ -111,14 +129,14 @@
 .header-nav li a {
 	display: inline-block;
 	color: var(--c-nav-text-solid);
-    font-weight: 400;
+	font-weight: 400;
 	text-decoration: none;
 	white-space: nowrap;
 	border-top: 2px solid var(--c-transparent);
 	border-bottom: 2px solid var(--c-transparent);
 	padding: 0;
 	margin: 0.25rem 0;
-	transition: border-color 0.2s linear 0s;
+	transition: border-color 0.1s linear 0s;
 	cursor: pointer;
 }
 

@@ -27,6 +27,8 @@ body.admin-bar .site-header {
 	vertical-align: middle;
 	margin: 0;
 	padding: 0;
+	position: relative;
+	z-index: 10;
 }
 
 @media (--bp-large) {
@@ -50,7 +52,7 @@ body.admin-bar .site-header {
 	z-index: 10;
 	background-color: var(--c-transparent);
 	border: 0;
-	color: #fff;
+	color: var(--c-white);
 	height: 60px;
 	position: absolute;
 	top: 0;

@@ -43,6 +43,7 @@
 						</div>
 						<span class="screen-reader-text">Toggle Primary Navigation</span>
 					</button>
+					<div class="nav-bgrd"></div>
 					<nav id="site-navigation" class="main-navigation" role="navigation">
 						<?php
 						wp_nav_menu(
@@ -56,5 +57,3 @@
 					</nav><!-- #site-navigation -->
 				</div><!-- .site-header-content -->
 			</header><!-- #masthead -->
-
-			<div id="content" class="site-content">

@@ -41,7 +41,7 @@ li > ol {
 }
 
 dt {
-	font-weight: bold;
+	font-weight: 700;
 }
 
 dd {
@@ -62,9 +62,14 @@ table {
 	width: 100%;
 }
 
+p {
+	margin: 0;
+}
+
 a,
 a:visited {
 	color: var(--c-link);
+	transition: color 0.2s linear 0s;
 }
 
 a:hover,

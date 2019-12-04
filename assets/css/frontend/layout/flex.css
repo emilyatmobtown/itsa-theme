@@ -1,0 +1,19 @@
+/* Flex */
+
+.flex-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-flow: row wrap;
+}
+
+.flex-item {
+	width: 100%;
+}
+
+@media (--bp-large) {
+
+	.flex-item {
+		width: auto;
+	}
+}

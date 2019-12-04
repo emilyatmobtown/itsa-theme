@@ -1,0 +1,46 @@
+{
+    "key": "group_5de6f0b4147bb",
+    "title": "Quote Block",
+    "fields": [
+        {
+            "key": "field_5de6f0c9030bc",
+            "label": "Selected Quotes",
+            "name": "selected_quotes",
+            "type": "post_object",
+            "instructions": "Select the quotes to appear in the Quotes block.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "quote"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 1,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/quotes"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1575427512
+}

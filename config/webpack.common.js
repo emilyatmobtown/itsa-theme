@@ -128,8 +128,13 @@ module.exports = {
 		// Copy static assets to the `dist` folder.
 		new CopyWebpackPlugin( [
 			{
-				from: settings.copyWebpackConfig.from,
-				to: settings.copyWebpackConfig.to,
+				from: settings.copyWebpackConfig.static.from,
+				to: settings.copyWebpackConfig.static.to,
+				context: path.resolve( process.cwd(), settings.paths.src.base ),
+			},
+			{
+				from: settings.copyWebpackConfig.vendor.from,
+				to: settings.copyWebpackConfig.vendor.to,
 				context: path.resolve( process.cwd(), settings.paths.src.base ),
 			},
 		] ),

@@ -30,7 +30,7 @@ module.exports = {
 		},
 		dist: {
 			base: './dist/',
-			clean: ['./images', './css', './js']
+			clean: ['./images', './css', './js', './vendor']
 		},
 	},
 	stats: {
@@ -48,8 +48,14 @@ module.exports = {
 		performance: true
 	},
 	copyWebpackConfig: {
-		from: '**/*.{jpg,jpeg,png,gif,svg,eot,ttf,woff,woff2}',
-		to: '[path][name].[ext]'
+		static: {
+			from: '**/*.{jpg,jpeg,png,gif,svg,eot,ttf,woff,woff2}',
+			to: '[path][name].[ext]'
+		},
+		vendor: {
+			from: 'vendor/*.{js,css}',
+			to: '[path][name].[ext]'
+		}
 	},
 	BrowserSyncConfig: {
 		host: 'localhost',

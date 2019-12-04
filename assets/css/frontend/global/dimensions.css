@@ -2,8 +2,15 @@
  * Dimensions
  */
 :root {
-	
+
 	/* Nav */
 	--d-nav-top-bottom-padding: 12px;
 	--d-grid-padding: 20px;
+}
+
+@media (--bp-large) {
+
+	:root {
+		--d-grid-padding: 30px;
+	}
 }
