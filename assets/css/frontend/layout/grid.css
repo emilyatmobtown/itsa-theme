@@ -1,5 +1,14 @@
 /* Grid */
 
+.max-width {
+	max-width: 1860px;
+	margin: 0 auto;
+}
+
+.row {
+	padding: calc(var(--d-grid-padding) / 2) var(--d-grid-padding);
+}
+
 .grid-container {
 	display: grid;
 	grid-template-columns: 100%;

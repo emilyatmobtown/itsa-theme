@@ -22,16 +22,20 @@
 
 .wp-caption {
 	max-width: 100%;
+}
 
-	&.aligncenter {
-		text-align: center;
-	}
+.wp-caption.aligncenter {
+	text-align: center;
+}
 
-	&.alignright {
-		text-align: right;
-	}
+.wp-caption.alignright {
+	text-align: right;
 }
 
 .wp-caption-text {
 	margin: 0;
+}
+
+.wp-block-quote {
+	border: 0;
 }

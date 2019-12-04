@@ -1,2 +1,2 @@
-import Navigation from './components/navigation';
+import Navigation from './components/Navigation';
 new Navigation();

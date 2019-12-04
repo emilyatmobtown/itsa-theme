@@ -1,4 +1,6 @@
 /* Components */
 @import url("header.css");
 @import url("navigation.css");
+@import url("block-area.css");
+@import url("slider.css");
 @import url("footer.css");

@@ -21,6 +21,8 @@
 	--c-link-alt: var(--c-keppel);
 	--c-footer-link: var(--c-white);
 	--c-footer-link-alt: var(--c-viking);
+	--c-bullet: var(--c-white);
+	--c-bullet-active: rgba(229, 238, 245, 0.5);
 
 	/* Solid colors */
 	--c-transparent: rgba(0, 0, 0, 0);

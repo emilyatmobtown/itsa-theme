@@ -5,4 +5,28 @@
 
 /* Gutenberg blocks */
 
-/* @import url("../blocks/index.css"); */
+/* Global */
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700|Source+Sans+Pro:400,600,700&display=swap");
+@import url("global/colors.css");
+@import url("global/dimensions.css");
+
+/* Base */
+@import url("base/elements.css");
+@import url("base/typography.css");
+@import url("base/media.css");
+@import url("base/utility.css");
+@import url("base/accessibility.css");
+@import url("base/prefers-reduced-motion.css");
+@import url("base/wordpress.css");
+
+/* Components */
+@import url("components/block-area.css");
+@import url("components/slider.css");
+
+.editor-styles-wrapper {
+	font-family: Lato, Arial, sans-serif !important;
+}
+
+.editor-styles-wrapper p {
+	margin-top: 1em !important;
+}

@@ -1,0 +1,17 @@
+/* Utility */
+.full-width {
+	width: 100%;
+	height: auto;
+}
+
+.h-centered {
+	position: absolute;
+	transform: translateX(-50%);
+	left: 50%;
+}
+
+.v-centered {
+	position: absolute;
+	transform: translateY(-50%);
+	top: 50%;
+}

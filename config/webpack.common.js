@@ -117,7 +117,10 @@ module.exports = {
 		} ),
 
 		// Clean the `dist` folder on build.
-		new CleanWebpackPlugin(),
+		new CleanWebpackPlugin( {
+			// Protect static assets from removal during watch
+			cleanStaleWebpackAssets: false,
+		} ),
 
 		// Extract CSS into individual files.
 		new MiniCssExtractPlugin( {

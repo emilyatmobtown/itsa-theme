@@ -25,7 +25,7 @@
 			</a>
 
 			<header id="masthead" class="site-header" role="header">
-				<div class="site-header-content">
+				<div class="site-header-content max-width">
 					<h1 class="site-title">
 							<?php
 							if ( function_exists( 'the_custom_logo' ) ) {

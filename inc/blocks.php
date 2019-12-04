@@ -23,6 +23,20 @@ function setup() {
 	add_filter( 'block_categories', $n( 'blocks_categories' ), 10, 2 );
 
 	add_action( 'acf/init', $n( 'register_blocks' ) );
+
+	add_action( 'init', $n( 'remove_block_styles' ) );
+}
+
+/**
+ * Remove Core Block Styles
+ *
+ * @return void
+ */
+function remove_block_styles() {
+	register_block_type(
+		'remove/block-style',
+		array( 'editor_script' => 'admin' )
+	);
 }
 
 /**
@@ -42,7 +56,7 @@ function register_blocks() {
 			// translators: This is the name of the Quote block.
 			'title'           => __( 'Quote Block', 'itsa-theme' ),
 			'render_template' => 'partials/block-quotes-slider.php',
-			'category'        => 'formatting',
+			'category'        => 'itsa-blocks',
 			'icon'            => 'admin-users',
 			'mode'            => 'auto',
 			'keywords'        => array( 'testimonial', 'quote' ),
@@ -84,7 +98,7 @@ function blocks_editor_scripts() {
 
 	wp_enqueue_style(
 		'editor-style',
-		ITSA_THEME_TEMPLATE_URL . '/dist/css/editor-style.min.css',
+		ITSA_THEME_TEMPLATE_URL . '/dist/css/editor-style.css',
 		[],
 		ITSA_THEME_VERSION
 	);
@@ -100,10 +114,10 @@ function blocks_editor_scripts() {
  * @return array Filtered categories.
  */
 function blocks_categories( $categories, $post ) {
-	if ( ! in_array( $post->post_type, array( 'post', 'page' ), true ) ) {
-		return $categories;
-	}
-
+	// if ( ! in_array( $post->post_type, array( 'post', 'page' ), true ) ) {
+	// 	return $categories;
+	// }
+	//
 	return array_merge(
 		$categories,
 		array(

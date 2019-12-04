@@ -1,0 +1,51 @@
+/* Block Area */
+
+.block-area {
+	position: relative;
+	overflow: hidden;
+}
+
+.block-area-text {
+	padding: var(--d-grid-padding);
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+
+.block-area-text::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgb(0, 0, 0);
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 10, 19, 0.54) 40%, rgba(0, 14, 26, 0.83) 100%);
+}
+
+.block-area-quotes-slider .block-area-text {
+	padding-top: 80px;
+	background-image: url("../images/quotes-block-background-sm.jpg");
+}
+
+@media (--bp-medium) {
+
+	.block-area-quotes-slider .block-area-text {
+		background-image: url("../images/quotes-block-background-md.jpg");
+	}
+
+	.block-area-quotes-slider .glide__slide > * {
+		padding-right: 20%;
+	}
+}
+
+@media (--bp-large) {
+
+	.block-area-quotes-slider .block-area-text {
+		background-image: url("../images/quotes-block-background-lg.jpg");
+	}
+
+	.block-area-quotes-slider .glide__slide > * {
+		padding-right: 25%;
+	}
+}

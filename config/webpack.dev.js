@@ -21,8 +21,8 @@ module.exports = merge( common, {
 				files: settings.BrowserSyncConfig.files,
 			},
 			{
-				injectCss: true,
-				reload: false,
+				injectChanges: true,
+				reload: true,
 			}
 		),
 	],

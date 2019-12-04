@@ -3,6 +3,10 @@
 	width: 100%;
 	background-color: var(--c-footer-background-fallback);
 	background-image: var(--c-footer-background);
+	margin-top: calc(var(--d-grid-padding) / 2);
+}
+
+.site-footer-content {
 	padding: calc(2 * var(--d-grid-padding)) var(--d-grid-padding);
 }
 

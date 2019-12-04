@@ -261,6 +261,14 @@ function styles() {
  */
 function admin_scripts() {
 	wp_enqueue_script(
+		'admin',
+		ITSA_THEME_TEMPLATE_URL . '/dist/js/admin.js',
+		array( 'wp-blocks', 'wp-edit-post' ),
+		ITSA_THEME_VERSION,
+		true
+	);
+
+	wp_enqueue_script(
 		'glide',
 		ITSA_THEME_TEMPLATE_URL . '/dist/vendor/glide.min.js',
 		[],

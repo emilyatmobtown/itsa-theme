@@ -7,8 +7,20 @@ optgroup,
 textarea {
 	color: var(--c-body-text);
 	font-family: Lato, Arial, sans-serif;
-	font-size: 1.25rem;
+	font-size: 1rem;
 	line-height: 1.5;
+}
+
+@media (--bp-medium) {
+
+	body,
+	button,
+	input,
+	select,
+	optgroup,
+	textarea {
+		font-size: 1.25rem;
+	}
 }
 
 h1,
@@ -23,14 +35,21 @@ h6 {
 }
 
 h1 {
-	font-size: 3.125rem;
+	font-size: 2.625rem;
 	line-height: 1.16;
 	font-weight: 600;
 	margin-bottom: 0.4em;
 }
 
+@media (--bp-medium) {
+
+	h1 {
+		font-size: 3.125rem;
+	}
+}
+
 h2 {
-	font-size: 2.25rem;
+	font-size: 1.75rem;
 	line-height: 1.33;
 	font-weight: 700;
 	margin-bottom: 0.3em;
@@ -40,32 +59,67 @@ h2 {
 	font-family: Lato, Arial, sans-serif;
 }
 
+@media (--bp-medium) {
+
+	h2 {
+		font-size: 2.25rem;
+	}
+}
+
 h3 {
-	font-size: 1.875rem;
-	line-height: 1.5;
-	font-weight: 700;
-	margin-bottom: 0.3em;
-}
-
-h4 {
-	font-size: 1.625rem;
-	line-height: 1.5;
-	font-weight: 700;
-	margin-bottom: 0.3em;
-}
-
-h5 {
 	font-size: 1.5rem;
 	line-height: 1.5;
 	font-weight: 700;
 	margin-bottom: 0.3em;
 }
 
-h6 {
-	font-size: 1.25rem;
+@media (--bp-medium) {
+
+	h3 {
+		font-size: 1.875rem;
+	}
+}
+
+h4 {
+	font-size: 1.4rem;
 	line-height: 1.5;
 	font-weight: 700;
 	margin-bottom: 0.3em;
+}
+
+@media (--bp-medium) {
+
+	h4 {
+		font-size: 1.625rem;
+	}
+}
+
+h5 {
+	font-size: 1.3rem;
+	line-height: 1.5;
+	font-weight: 700;
+	margin-bottom: 0.3em;
+}
+
+@media (--bp-medium) {
+
+	h5 {
+		font-size: 1.5rem;
+	}
+}
+
+h6 {
+	font-size: 1.2rem;
+	line-height: 1.5;
+	font-weight: 700;
+	margin-bottom: 0.3em;
+}
+
+@media (--bp-medium) {
+
+	h6 {
+		font-size: 1.25rem;
+	}
 }
 
 .reverse-color h1,
@@ -78,22 +132,74 @@ h6 {
 }
 
 p {
-	font-size: 1.25rem;
+	font-size: 1rem;
 	line-height: 1.5;
 	font-weight: 400;
 	margin-bottom: 1em;
+}
+
+@media (--bp-medium) {
+
+	p {
+		font-size: 1.25rem;
+		line-height: 1.5;
+	}
 }
 
 .reverse-color p {
 	color: var(--c-body-text-reverse);
 }
 
+blockquote {
+	padding-left: calc(var(--d-grid-padding) * 2.5);
+	position: relative;
+}
+
+blockquote::before {
+	content: "";
+	display: block;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='24.996' viewBox='0 0 36 24.996'%3E%3Cpath id='Path_534' data-name='Path 534' d='M92.148,67.985a12.521,12.521,0,0,1-3.962-8.117,8.439,8.439,0,1,0-8.43-8.819q-.029.558-.016,1.1C79.9,59.106,85.2,66.514,92.148,67.985ZM60.63,52.15q-.013-.543.016-1.1a8.439,8.439,0,1,1,8.43,8.819,12.523,12.523,0,0,0,3.962,8.117C66.085,66.514,60.788,59.106,60.63,52.15Z' transform='translate(-60.626 -42.989)' fill='%23000'/%3E%3C/svg%3E%0A");
+	background-repeat: no-repeat;
+	background-size: contain;
+	float: left;
+	margin-left: calc(var(--d-grid-padding) * -2.3);
+	margin-top: calc(var(--d-grid-padding) * 0.15);
+	width: calc(var(--d-grid-padding) * 1.8);
+	height: calc(var(--d-grid-padding) * 1.8);
+}
+
+.reverse-color blockquote::before {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='24.996' viewBox='0 0 36 24.996'%3E%3Cpath id='Path_534' data-name='Path 534' d='M92.148,67.985a12.521,12.521,0,0,1-3.962-8.117,8.439,8.439,0,1,0-8.43-8.819q-.029.558-.016,1.1C79.9,59.106,85.2,66.514,92.148,67.985ZM60.63,52.15q-.013-.543.016-1.1a8.439,8.439,0,1,1,8.43,8.819,12.523,12.523,0,0,0,3.962,8.117C66.085,66.514,60.788,59.106,60.63,52.15Z' transform='translate(-60.626 -42.989)' fill='%23fff'/%3E%3C/svg%3E%0A");
+}
+
+cite {
+	font-size: 0.875rem;
+	line-height: 1.5;
+	font-weight: 700;
+	font-style: normal;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.reverse-color cite {
+	color: var(--c-body-text-reverse);
+}
+
 ul,
 ol {
-	font-size: 1.25rem;
+	font-size: 1rem;
 	line-height: 1.5;
 	font-weight: 400;
 	margin-bottom: 1em;
+}
+
+@media (--bp-medium) {
+
+	ul,
+	ol {
+		font-size: 1.25rem;
+		line-height: 1.5;
+	}
 }
 
 .font-weight-400 {

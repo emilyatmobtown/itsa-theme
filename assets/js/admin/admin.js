@@ -1,1 +1,2 @@
-//import foo from './bar'
+import RemoveBlockStyles from './RemoveBlockStyles';
+new RemoveBlockStyles();

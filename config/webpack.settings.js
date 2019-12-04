@@ -68,7 +68,8 @@ module.exports = {
 			'dist/css/**/*.css',
 			'dist/svg/**/*.svg',
 			'dist/images/**/*.{jpg,jpeg,png,gif}',
-			'dist/fonts/**/*.{eot,ttf,woff,woff2,svg}'
+			'dist/fonts/**/*.{eot,ttf,woff,woff2,svg}',
+			'dist/vendor/**/*.{js,css}'
 		]
 	},
 	performance: {
