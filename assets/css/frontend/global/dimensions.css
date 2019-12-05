@@ -8,7 +8,7 @@
 	--d-grid-padding: 20px;
 }
 
-@media (--bp-large) {
+@media (--bp-medium) {
 
 	:root {
 		--d-grid-padding: 30px;

@@ -12,13 +12,13 @@ $quotes = get_field( 'selected_quotes' );
 if ( ! empty( $quotes ) ) {
 	?>
 
-	<div class="row block-area block-area-quotes-slider reverse-color max-width">
-		<div class="block-area-text">
-			<div class="block-area-content glide block-area-glide">
+	<div class="row block-area block-area-quotes-slider block-area-with-overlay reverse-color max-width">
+		<div class="block-area-content">
+			<div class="block-area-text glide block-area-glide">
 				<div class="glide__track block-area-glide-track" data-glide-el="track">
 					<ul class="glide__slides block-area-glide-slides">
 						<?php foreach ( $quotes as $quote ) { ?>
-							<li class="glide__slide block-area-glide-slide">
+							<li class="glide__slide block-area-glide-slide restricted-width">
 								<?php echo wp_kses_post( $quote->post_content ); ?>
 							</li>
 						<?php } ?>

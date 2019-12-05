@@ -33,6 +33,8 @@ if ( have_posts() ) {
 
 }
 
+get_template_part( 'partials/content-footer', 'none' );
+
 ?>
 
 </main><!-- #main -->

@@ -7,12 +7,6 @@
 
 ?>
 
-<?php
-if ( function_exists( 'ITSACoreFunctionality\block_area' ) ) {
-	ITSACoreFunctionality\block_area()->show( 'quote-slider' );
-}
-?>
-
 		<footer id="colophon" class="site-footer reverse-color">
 			<div class="site-footer-content max-width">
 				<div class="flex-container">

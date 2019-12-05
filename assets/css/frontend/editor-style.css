@@ -13,6 +13,7 @@
 /* Base */
 @import url("base/elements.css");
 @import url("base/typography.css");
+@import url("base/forms.css");
 @import url("base/media.css");
 @import url("base/utility.css");
 @import url("base/accessibility.css");

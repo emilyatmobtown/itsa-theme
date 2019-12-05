@@ -57,9 +57,22 @@ function register_blocks() {
 			'title'           => __( 'Quote Block', 'itsa-theme' ),
 			'render_template' => 'partials/block-quotes-slider.php',
 			'category'        => 'itsa-blocks',
-			'icon'            => 'admin-users',
+			'icon'            => 'editor-quote',
 			'mode'            => 'auto',
 			'keywords'        => array( 'testimonial', 'quote' ),
+		)
+	);
+
+	acf_register_block_type(
+		array(
+			'name'            => 'call-to-action',
+			// translators: This is the name of the Call to Action block.
+			'title'           => __( 'Call to Action Block', 'itsa-theme' ),
+			'render_template' => 'partials/block-call-to-action.php',
+			'category'        => 'itsa-blocks',
+			'icon'            => 'thumbs-up',
+			'mode'            => 'auto',
+			'keywords'        => array( 'call to action', 'membership', 'jobs' ),
 		)
 	);
 }

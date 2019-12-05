@@ -1,0 +1,184 @@
+{
+    "key": "group_5de8443b03e0f",
+    "title": "Call to Action Block",
+    "fields": [
+        {
+            "key": "field_5de844508e265",
+            "label": "Headline",
+            "name": "headline",
+            "type": "text",
+            "instructions": "Enter the headline.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5de8447b8e266",
+            "label": "Text",
+            "name": "text",
+            "type": "textarea",
+            "instructions": "Enter the main text.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_5de844c98e267",
+            "label": "Button Text",
+            "name": "button_text",
+            "type": "text",
+            "instructions": "Enter the text for the button.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5de8592d598c3",
+            "label": "Button Page Link",
+            "name": "button_page_link",
+            "type": "page_link",
+            "instructions": "Select a page to link to. To use a link not on this site, enter the URL under \"Button External URL\" below.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5de844c98e267",
+                        "operator": "!=empty"
+                    },
+                    {
+                        "field": "field_5de85873598c2",
+                        "operator": "==empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page",
+                "post"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "allow_archives": 0,
+            "multiple": 0
+        },
+        {
+            "key": "field_5de85873598c2",
+            "label": "Button External URL",
+            "name": "button_external_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5de844c98e267",
+                        "operator": "!=empty"
+                    },
+                    {
+                        "field": "field_5de8592d598c3",
+                        "operator": "==empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_5de8663924b46",
+            "label": "Block Style",
+            "name": "block_style",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "block-style-highway-blur": "Highway Blur"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5de84b7fb9620",
+            "label": "Reverse Alignment",
+            "name": "reverse_alignment",
+            "type": "true_false",
+            "instructions": "Toggle alignment on wider screens.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Right-aligned",
+            "ui_off_text": "Left-aligned"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/call-to-action"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1575512264
+}

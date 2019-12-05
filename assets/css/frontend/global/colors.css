@@ -23,6 +23,9 @@
 	--c-footer-link-alt: var(--c-viking);
 	--c-bullet: var(--c-white);
 	--c-bullet-active: rgba(229, 238, 245, 0.5);
+	--c-button-background: var(--c-viking);
+	--c-button-background-alt: var(--c-keppel);
+	--c-button-text: var(--c-midnight);
 
 	/* Solid colors */
 	--c-transparent: rgba(0, 0, 0, 0);
@@ -33,6 +36,7 @@
 	--c-midnight-alt: #001333;
 	--c-midnight-alt-2: #00183f;
 	--c-prussian-blue: #002a4e;
+	--c-prussian-blue-alt: #00437d;
 	--c-regal-blue: #003a6c;
 	--c-keppel: #36a5ae;
 	--c-viking: #51cfd9;
