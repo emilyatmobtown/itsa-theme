@@ -9,7 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( array( 'row', 'max-width' ) ); ?>>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
@@ -18,7 +18,8 @@
 		<?php the_content(); ?>
 	</div><!-- .entry-content -->
 
-	<footer class="row max-width entry-footer">
-		<h2 class="entry-footer-title font-weight-600">Related</h2>
+	<footer class="entry-footer">
+
 	</footer><!-- .entry-footer -->
+
 </article><!-- #post-<?php the_ID(); ?> -->

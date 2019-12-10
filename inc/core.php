@@ -26,7 +26,9 @@ function setup() {
 	add_action( 'admin_enqueue_scripts', $n( 'admin_styles' ) );
 	add_action( 'wp_head', $n( 'js_detection' ), 0 );
 	add_action( 'wp_head', $n( 'add_manifest' ), 10 );
+	add_action( 'init', $n( 'add_image_sizes' ) );
 
+	add_filter( 'image_size_names_choose', $n( 'add_image_size_names' ) );
 	add_filter( 'script_loader_tag', $n( 'script_loader_tag' ), 10, 2 );
 }
 
@@ -52,7 +54,6 @@ function theme_setup() {
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-formats', array( 'quote' ) );
-	add_theme_support( 'post-thumbnails' );
 	add_theme_support(
 		'html5',
 		array(
@@ -60,6 +61,12 @@ function theme_setup() {
 			'gallery',
 		)
 	);
+
+	// Disable custom font sizes in paragraph text
+	add_theme_support( 'editor-font-sizes' );
+	add_theme_support( 'disable-custom-font-sizes' );
+
+	// Limit colors to theme-specific colors
 	add_theme_support( 'disable-custom-colors' );
 	add_theme_support(
 		'editor-color-palette',
@@ -195,22 +202,14 @@ function scripts() {
 		true
 	);
 
-	wp_enqueue_script(
-		'shared',
-		ITSA_THEME_TEMPLATE_URL . '/dist/js/shared.js',
-		array( 'jquery' ),
-		ITSA_THEME_VERSION,
-		true
-	);
-
-	wp_enqueue_script(
-		'glide',
-		ITSA_THEME_TEMPLATE_URL . '/dist/vendor/glide.min.js',
-		[],
-		ITSA_THEME_VERSION,
-		true
-	);
-
+	// wp_enqueue_script(
+	// 	'shared',
+	// 	ITSA_THEME_TEMPLATE_URL . '/dist/js/shared.js',
+	// 	[],
+	// 	ITSA_THEME_VERSION,
+	// 	true
+	// );
+	//
 	if ( is_page_template( 'templates/page-styleguide.php' ) ) {
 		wp_enqueue_script(
 			'styleguide',
@@ -233,13 +232,6 @@ function styles() {
 	wp_enqueue_style(
 		'styles',
 		ITSA_THEME_TEMPLATE_URL . '/dist/css/style.css',
-		[],
-		ITSA_THEME_VERSION
-	);
-
-	wp_enqueue_style(
-		'glide-styles',
-		ITSA_THEME_TEMPLATE_URL . '/dist/vendor/glide.core.min.css',
 		[],
 		ITSA_THEME_VERSION
 	);
@@ -268,13 +260,13 @@ function admin_scripts() {
 		true
 	);
 
-	wp_enqueue_script(
-		'glide',
-		ITSA_THEME_TEMPLATE_URL . '/dist/vendor/glide.min.js',
-		[],
-		ITSA_THEME_VERSION,
-		true
-	);
+	// wp_enqueue_script(
+	// 	'shared',
+	// 	ITSA_THEME_TEMPLATE_URL . '/dist/js/shared.js',
+	// 	[],
+	// 	ITSA_THEME_VERSION,
+	// 	true
+	// );
 }
 
 /**
@@ -284,8 +276,8 @@ function admin_scripts() {
  */
 function admin_styles() {
 	wp_enqueue_style(
-		'glide-styles',
-		ITSA_THEME_TEMPLATE_URL . '/dist/vendor/glide.core.min.css',
+		'admin-styles',
+		ITSA_THEME_TEMPLATE_URL . '/dist/css/admin-style.css',
 		[],
 		ITSA_THEME_VERSION
 	);
@@ -344,4 +336,49 @@ function script_loader_tag( $tag, $handle ) {
  */
 function add_manifest() {
 	echo "<link rel='manifest' href='" . esc_url( ITSA_THEME_TEMPLATE_URL . '/manifest.json' ) . "' />";
+}
+
+/**
+ * Add custom image sizes
+ *
+ * @since 0.1.0
+ */
+function add_image_sizes() {
+	$sizes = array(
+		array(
+			'name'   => 'itsa-member-logo',
+			'width'  => 400,
+			'height' => 280,
+			'crop'   => true,
+		),
+		array(
+			'name'   => 'itsa-hero-image',
+			'width'  => 1920,
+			'height' => 720,
+			'crop'   => true,
+		),
+	);
+
+	if ( ! empty( $sizes ) && isset( $sizes ) ) {
+		foreach ( $sizes as $size ) {
+			add_image_size( $size['name'], $size['width'], $size['height'], $size['crop'] );
+		}
+	}
+}
+
+/**
+ * Add names for custom image sizes
+ *
+ * @since 0.1.0
+ */
+function add_image_size_names( $sizes ) {
+	return array_merge(
+		$sizes,
+		array(
+			// translators: This is the name of the custom image size for the ITSA Member Logo.
+			'itsa-member-logo' => __( 'ITSA Member Logo' ),
+			// translators: This is the name of the custom image size for the ITSA Hero Image.
+			'itsa-hero-image'  => __( 'ITSA Hero Image' ),
+		)
+	);
 }

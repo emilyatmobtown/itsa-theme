@@ -60,9 +60,13 @@ body.admin-bar .site-header {
 	position: absolute;
 	top: 0;
 	right: 0;
-	padding: var(--d-grid-padding);
+	padding: 20px var(--d-grid-padding);
 	cursor: pointer;
 	line-height: 1;
+}
+
+.menu-toggle:hover {
+	background-color: var(--c-transparent);
 }
 
 @media (--bp-large) {

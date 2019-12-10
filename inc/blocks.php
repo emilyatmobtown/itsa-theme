@@ -52,6 +52,19 @@ function register_blocks() {
 
 	acf_register_block_type(
 		array(
+			'name'            => 'hero-image',
+			// translators: This is the name of the Hero Image block.
+			'title'           => __( 'Hero Image', 'itsa-theme' ),
+			'render_template' => 'partials/block-hero-image.php',
+			'category'        => 'itsa-blocks',
+			'icon'            => 'format-image',
+			'mode'            => 'auto',
+			'keywords'        => array( 'hero', 'title', 'image' ),
+		)
+	);
+
+	acf_register_block_type(
+		array(
 			'name'            => 'quotes',
 			// translators: This is the name of the Quote block.
 			'title'           => __( 'Quote Block', 'itsa-theme' ),
@@ -73,6 +86,19 @@ function register_blocks() {
 			'icon'            => 'thumbs-up',
 			'mode'            => 'auto',
 			'keywords'        => array( 'call to action', 'membership', 'jobs' ),
+		)
+	);
+
+	acf_register_block_type(
+		array(
+			'name'            => 'member-logos',
+			// translators: This is the name of the Member Logo block.
+			'title'           => __( 'Member Logo Block', 'itsa-theme' ),
+			'render_template' => 'partials/block-member-logos.php',
+			'category'        => 'itsa-blocks',
+			'icon'            => 'images-alt2',
+			'mode'            => 'auto',
+			'keywords'        => array( 'members', 'logos' ),
 		)
 	);
 }
@@ -132,12 +158,12 @@ function blocks_categories( $categories, $post ) {
 	// }
 	//
 	return array_merge(
-		$categories,
 		array(
 			array(
 				'slug'  => 'itsa-blocks',
 				'title' => __( 'ITSA Custom Blocks', 'itsa-theme' ),
 			),
-		)
+		),
+		$categories
 	);
 }

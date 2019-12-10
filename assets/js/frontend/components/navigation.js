@@ -55,7 +55,7 @@ export default class Navigation {
 		}
 
 		// Get all the link elements within the menu.
-		const parents = menu.getElementsByClassName( 'page_item_has_children' );
+		const parents = menu.getElementsByClassName( 'menu-item-has-children' );
 
 		// Empty href for parent links
 		for ( let i = 0, len = parents.length; i < len; i++ ) {
@@ -102,7 +102,7 @@ export default class Navigation {
 
 		// Toggle submenus if any exist
 		for ( let i = 0, len = items.length; i < len; i++ ) {
-			if ( -1 !== items[i].className.indexOf( 'page_item_has_children' ) ) {
+			if ( -1 !== items[i].className.indexOf( 'menu-item-has-children' ) ) {
 				items[i].addEventListener( 'click', this.toggleChildren, true );
 			}
 		}

@@ -3,4 +3,5 @@
  * used on front-end and/or in editor
  */
 
-// import example-block-1 from './example-block-1';
+import MemberLogos from './block-member-logos';
+new MemberLogos;

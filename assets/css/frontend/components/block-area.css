@@ -7,10 +7,13 @@
 
 .block-area-content {
 	padding: var(--d-grid-padding);
-	background-color: var(--c-prussian-blue-alt);
 	background-repeat: no-repeat;
 	background-size: cover;
 	position: relative;
+}
+
+.block-area-content.no-padding {
+	padding: 0;
 }
 
 .block-area-with-overlay .block-area-content::before {
@@ -24,13 +27,19 @@
 	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 10, 19, 0.54) 40%, rgba(0, 14, 26, 0.83) 100%);
 }
 
+.block-style-solid .block-area-content {
+	background-color: var(--c-prussian-blue-alt);
+}
+
 .block-style-highway-blur .block-area-content {
 	padding-top: 60px;
+	background-color: var(--c-prussian-blue-alt);
 	background-image: url("../images/background-highway-streaks-sm.jpg");
 }
 
 .block-area-quotes-slider .block-area-content {
 	padding-top: 80px;
+	background-color: var(--c-prussian-blue-alt);
 	background-image: url("../images/quotes-block-background-sm.jpg");
 }
 
@@ -44,6 +53,29 @@
 
 .block-area-paragraph {
 	margin-bottom: 1.875rem;
+}
+
+.block-area-member-logos img {
+	width: 200px;
+	height: auto;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+.block-area-quotes-slider blockquote {
+	padding-left: calc(var(--d-grid-padding) * 2.5);
+}
+
+.block-area-quotes-slider blockquote::before {
+	margin-top: calc(var(--d-grid-padding) * 0.15);
+	margin-left: calc(var(--d-grid-padding) * -2.3);
+	width: calc(var(--d-grid-padding) * 1.8);
+	height: calc(var(--d-grid-padding) * 1.8);
+}
+
+.block-area-hero-image {
+	margin: 0 auto 40px;
+	padding: 0;
 }
 
 @media (--bp-medium) {
@@ -60,9 +92,9 @@
 		padding-right: 20%;
 	}
 
-	.block-area-quotes-slider p {
+	/* .block-area-quotes-slider p {
 		font-size: 1.875rem;
-	}
+	} */
 }
 
 @media (--bp-large) {

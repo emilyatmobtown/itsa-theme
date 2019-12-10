@@ -9,7 +9,7 @@
 
 $quotes = get_field( 'selected_quotes' );
 
-if ( ! empty( $quotes ) ) {
+if ( ! empty( $quotes ) && isset( $quotes ) ) {
 	?>
 
 	<div class="row block-area block-area-quotes-slider block-area-with-overlay reverse-color max-width">

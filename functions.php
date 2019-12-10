@@ -32,6 +32,7 @@ require_once ITSA_THEME_INC . 'blocks.php';
 
 // Run the setup functions.
 Core\setup();
+Overrides\setup();
 Customizer\setup();
 Blocks\setup();
 

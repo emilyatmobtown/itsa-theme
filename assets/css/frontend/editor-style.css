@@ -21,6 +21,7 @@
 @import url("base/wordpress.css");
 
 /* Components */
+@import "../../../node_modules/@glidejs/glide/dist/css/glide.core.min.css";
 @import url("components/block-area.css");
 @import url("components/slider.css");
 

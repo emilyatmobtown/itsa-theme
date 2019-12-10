@@ -50,8 +50,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@wordpress/babel-preset-default": "^4.1.0",
@@ -62,11 +62,11 @@
     "backstopjs": "^3.2",
     "browser-sync": "^2.26.3",
     "browser-sync-webpack-plugin": "^2.2.2",
-    "browserslist": "^4.8.0",
+    "browserslist": "^4.8.2",
     "caniuse-db": "^1.0.30001015",
     "clean-webpack-plugin": "^2.0.1",
-    "copy-webpack-plugin": "^5.0.2",
-    "core-js": "^3.4.7",
+    "copy-webpack-plugin": "^5.1.0",
+    "core-js": "^3.4.8",
     "css-loader": "^2.1.1",
     "cssnano": "^4.1.10",
     "eslint": "^6.7.2",
@@ -106,6 +106,7 @@
     "node": ">=8.11"
   },
   "dependencies": {
+    "@glidejs/glide": "^3.4.1",
     "normalize.css": "^8.0.0"
   }
 }

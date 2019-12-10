@@ -26,14 +26,25 @@
 
 			<header id="masthead" class="site-header" role="header">
 				<div class="site-header-content max-width">
-					<h1 class="site-title">
+					<?php if ( is_home() || is_front_page() ) { ?>}
+							<h1 class="site-title">
+									<?php
+									if ( function_exists( 'the_custom_logo' ) ) {
+										the_custom_logo();
+									}
+									?>
+									<a href="<?php bloginfo( 'home_url' ); ?>" class="screen-reader-text" rel="home"><?php bloginfo( 'name' ); ?></a>
+							</h1><!-- .site-title -->
+				<?php } else { ?>
+					<span class="site-title">
 							<?php
 							if ( function_exists( 'the_custom_logo' ) ) {
 								the_custom_logo();
 							}
 							?>
 							<a href="<?php bloginfo( 'home_url' ); ?>" class="screen-reader-text" rel="home"><?php bloginfo( 'name' ); ?></a>
-					</h1><!-- .site-title -->
+					</span><!-- .site-title -->
+				<?php } ?>
 					<button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false">
 						<div class="menu-icon" aria-hidden="true">
 							<span></span>
@@ -48,9 +59,9 @@
 						<?php
 						wp_nav_menu(
 							array(
-								'theme_location' => 'primary-menu',
-								'menu_id'        => 'primary-menu',
-								'menu_class'     => 'header-nav',
+								'menu'       => 'Primary Menu',
+								'menu_id'    => 'primary-menu',
+								'menu_class' => 'header-nav',
 							)
 						);
 						?>

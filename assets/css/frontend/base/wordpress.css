@@ -39,3 +39,18 @@
 .wp-block-quote {
 	border: 0;
 }
+
+.entry-content > .wp-block-image {
+	margin: 1.25em auto;
+}
+
+@media (--bp-medium) {
+
+	.entry-content > .wp-block-image {
+		max-width: 84%;
+	}
+}
+
+.wp-block-image figcaption {
+	margin: 0.5em 0 0;
+}

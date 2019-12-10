@@ -1,6 +1,12 @@
 /* Slider */
+@import "../../../../node_modules/@glidejs/glide/dist/css/glide.core.min.css";
+
 .glide__slides {
 	margin: 0;
+}
+
+.block-area-member-logos .glide__slides {
+	align-items: center;
 }
 
 .glide__slides blockquote {

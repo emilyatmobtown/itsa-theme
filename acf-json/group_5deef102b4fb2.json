@@ -1,0 +1,67 @@
+{
+    "key": "group_5deef102b4fb2",
+    "title": "Hero Image Block",
+    "fields": [
+        {
+            "key": "field_5deef110db75b",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "Upload or select an image.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg, jpeg, png"
+        },
+        {
+            "key": "field_5deef157db75c",
+            "label": "Tagline",
+            "name": "tagline",
+            "type": "text",
+            "instructions": "Enter an optional tagline to appear below the title.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/hero-image"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1575940462
+}

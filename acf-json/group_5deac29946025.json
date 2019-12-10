@@ -1,0 +1,78 @@
+{
+    "key": "group_5deac29946025",
+    "title": "Member Logo Block",
+    "fields": [
+        {
+            "key": "field_5deac316bebb3",
+            "label": "Block Style",
+            "name": "block_style",
+            "type": "select",
+            "instructions": "Select the layout style.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "block-style-slider": "Slider",
+                "block-style-grid": "Grid"
+            },
+            "default_value": [
+                "slider"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5deac2abe3036",
+            "label": "Logos",
+            "name": "logos",
+            "type": "gallery",
+            "instructions": "Upload or select the member logos.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "itsa-member-logo",
+            "insert": "append",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg, jpeg, png"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/member-logos"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1575940501
+}

@@ -46,6 +46,18 @@ function setup() {
 	// Remove the link to Really Simple Discovery service endpoint.
 	remove_action( 'wp_head', 'rsd_link' );
 
+	// Remove medium_large image size
+	add_filter(
+		'intermediate_image_sizes',
+		function( $sizes ) {
+			return array_filter(
+				$sizes,
+				function( $val ) {
+					return 'medium_large' !== $val; // Filter out 'medium_large'
+				}
+			);
+		}
+	);
 }
 
 /**

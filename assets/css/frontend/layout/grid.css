@@ -2,11 +2,29 @@
 
 .max-width {
 	max-width: 1860px;
-	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+article.max-width {
+	max-width: 1200px;
+}
+
+.entry-content > * {
+	max-width: 1200px;
+	padding-left: var(--d-grid-padding);
+	padding-right: var(--d-grid-padding);
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .row {
 	padding: calc(var(--d-grid-padding) / 2) var(--d-grid-padding);
+}
+
+.row.no-side-padding {
+	padding-left: 0;
+	padding-right: 0;
 }
 
 .grid-container {

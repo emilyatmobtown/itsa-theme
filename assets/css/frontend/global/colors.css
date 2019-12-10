@@ -13,7 +13,7 @@
 	--c-nav-text-reverse: var(--c-midnight-alt-2);
 	--c-nav-background-transparent: var(--c-transparent);
 	--c-nav-background-solid: var(--c-midnight-alt);
-	--c-nav-submenu-background: linear-gradient(0deg, rgba(0, 26, 64, 0.7) 0%, rgba(0, 19, 51, 0.7) 100%);
+	--c-nav-submenu-background: linear-gradient(0deg, rgba(0, 26, 64, 0.95) 0%, rgba(0, 19, 51, 0.95) 100%);
 	--c-nav-submenu-background-fallback: var(--g-midnight-fallback);
 	--c-footer-background: var(--g-midnight);
 	--c-footer-background-fallback: var(--c-midnight);
@@ -32,6 +32,7 @@
 	--c-black: #000;
 	--c-white: #fff;
 	--c-alto: #ddd;
+	--c-silver: #bbb;
 	--c-midnight: #001940;
 	--c-midnight-alt: #001333;
 	--c-midnight-alt-2: #00183f;

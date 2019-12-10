@@ -41,6 +41,12 @@ h1 {
 	margin-bottom: 0.4em;
 }
 
+.entry-title {
+	margin-bottom: var(--d-grid-padding);
+	padding: 15px 0 var(--d-grid-padding);
+	border-bottom: 1px solid var(--c-silver);
+}
+
 @media (--bp-medium) {
 
 	h1 {
@@ -52,11 +58,22 @@ h2 {
 	font-size: 1.75rem;
 	line-height: 1.33;
 	font-weight: 700;
+	margin-top: 0.75em;
 	margin-bottom: 0.3em;
+}
+
+h2:first-child {
+	margin-top: 0;
 }
 
 .heading-2-alt {
 	font-family: Lato, Arial, sans-serif;
+}
+
+.entry-footer-title {
+	margin-top: var(--d-grid-padding);
+	padding-top: var(--d-grid-padding);
+	border-top: 1px solid var(--c-silver);
 }
 
 @media (--bp-medium) {
@@ -70,7 +87,12 @@ h3 {
 	font-size: 1.5rem;
 	line-height: 1.5;
 	font-weight: 700;
+	margin-top: 0.875em;
 	margin-bottom: 0.3em;
+}
+
+h3:first-child {
+	margin-top: 0;
 }
 
 @media (--bp-medium) {
@@ -84,7 +106,12 @@ h4 {
 	font-size: 1.4rem;
 	line-height: 1.5;
 	font-weight: 700;
+	margin-top: 0.875em;
 	margin-bottom: 0.3em;
+}
+
+h4:first-child {
+	margin-top: 0;
 }
 
 @media (--bp-medium) {
@@ -98,7 +125,12 @@ h5 {
 	font-size: 1.3rem;
 	line-height: 1.5;
 	font-weight: 700;
+	margin-top: 0.875em;
 	margin-bottom: 0.3em;
+}
+
+h5:first-child {
+	margin-top: 0;
 }
 
 @media (--bp-medium) {
@@ -112,7 +144,12 @@ h6 {
 	font-size: 1.2rem;
 	line-height: 1.5;
 	font-weight: 700;
+	margin-top: 1em;
 	margin-bottom: 0.3em;
+}
+
+h6:first-child {
+	margin-top: 0;
 }
 
 @media (--bp-medium) {
@@ -151,8 +188,16 @@ p {
 }
 
 blockquote {
-	padding-left: calc(var(--d-grid-padding) * 2.5);
+	padding-left: calc(var(--d-grid-padding) * 1.5);
+	margin: 1.25em var(--d-grid-padding);
 	position: relative;
+}
+
+.entry-content > blockquote {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: calc(var(--d-grid-padding) * 3);
+	padding-right: calc(var(--d-grid-padding) * 3);
 }
 
 blockquote::before {
@@ -162,10 +207,10 @@ blockquote::before {
 	background-repeat: no-repeat;
 	background-size: contain;
 	float: left;
-	margin-left: calc(var(--d-grid-padding) * -2.3);
-	margin-top: calc(var(--d-grid-padding) * 0.15);
-	width: calc(var(--d-grid-padding) * 1.8);
-	height: calc(var(--d-grid-padding) * 1.8);
+	margin-left: calc(var(--d-grid-padding) * -1.5);
+	margin-top: calc(var(--d-grid-padding) * 0.25);
+	width: calc(var(--d-grid-padding) * 1);
+	height: calc(var(--d-grid-padding) * 1);
 }
 
 .reverse-color blockquote::before {
@@ -190,7 +235,16 @@ ol {
 	font-size: 1rem;
 	line-height: 1.5;
 	font-weight: 400;
-	margin-bottom: 1em;
+	margin: 0 0 1em var(--d-grid-padding);
+	padding: 0 0 0 calc(var(--d-grid-padding) * 1.5);
+}
+
+.entry-content > ul,
+.entry-content > ol {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: calc(var(--d-grid-padding) * 3);
+	padding-right: calc(var(--d-grid-padding) * 3);
 }
 
 @media (--bp-medium) {
@@ -200,6 +254,17 @@ ol {
 		font-size: 1.25rem;
 		line-height: 1.5;
 	}
+}
+
+li {
+	margin-bottom: 0.5em;
+}
+
+figcaption {
+	font-size: 0.875rem;
+	font-weight: 400;
+	text-transform: uppercase;
+	margin: 0.5em 0 0;
 }
 
 .font-weight-400 {
@@ -221,10 +286,4 @@ ol {
 
 .color-white {
 	color: var(--c-white);
-}
-
-.caption {
-	font-size: 0.875rem;
-	font-weight: 700;
-	margin: 0;
 }

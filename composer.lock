@@ -929,16 +929,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.5.17",
+            "version": "7.5.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "4c92a15296e58191a4cd74cff3b34fc8e374174a"
+                "reference": "fcf6c4bfafaadc07785528b06385cce88935474d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4c92a15296e58191a4cd74cff3b34fc8e374174a",
-                "reference": "4c92a15296e58191a4cd74cff3b34fc8e374174a",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/fcf6c4bfafaadc07785528b06385cce88935474d",
+                "reference": "fcf6c4bfafaadc07785528b06385cce88935474d",
                 "shasum": ""
             },
             "require": {
@@ -1009,7 +1009,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-10-28T10:37:36+00:00"
+            "time": "2019-12-06T05:14:37+00:00"
         },
         {
             "name": "roave/security-advisories",
@@ -1801,12 +1801,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "b3c7925e18b0367c4a751aaa43f6339d55fc3fb6"
+                "reference": "120c713213260a38988ac17816058ba3686f4e8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b3c7925e18b0367c4a751aaa43f6339d55fc3fb6",
-                "reference": "b3c7925e18b0367c4a751aaa43f6339d55fc3fb6",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/120c713213260a38988ac17816058ba3686f4e8f",
+                "reference": "120c713213260a38988ac17816058ba3686f4e8f",
                 "shasum": ""
             },
             "require": {
@@ -1844,7 +1844,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-12-01T13:56:15+00:00"
+            "time": "2019-12-09T00:16:37+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
