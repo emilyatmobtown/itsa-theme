@@ -52,14 +52,27 @@ function register_blocks() {
 
 	acf_register_block_type(
 		array(
-			'name'            => 'hero-image',
-			// translators: This is the name of the Hero Image block.
-			'title'           => __( 'Hero Image', 'itsa-theme' ),
-			'render_template' => 'partials/block-hero-image.php',
+			'name'            => 'header',
+			// translators: This is the name of the Header block.
+			'title'           => __( 'Header Block', 'itsa-theme' ),
+			'render_template' => 'partials/block-header.php',
 			'category'        => 'itsa-blocks',
 			'icon'            => 'format-image',
 			'mode'            => 'auto',
-			'keywords'        => array( 'hero', 'title', 'image' ),
+			'keywords'        => array( 'hero', 'banner', 'heading' ),
+		)
+	);
+
+	acf_register_block_type(
+		array(
+			'name'            => 'content-grid',
+			// translators: This is the name of the Content Grid block.
+			'title'           => __( 'Content Grid', 'itsa-theme' ),
+			'render_template' => 'partials/block-content-grid.php',
+			'category'        => 'itsa-blocks',
+			'icon'            => 'screenoptions',
+			'mode'            => 'auto',
+			'keywords'        => array( 'members', 'logos' ),
 		)
 	);
 

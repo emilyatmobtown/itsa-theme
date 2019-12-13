@@ -1,30 +1,25 @@
 {
     "key": "group_5deef102b4fb2",
-    "title": "Hero Image Block",
+    "title": "Header Block",
     "fields": [
         {
-            "key": "field_5deef110db75b",
-            "label": "Image",
-            "name": "image",
-            "type": "image",
-            "instructions": "Upload or select an image.",
-            "required": 1,
+            "key": "field_5defea01b4f05",
+            "label": "Title",
+            "name": "title",
+            "type": "text",
+            "instructions": "Enter an optional title. If none is entered, the title defaults to the above page title.",
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
-            "preview_size": "medium",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "jpg, jpeg, png"
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_5deef157db75c",
@@ -44,6 +39,116 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_5deef110db75b",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "Upload or select an optional background image. Additional optional fields for a tagline and a button will appear once an image is selected.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg, jpeg, png"
+        },
+        {
+            "key": "field_5defea53b4f06",
+            "label": "Button Text",
+            "name": "button_text",
+            "type": "text",
+            "instructions": "Enter text for an optional button.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5deef110db75b",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5defeb15b4f07",
+            "label": "Button Page Link",
+            "name": "button_page_link",
+            "type": "page_link",
+            "instructions": "Select a page to link to. To use a link not on this site, enter the URL under \"Button External URL\" below.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5defea53b4f06",
+                        "operator": "!=empty"
+                    },
+                    {
+                        "field": "field_5defeb9e8746e",
+                        "operator": "==empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post",
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "allow_archives": 0,
+            "multiple": 0
+        },
+        {
+            "key": "field_5defeb9e8746e",
+            "label": "Button External URL",
+            "name": "button_external_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5defea53b4f06",
+                        "operator": "!=empty"
+                    },
+                    {
+                        "field": "field_5defeb15b4f07",
+                        "operator": "==empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
         }
     ],
     "location": [
@@ -51,7 +156,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/hero-image"
+                "value": "acf\/header"
             }
         ]
     ],
@@ -63,5 +168,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1575940462
+    "modified": 1576084682
 }

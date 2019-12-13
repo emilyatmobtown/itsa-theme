@@ -23,15 +23,15 @@ if ( ! empty( $quotes ) && isset( $quotes ) ) {
 							</li>
 						<?php } ?>
 					</ul>
-				</div>
+				</div><!-- .block-area-glide-track -->
 				<div class="glide__bullets block-area-glide-bullets" data-glide-el="controls[nav]">
 					<?php foreach ( $quotes as $key => $quote ) { ?>
 						<button class="glide__bullet block-area-glide-bullet" data-glide-dir="=<?php echo esc_attr( $key ); ?>" aria-hidden="true"></button>
 					<?php } ?>
-				</div>
-			</div>
-		</div>
-	</div>
+				</div><!-- .block-area-glide-bullets -->
+			</div><!-- .block-area-text -->
+		</div><!-- .block-area-content -->
+	</div><!-- .block-area -->
 
 	<?php
 }

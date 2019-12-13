@@ -28,6 +28,7 @@ module.exports = ( { file, options, env } ) => ( { /* eslint-disable-line */
 					'[disabled]',
 				],
 				tags: [
+					'a',
 					'button',
 					'input',
 					'label',

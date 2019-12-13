@@ -14,6 +14,49 @@
 namespace ITSATheme\Utility;
 
 /**
+ * Fetch current post ID while in Gutenberg block editor
+ *
+ */
+function get_acf_post_id() {
+	if ( is_admin() && function_exists( 'acf_maybe_get_POST' ) ) :
+		return intval( acf_maybe_get_POST( 'post_id' ) );
+	else :
+		global $post;
+		return $post->ID;
+	endif;
+}
+
+/**
+ * Recursively searches block array for given blocks.
+ *
+ * @link https://www.billerickson.net/building-a-header-block-in-wordpress/
+ *
+ * @param array  $blocks
+ * @param string $blockname
+ * @return bool
+ */
+function has_block( $blocks = array(), $blockname = '' ) {
+	foreach ( $blocks as $block ) {
+
+		if ( ! isset( $block['blockName'] ) ) {
+			continue;
+		}
+
+		if ( $blockname === $block['blockName'] ) {
+			return true;
+		} elseif ( isset( $block['innerBlocks'] ) && ! empty( $block['innerBlocks'] ) ) {
+			// Scan inner blocks
+			$inner_block = has_block( $block['innerBlocks'] );
+			if ( $inner_block ) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+/**
  * Extract colors from a CSS or Sass file
  *
  * @param string $path the path to your CSS variables file

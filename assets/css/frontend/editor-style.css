@@ -15,15 +15,23 @@
 @import url("base/typography.css");
 @import url("base/forms.css");
 @import url("base/media.css");
+@import url("base/icons.css");
 @import url("base/utility.css");
 @import url("base/accessibility.css");
 @import url("base/prefers-reduced-motion.css");
 @import url("base/wordpress.css");
 
+/* Templates */
+@import url("templates/article.css");
+
 /* Components */
 @import "../../../node_modules/@glidejs/glide/dist/css/glide.core.min.css";
 @import url("components/block-area.css");
+@import url("components/section.css");
 @import url("components/slider.css");
+
+/* Gutenberg blocks */
+@import url("../blocks/index.css");
 
 .editor-styles-wrapper {
 	font-family: Lato, Arial, sans-serif !important;

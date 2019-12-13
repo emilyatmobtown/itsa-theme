@@ -41,16 +41,25 @@
 }
 
 .entry-content > .wp-block-image {
+	max-width: 950px;
 	margin: 1.25em auto;
-}
-
-@media (--bp-medium) {
-
-	.entry-content > .wp-block-image {
-		max-width: 84%;
-	}
+	text-align: center;
 }
 
 .wp-block-image figcaption {
 	margin: 0.5em 0 0;
+	text-align: left;
+}
+
+.wp-block-cover {
+	color: var(--c-white);
+	background-color: var(--c-midnight);
+	margin-bottom: 40px;
+}
+
+.wp-block-cover-image.has-background-dim::before,
+.wp-block-cover.has-background-dim::before {
+	background: var(--c-cover-background-fallback);
+	background: var(--c-cover-background);
+	opacity: 1;
 }

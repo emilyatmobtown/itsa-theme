@@ -18,8 +18,7 @@ export default class MemberLogos {
 	constructor() {
 
 		const glides = document.querySelectorAll( '.glide' );
-		console.log( 'there' );
-		console.log( glides );
+
 		/**
 		 * Initialize everything
 		 *
@@ -58,7 +57,6 @@ export default class MemberLogos {
 		};
 
 		glides.forEach( item => {
-			console.log( 'here' );
 			if ( item.hasAttributes() ) {
 				const options = [];
 				const attrs = item.attributes;

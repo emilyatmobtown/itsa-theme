@@ -25,9 +25,10 @@ if ( ! empty( $logos ) && isset( $logos ) ) {
 							</li>
 						<?php } ?>
 					</ul>
-				</div>
-		</div>
-	</div>
+				</div><!-- .block-area-glide-track -->
+			</div><!-- .block-area-text -->
+		</div><!-- .block-area-content -->
+	</div><!-- .block-area -->
 
 	<?php
 }

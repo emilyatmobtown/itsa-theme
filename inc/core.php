@@ -24,6 +24,8 @@ function setup() {
 	add_action( 'wp_enqueue_scripts', $n( 'styles' ) );
 	add_action( 'admin_enqueue_scripts', $n( 'admin_scripts' ) );
 	add_action( 'admin_enqueue_scripts', $n( 'admin_styles' ) );
+	add_action( 'login_enqueue_scripts', $n( 'login_styles' ) );
+	add_filter( 'login_headerurl', $n( 'login_logo_url' ) );
 	add_action( 'wp_head', $n( 'js_detection' ), 0 );
 	add_action( 'wp_head', $n( 'add_manifest' ), 10 );
 	add_action( 'init', $n( 'add_image_sizes' ) );
@@ -270,7 +272,7 @@ function admin_scripts() {
 }
 
 /**
- * Enqueue styles for admin.
+ * Enqueue styles for login.
  *
  * @since 0.1.0
  */
@@ -281,6 +283,40 @@ function admin_styles() {
 		[],
 		ITSA_THEME_VERSION
 	);
+}
+
+/**
+ * Enqueue styles for login page.
+ *
+ * @since 0.1.0
+ */
+function login_styles() {
+	?>
+	<style type="text/css">
+		#login h1 a,
+		.login h1 a {
+			background-image: url(<?php echo esc_attr( ITSA_THEME_TEMPLATE_URL ); ?>/dist/images/itsa-logo.png);
+			width: 100%;
+			height: auto;
+			background-size: cover;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			background-repeat: no-repeat;
+			-webkit-background-repeat: no-repeat;
+			-moz-background-repeat: no-repeat;
+			padding-bottom: 30px;
+		}
+	</style>
+	<?php
+}
+
+/**
+ * Change URL for login logo to the site URL.
+ *
+ * @since 0.1.0
+ */
+function login_logo_url() {
+	return home_url();
 }
 
 /**
@@ -352,7 +388,7 @@ function add_image_sizes() {
 			'crop'   => true,
 		),
 		array(
-			'name'   => 'itsa-hero-image',
+			'name'   => 'itsa-header',
 			'width'  => 1920,
 			'height' => 720,
 			'crop'   => true,
