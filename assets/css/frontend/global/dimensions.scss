@@ -1,0 +1,14 @@
+/* Dimensions */
+:root {
+	--component-padding: var(--space-md);
+	--max-width: 100%;
+	--max-content-width: 100%;
+}
+
+@media (--bp-medium) {
+
+	:root {
+		--max-width: 1860px;
+		--max-content-width: 1200px;
+	}
+}

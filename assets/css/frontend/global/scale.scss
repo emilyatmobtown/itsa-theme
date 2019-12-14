@@ -1,0 +1,40 @@
+/* Scale */
+:root {
+
+	/* body font size */
+	--text-base-size: 0.875rem;
+
+	/* type scale */
+	--text-scale-ratio: 1.2;
+	--text-xs: calc((var(--text-base-size) / var(--text-scale-ratio)) / var(--text-scale-ratio));
+	--text-sm: calc(var(--text-xs) * var(--text-scale-ratio));
+	--text-md: calc(var(--text-sm) * var(--text-scale-ratio)); /* 16px/20px */
+	--text-lg: calc(var(--text-md) * var(--text-scale-ratio));
+	--text-xl: calc(var(--text-lg) * var(--text-scale-ratio));
+	--text-xxl: calc(var(--text-xl) * var(--text-scale-ratio));
+	--text-xxxl: calc(var(--text-xxl) * var(--text-scale-ratio));
+	--text-xxxxl: calc(var(--text-xxxl) * var(--text-scale-ratio));
+
+	/* spacing scale */
+	--space-unit: 1rem;
+	--space-xxxxs: calc(0.125 * var(--space-unit));
+	--space-xxxs: calc(0.25 * var(--space-unit));
+	--space-xxs: calc(0.375 * var(--space-unit));
+	--space-xs: calc(0.5 * var(--space-unit));
+	--space-sm: calc(0.75 * var(--space-unit));
+	--space-md: calc(1.25 * var(--space-unit)); /* 20px/25px */
+	--space-lg: calc(2 * var(--space-unit));
+	--space-xl: calc(3.25 * var(--space-unit));
+	--space-xxl: calc(5.25 * var(--space-unit));
+	--space-xxxl: calc(8.5 * var(--space-unit));
+	--space-xxxxl: calc(13.75 * var(--space-unit));
+}
+
+@media (--bp-medium) {
+
+	:root {
+		--text-base-size: 1rem;
+		--text-scale-ratio: 1.25;
+		--space-unit: 1.25rem;
+	}
+}

@@ -1,0 +1,25 @@
+/* Links */
+a {
+	color: var(--color-accent);
+	transition: color 0.2s linear 0s;
+	cursor: pointer;
+
+	&:visited {
+		color: var(--color-accent-dark);
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: var(--color-accent-light);
+	}
+
+	&:focus {
+		outline: thin dotted;
+	}
+
+	&:hover,
+	&:active {
+		outline: 0;
+	}
+}

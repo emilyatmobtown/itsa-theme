@@ -72,53 +72,51 @@ if ( is_admin() && empty( $content_type ) ) {
 	if ( ! empty( $issues ) && isset( $issues ) && ! empty( $types ) && isset( $types ) ) {
 		$args['tax_query']['relation'] = 'AND';
 	}
-	// echo '<pre>';
-	// print_r( $args );
-	// echo '</pre>';
 	$the_query = new WP_Query( $args );
 
 	if ( $the_query->have_posts() ) {
 		?>
-		<section class="row block-area block-area-content-grid max-width">
-			<?php if ( ! empty( $the_title ) ) { ?>
-				<header class="section-header content-grid-header">
-					<?php if ( is_home() || is_front_page() ) { ?>
-						<h3 class="section-title"><?php echo esc_attr( $the_title ); ?></h3>
-					<?php } else { ?>
-						<h2 class="section-title"><?php echo esc_attr( $the_title ); ?></h2>
-					<?php } ?>
-					<a class="section-header-link content-grid-more-link has-arrow has-arrow-right">See All <span class="show-md"><?php echo esc_attr( ucwords( $content_type ) ); ?></span></a>
-				</header>
-			<?php } ?>
-
-			<div class="item-grid content-grid with-background reverse-color">
-				<?php while ( $the_query->have_posts() ) { ?>
-					<?php $the_query->the_post(); ?>
-
-					<article class="item content-grid-item">
-						<?php if ( ! empty( $type_names ) && isset( $type_names ) ) { ?>
-							<span class="item-tag display-block small-caps align-right"><?php echo esc_attr( $type_names[0] ); ?></span>
-						<?php } ?>
+		<div class="row max-width">
+			<section class="section content-grid">
+				<?php if ( ! empty( $the_title ) ) { ?>
+					<header class="section-header content-grid-header">
 						<?php if ( is_home() || is_front_page() ) { ?>
-							<h4 class="item-title content-grid-item-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+							<h3 class="section-title"><?php echo esc_attr( $the_title ); ?></h3>
 						<?php } else { ?>
-							<h3 class="item-title content-grid-item-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+							<h2 class="section-title md-caps"><?php echo esc_attr( $the_title ); ?></h2>
 						<?php } ?>
-
-						<?php the_date( '', '<span class="item-date content-grid-item-date small-caps display-block"><time>', '</time></span>' ); ?>
-
-						<?php if ( has_excerpt() ) { ?>
-							<?php the_excerpt(); ?>
-						<?php } else { ?>
-							<p class="block-area-paragraph item-text content-grid-item-text"><?php echo wp_kses_post( wp_trim_words( get_the_content(), 40, '...' ) ); ?></p>
-						<?php } ?>
-					</article><!-- .content-grid-item -->
-
-					<?php wp_reset_postdata(); ?>
+						<a class="section-link content-grid-more-link has-arrow has-arrow-right">See All <span class="show-md"><?php echo esc_attr( ucwords( $content_type ) ); ?></span></a>
+					</header>
 				<?php } ?>
-			</div><!-- .block-area-content -->
-		</section><!-- .block-area -->
 
+				<div class="item-grid content-grid with-background reverse-color">
+					<?php while ( $the_query->have_posts() ) { ?>
+						<?php $the_query->the_post(); ?>
+
+						<article class="item content-grid-item">
+							<?php if ( ! empty( $type_names ) && isset( $type_names ) ) { ?>
+								<span class="item-tag display-block small-caps align-right"><?php echo esc_attr( $type_names[0] ); ?></span>
+							<?php } ?>
+							<?php if ( is_home() || is_front_page() ) { ?>
+								<h4 class="item-title content-grid-item-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+							<?php } else { ?>
+								<h3 class="item-title content-grid-item-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+							<?php } ?>
+
+							<?php the_date( '', '<span class="item-date content-grid-item-date small-caps display-block"><time>', '</time></span>' ); ?>
+
+							<?php if ( has_excerpt() ) { ?>
+								<?php the_excerpt(); ?>
+							<?php } else { ?>
+								<p class="block-area-paragraph item-text content-grid-item-text"><?php echo wp_kses_post( wp_trim_words( get_the_content(), 40, '...' ) ); ?></p>
+							<?php } ?>
+						</article><!-- .content-grid-item -->
+
+						<?php wp_reset_postdata(); ?>
+					<?php } ?>
+				</div><!-- .block-area-content -->
+			</section><!-- .block-area -->
+		</div><!-- .row -->
 		<?php
 	}
 }

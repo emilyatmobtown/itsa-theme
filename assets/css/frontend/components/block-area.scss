@@ -161,3 +161,37 @@
 		background: linear-gradient(90deg, rgba(0, 14, 26, 1) 0%, rgba(0, 14, 26, 1) 30%, rgba(0, 10, 19, 0.54) 50%, rgba(0, 0, 0, 0) 80%);
 	}
 }
+
+.wp-block-cover .entry-title {
+	margin: 0 auto;
+	padding: 0;
+	border: 0;
+	line-height: 1.8;
+	max-width: 90%;
+}
+
+@media (--bp-medium) {
+
+	.wp-block-cover .entry-title {
+		max-width: 70%;
+	}
+}
+
+.wp-block-cover .tagline {
+	display: block;
+	max-width: 75%;
+	margin: calc(var(--d-grid-padding) / 2) auto 0;
+}
+
+@media (--bp-medium) {
+
+	.wp-block-cover .tagline {
+		max-width: 35%;
+	}
+
+	.silo-template-default .tagline,
+	.post-type-silo .tagline {
+		display: inline-block;
+		max-width: 40%;
+	}
+}

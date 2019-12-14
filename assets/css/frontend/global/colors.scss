@@ -1,0 +1,88 @@
+/*
+ * Colors
+ */
+:root {
+
+	/* Solid colors */
+	--color-transparent: hsla(0, 0, 0, 0);
+	--color-black: hsl(240, 8%, 12%);
+	--color-white: hsl(0, 0%, 100%);
+
+	/* Primary */
+	--color-primary-darker: hsl(217, 100%, 0%);
+	--color-primary-dark: hsl(217, 100%, 6%);
+	--color-primary: hsl(217, 100%, 13%); /* On-brand blue #001940 */
+	--color-primary-light: hsl(217, 100%, 23%);
+	--color-primary-lighter: hsl(217, 100%, 33%);
+
+	/* Secondary */
+	--color-secondary-darker: hsl(208, 100%, 11%);
+	--color-secondary-dark: hsl(208, 100%, 16%);
+	--color-secondary: hsl(208, 100%, 21%); /* Secondary blue #003a6c */
+	--color-secondary-light: hsl(208, 100%, 26%);
+	--color-secondary-lighter: hsl(208, 100%, 31%);
+
+	/* Accent */
+	--color-accent-darker: hsl(184, 64%, 38%);
+	--color-accent-dark: hsl(184, 64%, 48%);
+	--color-accent: hsl(184, 64%, 58%); /* Teal #51CFD9 */
+	--color-accent-light: hsl(184, 64%, 68%);
+	--color-accent-lighter: hsl(184, 64%, 78%);
+
+	/* Neutral */
+	--color-neutral-darker: hsl(0, 0%, 53%);
+	--color-neutral-dark: hsl(0, 0%, 63%);
+	--color-neutral: hsl(0, 0%, 73%); /* Gray #bbb */
+	--color-neutral-light: hsl(0, 0%, 83%);
+	--color-neutral-lighter: hsl(0, 0%, 93%);
+
+	/* Theme colors */
+	--color-body-text: var(--color-black);
+	--color-body-text-inverse: var(--color-white);
+	--color-header-text: var(--color-black);
+	--color-header-text-inverse: var(--color-white);
+	--color-body-background: var(--color-white);
+	--color-nav-text-solid: var(--color-white);
+	--color-nav-background-transparent: var(--color-transparent);
+	--color-nav-background-solid: var(--color-midnight-alt);
+	--color-nav-submenu-background: linear-gradient(0deg, rgba(0, 26, 64, 0.95) 0%, rgba(0, 19, 51, 0.95) 100%);
+	--color-nav-submenu-background-fallback: rgba(0, 26, 64, 0.95);
+	--color-footer-background: var(--g-midnight);
+	--color-footer-background-fallback: var(--color-midnight);
+	--color-footer-link: var(--color-white);
+	--color-footer-link-alt: var(--color-viking);
+	--color-bullet: var(--color-white);
+	--color-bullet-active: rgba(229, 238, 245, 0.5);
+	--color-button-background: var(--color-viking);
+	--color-button-background-alt: var(--color-blizzard-blue);
+	--color-button-text: var(--color-midnight);
+	--color-highlight: var(--color-midnight);
+	--color-cover-background: linear-gradient(180deg, rgba(0, 26, 64, 0.24) 0%, rgba(0, 19, 51, 0.44) 100%);
+	--color-cover-background-fallback: rgba(0, 26, 64, 0.44);
+	--color-grid-item-background: linear-gradient(0deg, var(--color-secondary-dark) 0%, var(--color-secondary) 100%);
+	--color-grid-item-background-fallback: var(--color-secondary);
+
+
+	/* Solid colors */
+	--color-transparent: rgba(0, 0, 0, 0);
+	--color-black: #000;
+	--color-white: #fff;
+	--color-alto: #ddd;
+	--color-silver: #bbb;
+	--color-midnight: #001940;
+	--color-midnight-alt: #001333;
+	--color-midnight-alt-2: #00183f;
+	--color-prussian-blue: #002a4e;
+	--color-prussian-blue-alt: #00437d;
+	--color-regal-blue: #003a6c;
+	--color-keppel: #36a5ae;
+	--color-viking: #51cfd9;
+	--color-matisse: #206fb2;
+	--color-blizzard-blue: #a4e6eb;
+
+	/* Gradients and fallbacks */
+	--g-prussian-blue: linear-gradient(0deg, var(--color-secondary-dark) 0%, var(--color-secondary) 100%);
+	--g-prussian-blue-fallback: var(--color-prussian-blue);
+	--g-midnight: linear-gradient(0deg, var(--color-midnight) 0%, var(@--color-midnight-alt) 100%);
+	--g-midnight-fallback: var(--color-midnight);
+}

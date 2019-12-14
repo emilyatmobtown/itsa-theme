@@ -1,0 +1,27 @@
+/* Layout */
+@import "grid.scss";
+@import "flex.scss";
+
+.site {
+	width: 100%;
+}
+
+.site-main {
+	margin-top: 60px;
+}
+
+.row {
+	padding: 0 var(--component-padding);
+	margin-bottom: var(--component-padding);
+
+	.full-width {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+.max-width {
+	max-width: var(--max-width);
+	margin-left: auto;
+	margin-right: auto;
+}

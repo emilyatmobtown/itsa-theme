@@ -1,0 +1,177 @@
+/* Utility */
+.full-width {
+	width: 100%;
+	height: auto;
+}
+
+.h-centered {
+	position: absolute;
+	transform: translateX(-50%);
+	left: 50%;
+}
+
+.v-centered {
+	position: absolute;
+	transform: translateY(-50%);
+	top: 50%;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.lowercase {
+	text-transform: lowercase;
+}
+
+/* Alignment Utility Classes */
+.align {
+
+	&-left {
+		text-align: left;
+	}
+
+	&-right {
+		text-align: right;
+	}
+
+	&-center {
+		text-align: center;
+	}
+}
+
+/* Padding Utility Classes */
+.no-padding {
+	padding: 0 !important;
+
+	&-left {
+		padding-left: 0 !important;
+	}
+
+	&-right {
+		padding-right: 0 !important;
+	}
+
+	&-top {
+		padding-top: 0 !important;
+	}
+
+	&-bottom {
+		padding-bottom: 0 !important;
+	}
+}
+
+/* Margin Utility Classes */
+.no-margin {
+	margin: 0 !important;
+
+	&-left {
+		margin-left: 0 !important;
+	}
+
+	&-right {
+		margin-right: 0 !important;
+	}
+
+	&-top {
+		margin-top: 0 !important;
+	}
+
+	&-bottom {
+		margin-bottom: 0 !important;
+	}
+}
+
+/* Display Utility Classes */
+.display {
+
+	&-block {
+		display: block;
+	}
+
+	&-inline {
+		display: inline;
+	}
+
+	&-inline-block {
+		display: inline-block;
+	}
+}
+
+/* Font Weight Utility Classes */
+.font-weight {
+
+	&-300 {
+		font-weight: 300;
+	}
+
+	&-400 {
+		font-weight: 400;
+	}
+
+	&-600 {
+		font-weight: 600;
+
+	}
+
+	&-700 {
+		font-weight: 700;
+	}
+}
+
+/* Color Utility Classes */
+.color {
+
+	&-white {
+		color: var(--color-white);
+	}
+
+	&-black {
+		color: var(--color-black);
+	}
+
+	&-primary {
+		color: var(--color-primary);
+	}
+
+	&-secondary {
+		color: var(--color-secondary);
+	}
+
+	&-accent {
+		color: var(--color-accent);
+	}
+
+	&-neutral {
+		color: var(--color-neutral);
+	}
+}
+
+/* Flex Utility Classes */
+%flex {
+	display: flex;
+
+	&-between {
+
+		@extend %flex;
+		justify-content: space-between;
+
+		&-end {
+
+			@extend %flex-between;
+			align-items: flex-end;
+		}
+	}
+
+	&-around {
+
+		@extend %flex;
+		justify-content: space-around;
+
+		&-end {
+
+			@extend %flex-around;
+			align-items: flex-end;
+		}
+	}
+}

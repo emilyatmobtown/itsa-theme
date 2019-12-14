@@ -1,0 +1,29 @@
+/* Section */
+
+.section-header {
+
+	@extend %flex-between-end;
+}
+
+.section-title {
+	margin-bottom: 0;
+	line-height: 1;
+}
+
+.section-link {
+	font-size: 1rem;
+	line-height: 1;
+	font-weight: 700;
+	color: var(--c-black);
+
+	&:hover {
+		color: var(--c-black);
+		text-decoration: underline;
+	}
+
+	&:active,
+	&:focus,
+	&:visited {
+		color: var(--c-black);
+	}
+}

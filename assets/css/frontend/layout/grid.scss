@@ -1,20 +1,5 @@
 /* Grid */
 
-.max-width {
-	max-width: 1860px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.row {
-	padding: calc(var(--d-grid-padding) / 2) var(--d-grid-padding);
-}
-
-.row.no-side-padding {
-	padding-left: 0;
-	padding-right: 0;
-}
-
 .item-grid {
 	width: 100%;
 	display: flex;

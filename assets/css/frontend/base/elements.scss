@@ -1,0 +1,46 @@
+/* Elements */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	background: var(--color-white);
+}
+
+hr {
+	background-color: var(--color-neutral-light);
+	border: 0;
+	height: 1px;
+	margin-bottom: var(--space-xs);
+}
+
+ul,
+ul li {
+
+	@include reset-list;
+}
+
+ol,
+ol li {
+	list-style: decimal;
+}
+
+img {
+	height: auto; /* Make sure images are scaled correctly. */
+	max-width: 100%; /* Adhere to container width. */
+}
+
+figure {
+	margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
+}
+
+table {
+	margin: 0 0 var(--space-xs);
+	width: 100%;
+}

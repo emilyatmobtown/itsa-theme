@@ -84,7 +84,7 @@ module.exports = {
 
 			// Styles.
 			{
-				test: /\.css$/,
+				test: /\.(sa|sc|c)ss$/,
 				include: path.resolve( process.cwd(), settings.paths.src.css ),
 				use: [
 					{
@@ -93,6 +93,7 @@ module.exports = {
 					{
 						loader: 'css-loader',
 						options: {
+							importLoaders: 2,
 							sourceMap: ! isProduction,
 							// We copy fonts etc. using CopyWebpackPlugin.
 							url: false,
@@ -103,6 +104,12 @@ module.exports = {
 						options: {
 							sourceMap: ! isProduction,
 						},
+					},
+					{
+						loader: 'sass-loader',
+						options: {
+							sourceMap: ! isProduction,
+						}
 					},
 				],
 			},
@@ -146,7 +153,7 @@ module.exports = {
 		// Lint CSS.
 		new StyleLintPlugin( {
 			context: path.resolve( process.cwd(), settings.paths.src.css ),
-			files: '**/*.css',
+			files: '**/*.s?(a|c)ss',
 		} ),
 
 		// Fancy WebpackBar.

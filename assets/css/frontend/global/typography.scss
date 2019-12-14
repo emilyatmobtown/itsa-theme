@@ -1,0 +1,21 @@
+/* Typography */
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700|Source+Sans+Pro:400,600,700&display=swap");
+
+:root {
+
+	/* font families */
+	--font-primary: "Lato", "Arial", sans-serif;
+	--font-secondary: "Source Sans Pro", "Arial", sans-serif;
+
+	/* line-height */
+	--body-line-height: 1.7;
+	--heading-line-height: 1.5;
+}
+
+.font-primary {
+	font-family: var(--font-primary);
+}
+
+.font-secondary {
+	font-family: var(--font-secondary);
+}

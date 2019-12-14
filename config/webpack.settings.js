@@ -12,11 +12,11 @@ module.exports = {
 		'blocks-editor': './inc/blocks/blocks-editor.js',
 
 		// CSS files.
-		'admin-style': './assets/css/admin/admin-style.css',
-		'editor-style': './assets/css/frontend/editor-style.css',
-		'shared-style': './assets/css/shared/shared-style.css',
-		'style': './assets/css/frontend/style.css',
-		'styleguide-style': './assets/css/styleguide/styleguide.css'
+		'admin-style': './assets/css/admin/admin-style.scss',
+		'editor-style': './assets/css/frontend/editor-style.scss',
+		'shared-style': './assets/css/shared/shared-style.scss',
+		'style': './assets/css/frontend/style.scss',
+		'styleguide-style': './assets/css/styleguide/styleguide.scss'
 	},
 	filename: {
 		js: 'js/[name].js',
@@ -65,7 +65,7 @@ module.exports = {
 		files: [
 			'**/*.php',
 			'dist/js/**/*.js',
-			'dist/css/**/*.css',
+			'dist/css/**/*.{css,scss}',
 			'dist/svg/**/*.svg',
 			'dist/images/**/*.{jpg,jpeg,png,gif}',
 			'dist/fonts/**/*.{eot,ttf,woff,woff2,svg}',
