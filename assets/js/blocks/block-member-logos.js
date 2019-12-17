@@ -17,7 +17,7 @@ export default class MemberLogos {
 	 */
 	constructor() {
 
-		const glides = document.querySelectorAll( '.glide' );
+		const glides = document.querySelectorAll( '.member-logos-block .glide' );
 
 		/**
 		 * Initialize everything

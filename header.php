@@ -25,7 +25,7 @@
 			</a>
 
 			<header id="masthead" class="site-header" role="header">
-				<div class="site-header-content max-width">
+				<div class="row max-width site-header-content">
 					<?php if ( is_home() || is_front_page() ) { ?>}
 							<h1 class="site-title">
 									<?php

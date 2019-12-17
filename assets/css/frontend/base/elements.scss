@@ -28,7 +28,8 @@ ul li {
 
 ol,
 ol li {
-	list-style: decimal;
+
+	@include reset-list;
 }
 
 img {

@@ -1,6 +1,6 @@
 /* Layout */
-@import "grid.scss";
 @import "flex.scss";
+@import "grid.scss";
 
 .site {
 	width: 100%;
@@ -12,9 +12,10 @@
 
 .row {
 	padding: 0 var(--component-padding);
-	margin-bottom: var(--component-padding);
+	margin: 0 auto var(--component-padding);
 
-	.full-width {
+	&.full-width {
+		max-width: none;
 		padding-left: 0;
 		padding-right: 0;
 	}
@@ -24,4 +25,29 @@
 	max-width: var(--max-width);
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.item-grid {
+
+	@extend %flex-between-stretch;
+	width: 100%;
+}
+
+.item-grid .item {
+	width: 100%;
+	margin-bottom: var(--component-padding);
+}
+
+.has-background .item {
+	background: var(--color-grid-item-background-fallback);
+	background: var(--color-grid-item-background);
+	padding: var(--component-padding);
+}
+
+@media (--bp-medium) {
+
+	.item-grid .item {
+		width: calc(100% / 3 - (var(--component-padding) / 2));
+		padding: var(--space-md) var(--space-lg);
+	}
 }

@@ -1,0 +1,26 @@
+/* Content Grid Block */
+
+.content-grid-item-title {
+
+	@extend .heading-4;
+	font-weight: 600;
+}
+
+.content-grid-item-title a {
+	color: var(--c-white);
+	text-decoration: none;
+}
+
+.content-grid-item-date {
+
+	@extend %small-caps;
+	display: block;
+	margin-bottom: var(--space-xs);
+}
+
+.content-grid-tag {
+
+	@extend %small-caps;
+	display: block;
+	text-align: right;
+}

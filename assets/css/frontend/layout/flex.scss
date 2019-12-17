@@ -1,19 +1,67 @@
 /* Flex */
 
-.flex-container {
+/* Flex Utility Classes */
+%flex {
 	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
 	flex-flow: row wrap;
-}
 
-.flex-item {
-	width: 100%;
-}
+	&-between {
 
-@media (--bp-large) {
+		@extend %flex;
+		justify-content: space-between;
 
-	.flex-item {
-		width: auto;
+		&-start {
+
+			@extend %flex-between;
+			align-items: flex-start;
+		}
+
+		&-end {
+
+			@extend %flex-between;
+			align-items: flex-end;
+		}
+
+		&-center {
+
+			@extend %flex-between;
+			align-items: center;
+		}
+
+		&-stretch {
+
+			@extend %flex-between;
+			align-items: stretch;
+		}
+	}
+
+	&-around {
+
+		@extend %flex;
+		justify-content: space-around;
+
+		&-start {
+
+			@extend %flex-around;
+			align-items: flex-start;
+		}
+
+		&-end {
+
+			@extend %flex-around;
+			align-items: flex-end;
+		}
+
+		&-center {
+
+			@extend %flex-around;
+			align-items: center;
+		}
+
+		&-stretch {
+
+			@extend %flex-around;
+			align-items: stretch;
+		}
 	}
 }

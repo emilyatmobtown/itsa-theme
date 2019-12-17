@@ -24,6 +24,20 @@
 	text-transform: lowercase;
 }
 
+@media (--bp-medium) {
+
+	.restricted-width > * {
+		padding-right: 20%;
+	}
+}
+
+@media (--bp-large) {
+
+	.restricted-width > * {
+		padding-right: 25%;
+	}
+}
+
 /* Alignment Utility Classes */
 .align {
 
@@ -144,34 +158,5 @@
 
 	&-neutral {
 		color: var(--color-neutral);
-	}
-}
-
-/* Flex Utility Classes */
-%flex {
-	display: flex;
-
-	&-between {
-
-		@extend %flex;
-		justify-content: space-between;
-
-		&-end {
-
-			@extend %flex-between;
-			align-items: flex-end;
-		}
-	}
-
-	&-around {
-
-		@extend %flex;
-		justify-content: space-around;
-
-		&-end {
-
-			@extend %flex-around;
-			align-items: flex-end;
-		}
 	}
 }

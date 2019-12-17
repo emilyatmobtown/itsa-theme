@@ -2,30 +2,31 @@
 .site-header {
 	width: 100%;
 	height: 60px;
-	background: var(--c-nav-background-solid);
+	background: var(--color-nav-background-solid);
 	position: fixed;
 	top: 0;
 	z-index: 9999;
 }
 
 .site-header-content {
-	padding: var(--d-nav-top-bottom-padding) var(--d-grid-padding);
+	padding-top: var(--space-sm);
+	padding-bottom: var(--space-sm);
 }
 
 body.admin-bar .site-header {
-	top: 46px;
+	top: 32px;
 	z-index: 499;
 }
 
-@media screen and (min-width: 782px) {
+@media (--wp-medium-max) {
 
 	body.admin-bar .site-header {
-		top: 32px;
+		top: 46px;
 	}
 }
 
 .site-title {
-	font-size: 1em;
+	font-size: var(--text-md);
 	line-height: 1;
 	vertical-align: middle;
 	margin: 0;
@@ -53,20 +54,20 @@ body.admin-bar .site-header {
 	display: block;
 	font-size: 1rem;
 	z-index: 10;
-	background-color: var(--c-transparent);
+	background-color: var(--color-transparent);
 	border: 0;
-	color: var(--c-white);
+	color: var(--color-white);
 	height: 60px;
 	position: absolute;
 	top: 0;
 	right: 0;
-	padding: 20px var(--d-grid-padding);
+	padding: 20px var(--component-padding);
 	cursor: pointer;
 	line-height: 1;
-}
 
-.menu-toggle:hover {
-	background-color: var(--c-transparent);
+	&:hover {
+		background-color: var(--color-transparent);
+	}
 }
 
 @media (--bp-large) {
@@ -83,37 +84,40 @@ body.admin-bar .site-header {
 	width: 2rem;
 	height: 1.25rem;
 	pointer-events: none;
+
+	span {
+		display: block;
+		width: 100%;
+		height: 0.125rem;
+		background-color: var(--color-nav-text-solid);
+		transition: 0.2s linear;
+		position: absolute;
+		left: 0;
+
+		&:nth-child(2),
+		&:nth-child(3) {
+			top: 0.5rem;
+		}
+
+		&:nth-child(4) {
+			top: 1rem;
+			height: 0.25rem;
+		}
+	}
 }
 
-.menu-icon span {
-	display: block;
-	width: 100%;
-	height: 0.125rem;
-	background-color: var(--c-nav-text-solid);
-	transition: 0.2s linear;
-	position: absolute;
-	left: 0;
-}
+.menu-toggled .menu-icon span {
 
-.menu-icon span:nth-child(2),
-.menu-icon span:nth-child(3) {
-	top: 0.5rem;
-}
+	&:nth-child(2) {
+		transform: rotate(45deg);
+	}
 
-.menu-icon span:nth-child(4) {
-	top: 1rem;
-	height: 0.25rem;
-}
+	&:nth-child(3) {
+		transform: rotate(-45deg);
+	}
 
-.menu-toggled .menu-icon span:nth-child(2) {
-	transform: rotate(45deg);
-}
-
-.menu-toggled .menu-icon span:nth-child(3) {
-	transform: rotate(-45deg);
-}
-
-.menu-toggled .menu-icon span:nth-child(1),
-.menu-toggled .menu-icon span:nth-child(4) {
-	transform: scale(0);
+	&:nth-child(1),
+	&:nth-child(4) {
+		transform: scale(0);
+	}
 }

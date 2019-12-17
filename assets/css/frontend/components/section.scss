@@ -1,8 +1,96 @@
 /* Section */
 
+.section {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+
+	&.has-background {
+		padding: var(--component-padding);
+		background-repeat: no-repeat;
+		background-size: cover;
+
+		&.block-style-seat-belt {
+			padding-top: var(--space-xl);
+			background-color: var(--color-secondary-light);
+			background-image: url("../images/quotes-block-background-sm.jpg");
+		}
+
+		&.block-style-highway-blur {
+			padding-top: var(--space-xl);
+			background-color: var(--color-secondary-light);
+			background-image: url("../images/background-highway-streaks-sm.jpg");
+		}
+
+		&.block-style-solid {
+			background-color: var(--color-secondary-light);
+		}
+	}
+
+	&.has-overlay > * {
+		position: relative;
+		z-index: 5;
+	}
+
+	&.has-overlay::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: var(--color-section-overlay-background-fallback);
+		background: var(--color-section-overlay-background);
+	}
+
+}
+
+@media (--bp-medium) {
+
+	.section {
+
+		&.has-background {
+			padding: var(--space-md) var(--space-lg);
+
+			&.block-style-seat-belt {
+				background-image: url("../images/quotes-block-background-md.jpg");
+			}
+
+			&.block-style-highway-blur {
+				background-image: url("../images/background-highway-streaks-md.jpg");
+			}
+		}
+	}
+}
+
+@media (--bp-large) {
+
+	.section {
+
+		&.has-overlay::before {
+			background: var(--color-section-overlay-background-fallback);
+			background: var(--color-section-overlay-background-horizontal);
+		}
+
+		&.has-background {
+
+			&.block-style-seat-belt {
+				background-image: url("../images/quotes-block-background-lg.jpg");
+				background-size: contain;
+				background-position-x: right;
+			}
+
+			&.block-style-highway-blur {
+				background-image: url("../images/background-highway-streaks-lg.jpg");
+			}
+		}
+	}
+}
+
 .section-header {
 
 	@extend %flex-between-end;
+	margin-bottom: var(--space-xs);
 }
 
 .section-title {
@@ -11,19 +99,20 @@
 }
 
 .section-link {
-	font-size: 1rem;
+	font-size: var(--text-md);
 	line-height: 1;
 	font-weight: 700;
-	color: var(--c-black);
+	color: var(--color-black);
+	margin-top: var(--space-xxxs);
 
 	&:hover {
-		color: var(--c-black);
+		color: var(--color-black);
 		text-decoration: underline;
 	}
 
 	&:active,
 	&:focus,
 	&:visited {
-		color: var(--c-black);
+		color: var(--color-black);
 	}
 }

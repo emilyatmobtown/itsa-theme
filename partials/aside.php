@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying the content footer
+ * Template part for displaying the aside
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

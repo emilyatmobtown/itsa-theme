@@ -44,24 +44,26 @@
 	--color-body-background: var(--color-white);
 	--color-nav-text-solid: var(--color-white);
 	--color-nav-background-transparent: var(--color-transparent);
-	--color-nav-background-solid: var(--color-midnight-alt);
+	--color-nav-background-solid: var(--color-primary-dark);
 	--color-nav-submenu-background: linear-gradient(0deg, rgba(0, 26, 64, 0.95) 0%, rgba(0, 19, 51, 0.95) 100%);
 	--color-nav-submenu-background-fallback: rgba(0, 26, 64, 0.95);
 	--color-footer-background: var(--g-midnight);
-	--color-footer-background-fallback: var(--color-midnight);
+	--color-footer-background-fallback: var(--color-primary);
 	--color-footer-link: var(--color-white);
-	--color-footer-link-alt: var(--color-viking);
+	--color-footer-link-alt: var(--color-accent);
 	--color-bullet: var(--color-white);
 	--color-bullet-active: rgba(229, 238, 245, 0.5);
-	--color-button-background: var(--color-viking);
+	--color-button-background: var(--color-accent);
 	--color-button-background-alt: var(--color-blizzard-blue);
-	--color-button-text: var(--color-midnight);
-	--color-highlight: var(--color-midnight);
+	--color-button-text: var(--color-primary);
+	--color-highlight: var(--color-primary);
 	--color-cover-background: linear-gradient(180deg, rgba(0, 26, 64, 0.24) 0%, rgba(0, 19, 51, 0.44) 100%);
 	--color-cover-background-fallback: rgba(0, 26, 64, 0.44);
 	--color-grid-item-background: linear-gradient(0deg, var(--color-secondary-dark) 0%, var(--color-secondary) 100%);
 	--color-grid-item-background-fallback: var(--color-secondary);
-
+	--color-section-overlay-background: linear-gradient(180deg, hsla(0, 0%, 0%, 0) 0%, hsla(208, 100%, 4%, 0.54) 30%, hsla(208, 100%, 5%, 0.83) 100%);
+	--color-section-overlay-background-fallback: hsla(208, 100%, 4%, 0.54);
+	--color-section-overlay-background-horizontal: linear-gradient(90deg, hsla(208, 100%, 5%, 1) 0%, hsla(208, 100%, 5%, 1) 30%, hsla(208, 100%, 4%, 0.54) 50%, hsla(0, 0%, 0%, 0) 80%);
 
 	/* Solid colors */
 	--color-transparent: rgba(0, 0, 0, 0);
@@ -82,7 +84,7 @@
 
 	/* Gradients and fallbacks */
 	--g-prussian-blue: linear-gradient(0deg, var(--color-secondary-dark) 0%, var(--color-secondary) 100%);
-	--g-prussian-blue-fallback: var(--color-prussian-blue);
-	--g-midnight: linear-gradient(0deg, var(--color-midnight) 0%, var(@--color-midnight-alt) 100%);
+	--g-prussian-blue-fallback: var(--color-secondary-dark);
+	--g-midnight: linear-gradient(0deg, var(--color-midnight) 0%, var(--color-midnight-alt) 100%);
 	--g-midnight-fallback: var(--color-midnight);
 }

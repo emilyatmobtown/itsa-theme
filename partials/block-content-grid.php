@@ -77,25 +77,25 @@ if ( is_admin() && empty( $content_type ) ) {
 	if ( $the_query->have_posts() ) {
 		?>
 		<div class="row max-width">
-			<section class="section content-grid">
+			<section class="section block content-grid-block">
 				<?php if ( ! empty( $the_title ) ) { ?>
-					<header class="section-header content-grid-header">
+					<header class="section-header">
 						<?php if ( is_home() || is_front_page() ) { ?>
 							<h3 class="section-title"><?php echo esc_attr( $the_title ); ?></h3>
 						<?php } else { ?>
-							<h2 class="section-title md-caps"><?php echo esc_attr( $the_title ); ?></h2>
+							<h2 class="section-title"><?php echo esc_attr( $the_title ); ?></h2>
 						<?php } ?>
 						<a class="section-link content-grid-more-link has-arrow has-arrow-right">See All <span class="show-md"><?php echo esc_attr( ucwords( $content_type ) ); ?></span></a>
-					</header>
+					</header><!-- .section-header -->
 				<?php } ?>
 
-				<div class="item-grid content-grid with-background reverse-color">
+				<div class="item-grid has-background inverse-color">
 					<?php while ( $the_query->have_posts() ) { ?>
 						<?php $the_query->the_post(); ?>
 
-						<article class="item content-grid-item">
+						<article class="item">
 							<?php if ( ! empty( $type_names ) && isset( $type_names ) ) { ?>
-								<span class="item-tag display-block small-caps align-right"><?php echo esc_attr( $type_names[0] ); ?></span>
+								<span class="content-grid-tag"><?php echo esc_attr( $type_names[0] ); ?></span>
 							<?php } ?>
 							<?php if ( is_home() || is_front_page() ) { ?>
 								<h4 class="item-title content-grid-item-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
@@ -103,19 +103,19 @@ if ( is_admin() && empty( $content_type ) ) {
 								<h3 class="item-title content-grid-item-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 							<?php } ?>
 
-							<?php the_date( '', '<span class="item-date content-grid-item-date small-caps display-block"><time>', '</time></span>' ); ?>
+							<?php the_date( '', '<span class="content-grid-item-date"><time>', '</time></span>' ); ?>
 
 							<?php if ( has_excerpt() ) { ?>
 								<?php the_excerpt(); ?>
 							<?php } else { ?>
-								<p class="block-area-paragraph item-text content-grid-item-text"><?php echo wp_kses_post( wp_trim_words( get_the_content(), 40, '...' ) ); ?></p>
+								<p><?php echo wp_kses_post( wp_trim_words( get_the_content(), 40, '...' ) ); ?></p>
 							<?php } ?>
-						</article><!-- .content-grid-item -->
+						</article><!-- .item -->
 
 						<?php wp_reset_postdata(); ?>
 					<?php } ?>
-				</div><!-- .block-area-content -->
-			</section><!-- .block-area -->
+				</div><!-- .item-grid -->
+			</section><!-- .section -->
 		</div><!-- .row -->
 		<?php
 	}

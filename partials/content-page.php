@@ -15,16 +15,20 @@ $blocks = parse_blocks( $post->post_content );
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php if ( ! Utility\has_block( $blocks, 'acf/header' ) ) { ?>
-		<header class="row max-width entry-header">
-			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-		</header><!-- .entry-header -->
+		<div class="row max-width">
+			<header class="entry-header">
+				<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+			</header><!-- .entry-header -->
+		</div><!-- .row -->
 	<?php } ?>
 
 	<div class="entry-content">
 		<?php the_content(); ?>
 	</div><!-- .entry-content -->
 
-	<footer class="row max-width entry-footer">
-		<h2 class="entry-footer-title font-weight-600">Related</h2>
-	</footer><!-- .entry-footer -->
+	<div class="row max-width">
+		<footer class="entry-footer">
+			<h2 class="entry-footer-title font-weight-600">Related</h2>
+		</footer><!-- .entry-footer -->
+	</div><!-- .row -->
 </article><!-- #post-<?php the_ID(); ?> -->
