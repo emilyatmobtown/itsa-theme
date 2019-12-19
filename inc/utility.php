@@ -14,16 +14,16 @@
 namespace ITSATheme\Utility;
 
 /**
- * Fetch current post ID while in Gutenberg block editor
+ * Fetch current post ID whie in block
  *
  */
 function get_acf_post_id() {
-	if ( is_admin() && function_exists( 'acf_maybe_get_POST' ) ) :
+	if ( function_exists( 'acf_maybe_get_POST' ) ) {
 		return intval( acf_maybe_get_POST( 'post_id' ) );
-	else :
+	} else {
 		global $post;
 		return $post->ID;
-	endif;
+	}
 }
 
 /**

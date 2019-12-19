@@ -1,0 +1,12 @@
+/* Post Type News */
+
+@media (--bp-medium) {
+
+	.news-template-default,
+	.post-type-news {
+
+		article > .row:first-child {
+			max-width: var(--max-content-width);
+		}
+	}
+}

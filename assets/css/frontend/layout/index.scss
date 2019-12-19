@@ -31,23 +31,41 @@
 
 	@extend %flex-between-stretch;
 	width: 100%;
+
+	.item {
+
+		@extend %flex;
+		width: 100%;
+		margin-bottom: var(--component-padding);
+
+		> * {
+			width: 100%;
+
+			&:last-child {
+				align-self: flex-end;
+			}
+		}
+	}
+
+	&.has-background .item {
+		background: var(--color-grid-item-background-fallback);
+		background: var(--color-grid-item-background);
+		padding: var(--component-padding);
+	}
 }
 
-.item-grid .item {
-	width: 100%;
-	margin-bottom: var(--component-padding);
-}
-
-.has-background .item {
-	background: var(--color-grid-item-background-fallback);
-	background: var(--color-grid-item-background);
-	padding: var(--component-padding);
-}
 
 @media (--bp-medium) {
 
-	.item-grid .item {
-		width: calc(100% / 3 - (var(--component-padding) / 2));
-		padding: var(--space-md) var(--space-lg);
+	.item-grid {
+
+		.item {
+			width: calc(100% / 3 - calc(var(--space-lg) / 2));
+		}
+
+		&.has-background .item {
+			padding-left: var(--space-lg);
+			padding-right: var(--space-lg);
+		}
 	}
 }

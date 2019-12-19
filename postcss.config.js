@@ -13,7 +13,7 @@ module.exports = ( { file, options, env } ) => ( { /* eslint-disable-line */
 			}
 		},
 		// Prefix editor styles with class `editor-styles-wrapper`.
-		'postcss-editor-styles': 'editor-style.css' === file.basename ?
+		'postcss-editor-styles': 'editor-style.scss' === file.basename ?
 			{
 				scopeTo: '.editor-styles-wrapper',
 				ignore: [
@@ -26,15 +26,6 @@ module.exports = ( { file, options, env } ) => ( { /* eslint-disable-line */
 					':disabled',
 					'[readonly]',
 					'[disabled]',
-				],
-				tags: [
-					'a',
-					'button',
-					'input',
-					'label',
-					'select',
-					'textarea',
-					'form',
 				],
 			} : false,
 		// Minify style on production using cssano.

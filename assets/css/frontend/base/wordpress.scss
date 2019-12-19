@@ -40,12 +40,6 @@
 	border: 0;
 }
 
-.entry-content > .wp-block-image {
-	max-width: 950px;
-	margin: var(--space-md) auto;
-	text-align: center;
-}
-
 .wp-block-image {
 
 	&.has-background-dim::before {

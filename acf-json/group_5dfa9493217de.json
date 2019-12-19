@@ -1,0 +1,86 @@
+{
+    "key": "group_5dfa9493217de",
+    "title": "Priority Block",
+    "fields": [
+        {
+            "key": "field_5dfaa0368e1b1",
+            "label": "Title",
+            "name": "title",
+            "type": "text",
+            "instructions": "Enter the title for this priority.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5dfa94a952db1",
+            "label": "Fact Sheet",
+            "name": "fact_sheet",
+            "type": "file",
+            "instructions": "Upload or select a fact sheet to include with this priority.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5dfa94e852db2",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "Upload or select a background image to display with this priority.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/priority"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1576723176
+}

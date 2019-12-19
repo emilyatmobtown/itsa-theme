@@ -20,18 +20,6 @@ hr {
 	margin-bottom: var(--space-xs);
 }
 
-ul,
-ul li {
-
-	@include reset-list;
-}
-
-ol,
-ol li {
-
-	@include reset-list;
-}
-
 img {
 	height: auto; /* Make sure images are scaled correctly. */
 	max-width: 100%; /* Adhere to container width. */

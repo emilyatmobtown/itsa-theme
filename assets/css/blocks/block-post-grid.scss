@@ -1,0 +1,29 @@
+/* Post Grid Block */
+
+.post-grid-block {
+
+	.item-title {
+
+		@extend .heading-4;
+		font-weight: 600;
+	}
+
+	.item-title a {
+		color: var(--c-white);
+		text-decoration: none;
+	}
+
+	.item-date {
+
+		@extend %small-caps;
+		display: block;
+		margin-bottom: var(--space-xs);
+	}
+
+	.item-tag {
+
+		@extend %small-caps;
+		display: block;
+		text-align: right;
+	}
+}

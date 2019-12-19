@@ -1,5 +1,7 @@
 /* Header */
 .site-header {
+
+	@extend %flex-between-center;
 	width: 100%;
 	height: 60px;
 	background: var(--color-nav-background-solid);
@@ -9,8 +11,9 @@
 }
 
 .site-header-content {
-	padding-top: var(--space-sm);
-	padding-bottom: var(--space-sm);
+	margin-left: initial;
+	margin-right: initial;
+	margin-bottom: 0;
 }
 
 body.admin-bar .site-header {

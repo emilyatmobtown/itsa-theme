@@ -50,7 +50,6 @@
 	.section {
 
 		&.has-background {
-			padding: var(--space-md) var(--space-lg);
 
 			&.block-style-seat-belt {
 				background-image: url("../images/quotes-block-background-md.jpg");
@@ -73,11 +72,11 @@
 		}
 
 		&.has-background {
+			padding-left: var(--space-lg);
+			padding-right: var(--space-lg);
 
 			&.block-style-seat-belt {
 				background-image: url("../images/quotes-block-background-lg.jpg");
-				background-size: contain;
-				background-position-x: right;
 			}
 
 			&.block-style-highway-blur {

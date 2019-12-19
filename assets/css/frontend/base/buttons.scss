@@ -3,7 +3,7 @@ button {
 	background: var(--color-button-background);
 	border: 0;
 	width: auto;
-	height: var(--space-xl);
+	height: calc(var(--space-md) * 2.5);
 	padding: 0 var(--space-md);
 	color: var(--color-button-text);
 	line-height: 1;

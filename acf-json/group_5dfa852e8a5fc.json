@@ -1,9 +1,9 @@
 {
-    "key": "group_5df29fe74e4a6",
-    "title": "Content Grid Block",
+    "key": "group_5dfa852e8a5fc",
+    "title": "Post Grid Block",
     "fields": [
         {
-            "key": "field_5df2bf2537578",
+            "key": "field_5dfa852ea166e",
             "label": "Title",
             "name": "title",
             "type": "text",
@@ -22,11 +22,11 @@
             "maxlength": ""
         },
         {
-            "key": "field_5df2a0023d694",
-            "label": "Content Type",
-            "name": "content_type",
+            "key": "field_5dfa852ea171d",
+            "label": "Post Type",
+            "name": "post_type",
             "type": "select",
-            "instructions": "Select the type of content to display in the grid.",
+            "instructions": "Select the type of post to display in the grid.",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -48,7 +48,7 @@
             "placeholder": ""
         },
         {
-            "key": "field_5df2a0c73d695",
+            "key": "field_5dfa852ea17ca",
             "label": "News Type",
             "name": "news_type",
             "type": "taxonomy",
@@ -57,7 +57,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_5df2a0023d694",
+                        "field": "field_5dfa852ea171d",
                         "operator": "==",
                         "value": "news"
                     }
@@ -78,7 +78,7 @@
             "allow_null": 0
         },
         {
-            "key": "field_5df2a15d3d696",
+            "key": "field_5dfa852ea1878",
             "label": "Event Type",
             "name": "event_type",
             "type": "taxonomy",
@@ -87,7 +87,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_5df2a0023d694",
+                        "field": "field_5dfa852ea171d",
                         "operator": "==",
                         "value": "event"
                     }
@@ -108,7 +108,7 @@
             "allow_null": 0
         },
         {
-            "key": "field_5df2a1913d697",
+            "key": "field_5dfa852ea1933",
             "label": "Advocacy Material Type",
             "name": "advocacy_material_type",
             "type": "taxonomy",
@@ -117,7 +117,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_5df2a0023d694",
+                        "field": "field_5dfa852ea171d",
                         "operator": "==",
                         "value": "advocacy-material"
                     }
@@ -138,7 +138,7 @@
             "allow_null": 0
         },
         {
-            "key": "field_5df2a1be3d698",
+            "key": "field_5dfa852ea19e7",
             "label": "Issue",
             "name": "issue",
             "type": "taxonomy",
@@ -165,7 +165,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/content-grid"
+                "value": "acf\/post-grid"
             }
         ]
     ],
@@ -177,5 +177,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1576189763
+    "modified": 1576699199
 }

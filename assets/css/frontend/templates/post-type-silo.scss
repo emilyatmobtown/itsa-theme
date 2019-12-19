@@ -1,0 +1,13 @@
+/* Post Type Silo */
+
+@media (--bp-medium) {
+
+	.silo-template-default,
+	.post-type-silo {
+
+		.tagline {
+			display: inline-block;
+			max-width: 40%;
+		}
+	}
+}

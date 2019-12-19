@@ -64,6 +64,7 @@
 	--color-section-overlay-background: linear-gradient(180deg, hsla(0, 0%, 0%, 0) 0%, hsla(208, 100%, 4%, 0.54) 30%, hsla(208, 100%, 5%, 0.83) 100%);
 	--color-section-overlay-background-fallback: hsla(208, 100%, 4%, 0.54);
 	--color-section-overlay-background-horizontal: linear-gradient(90deg, hsla(208, 100%, 5%, 1) 0%, hsla(208, 100%, 5%, 1) 30%, hsla(208, 100%, 4%, 0.54) 50%, hsla(0, 0%, 0%, 0) 80%);
+	--color-section-overlay-background-horizontal-reverse: linear-gradient(-90deg, hsla(208, 100%, 5%, 1) 0%, hsla(208, 100%, 5%, 1) 40%, hsla(208, 100%, 4%, 0.54) 70%, hsla(0, 0%, 0%, 0) 90%);
 
 	/* Solid colors */
 	--color-transparent: rgba(0, 0, 0, 0);

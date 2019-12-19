@@ -19,6 +19,7 @@ function setup() {
 
 	add_action( 'enqueue_block_assets', $n( 'blocks_scripts' ) );
 	add_action( 'enqueue_block_editor_assets', $n( 'blocks_editor_scripts' ) );
+	// add_action( 'admin_init', $n( 'add_editor_styles' ) );
 
 	add_filter( 'block_categories', $n( 'blocks_categories' ), 10, 2 );
 
@@ -65,14 +66,27 @@ function register_blocks() {
 
 	acf_register_block_type(
 		array(
-			'name'            => 'content-grid',
-			// translators: This is the name of the Content Grid block.
-			'title'           => __( 'Content Grid', 'itsa-theme' ),
-			'render_template' => 'partials/block-content-grid.php',
+			'name'            => 'post-grid',
+			// translators: This is the name of the Post Grid block.
+			'title'           => __( 'Post Grid', 'itsa-theme' ),
+			'render_template' => 'partials/block-post-grid.php',
 			'category'        => 'itsa-blocks',
 			'icon'            => 'screenoptions',
 			'mode'            => 'auto',
-			'keywords'        => array( 'members', 'logos' ),
+			'keywords'        => array( 'posts', 'issues', 'row' ),
+		)
+	);
+
+	acf_register_block_type(
+		array(
+			'name'            => 'post-slider',
+			// translators: This is the name of the Post Slider block.
+			'title'           => __( 'Post Slider', 'itsa-theme' ),
+			'render_template' => 'partials/block-post-slider.php',
+			'category'        => 'itsa-blocks',
+			'icon'            => 'slides',
+			'mode'            => 'auto',
+			'keywords'        => array( 'posts', 'issues', 'priorities' ),
 		)
 	);
 
@@ -86,6 +100,32 @@ function register_blocks() {
 			'icon'            => 'editor-quote',
 			'mode'            => 'auto',
 			'keywords'        => array( 'testimonial', 'quote' ),
+		)
+	);
+
+	acf_register_block_type(
+		array(
+			'name'            => 'priority',
+			// translators: This is the name of the Priority block.
+			'title'           => __( 'Priority Block', 'itsa-theme' ),
+			'render_template' => 'partials/block-priority.php',
+			'category'        => 'itsa-blocks',
+			'icon'            => 'star-filled',
+			'mode'            => 'auto',
+			'keywords'        => array(),
+		)
+	);
+
+	acf_register_block_type(
+		array(
+			'name'            => 'priority-slider',
+			// translators: This is the name of the Priority Slider block.
+			'title'           => __( 'Priority Slider Block', 'itsa-theme' ),
+			'render_template' => 'partials/block-priority-slider.php',
+			'category'        => 'itsa-blocks',
+			'icon'            => 'star-filled',
+			'mode'            => 'auto',
+			'keywords'        => array( 'slider', 'priority' ),
 		)
 	);
 
@@ -158,6 +198,15 @@ function blocks_editor_scripts() {
 }
 
 /**
+ * Add editor styles to editor.
+ *
+ * @return void
+ */
+function add_editor_styles() {
+	add_editor_style( ITSA_THEME_TEMPLATE_URL . '/dist/css/editor-style.css' );
+}
+
+/**
  * Filters the registered block categories.
  *
  * @param array  $categories Registered categories.
@@ -166,10 +215,7 @@ function blocks_editor_scripts() {
  * @return array Filtered categories.
  */
 function blocks_categories( $categories, $post ) {
-	// if ( ! in_array( $post->post_type, array( 'post', 'page' ), true ) ) {
-	// 	return $categories;
-	// }
-	//
+
 	return array_merge(
 		array(
 			array(

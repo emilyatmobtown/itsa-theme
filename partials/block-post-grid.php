@@ -1,35 +1,35 @@
 <?php
 /**
- * Template part for displaying the Content Grid block
+ * Template part for displaying the Post Grid block
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package ITSATheme
  */
 
-$content_type = get_field( 'content_type' );
-$issues       = get_field( 'issue' );
-$the_title    = get_field( 'title' );
+$posttype  = get_field( 'post_type' );
+$issues    = get_field( 'issue' );
+$the_title = get_field( 'title' );
 
-if ( is_admin() && empty( $content_type ) ) {
+if ( is_admin() && empty( $posttype ) ) {
 	?>
-	<p>Select type of content to display in grid.</p>
+	<p>Select type of post to display in grid.</p>
 	<?php
-} elseif ( ! empty( $content_type ) && isset( $content_type ) ) {
+} elseif ( ! empty( $posttype ) && isset( $posttype ) ) {
 
 	// Set up initial query args
 	$args = array(
-		'post_type'              => $content_type,
+		'post_type'              => $posttype,
 		'no_found_rows'          => true,
 		'update_post_meta_cache' => false,
 		'posts_per_page'         => 12,
 	);
 
 	// Use underscores for ACF field names
-	$tax_name = $content_type . '_type';
+	$tax_name = $posttype . '_type';
 	$types    = get_field( $tax_name );
 
-	// Add content taxonomy terms to query args if added to block
+	// Add taxonomy terms to query args if added to block
 	if ( ! empty( $types ) && isset( $types ) ) {
 		// Use hyphens for taxonomy names in query
 		$tax_name = str_replace( '_', '-', $tax_name );
@@ -77,7 +77,7 @@ if ( is_admin() && empty( $content_type ) ) {
 	if ( $the_query->have_posts() ) {
 		?>
 		<div class="row max-width">
-			<section class="section block content-grid-block">
+			<section class="section block post-grid-block">
 				<?php if ( ! empty( $the_title ) ) { ?>
 					<header class="section-header">
 						<?php if ( is_home() || is_front_page() ) { ?>
@@ -85,7 +85,7 @@ if ( is_admin() && empty( $content_type ) ) {
 						<?php } else { ?>
 							<h2 class="section-title"><?php echo esc_attr( $the_title ); ?></h2>
 						<?php } ?>
-						<a class="section-link content-grid-more-link has-arrow has-arrow-right">See All <span class="show-md"><?php echo esc_attr( ucwords( $content_type ) ); ?></span></a>
+						<a class="section-link more-link has-arrow has-arrow-right">See All <span class="show-md"><?php echo esc_attr( ucwords( $posttype ) ); ?></span></a>
 					</header><!-- .section-header -->
 				<?php } ?>
 
@@ -95,28 +95,31 @@ if ( is_admin() && empty( $content_type ) ) {
 
 						<article class="item">
 							<?php if ( ! empty( $type_names ) && isset( $type_names ) ) { ?>
-								<span class="content-grid-tag"><?php echo esc_attr( $type_names[0] ); ?></span>
+								<span class="item-tag"><?php echo esc_attr( $type_names[0] ); ?></span>
 							<?php } ?>
 							<?php if ( is_home() || is_front_page() ) { ?>
-								<h4 class="item-title content-grid-item-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+								<h4 class="item-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 							<?php } else { ?>
-								<h3 class="item-title content-grid-item-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+								<h3 class="item-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 							<?php } ?>
 
-							<?php the_date( '', '<span class="content-grid-item-date"><time>', '</time></span>' ); ?>
+							<?php the_date( '', '<span class="item-date"><time>', '</time></span>' ); ?>
 
 							<?php if ( has_excerpt() ) { ?>
 								<?php the_excerpt(); ?>
 							<?php } else { ?>
 								<p><?php echo wp_kses_post( wp_trim_words( get_the_content(), 40, '...' ) ); ?></p>
 							<?php } ?>
-						</article><!-- .item -->
 
-						<?php wp_reset_postdata(); ?>
+							<a href="<?php the_permalink(); ?>"><button class="has-arrow-right">Read More</button></a>
+
+						</article><!-- .item -->
 					<?php } ?>
 				</div><!-- .item-grid -->
 			</section><!-- .section -->
 		</div><!-- .row -->
 		<?php
 	}
+
+	wp_reset_postdata();
 }

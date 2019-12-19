@@ -1,0 +1,65 @@
+{
+    "key": "group_5dfaa4014a033",
+    "title": "Priority Slider Block",
+    "fields": [
+        {
+            "key": "field_5dfaa44fa3ef7",
+            "label": "Title",
+            "name": "title",
+            "type": "text",
+            "instructions": "Enter the title to appear above the slider.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5dfaa4016106a",
+            "label": "Selected Priorities",
+            "name": "selected_priorities",
+            "type": "post_object",
+            "instructions": "Select the priorities to appear in the slider.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "priority"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 1,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/priority-slider"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1576707180
+}

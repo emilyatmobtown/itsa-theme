@@ -1,4 +1,4 @@
-/* Article */
+/* Post */
 .entry-header.max-width,
 .entry-footer.max-width {
 	max-width: var(--max-content-width);
@@ -17,31 +17,49 @@
 
 	ul,
 	ol {
-		font-size: var(--text-md);
-		line-height: var(--body-line-height);
 		padding-left: calc(var(--component-padding) + var(--space-lg));
 		padding-right: calc(var(--component-padding) + var(--space-lg));
-		list-style: disc;
 
-		li {
-			margin-bottom: var(--space-md);
-			list-style: inherit;
+		&.entry-categories {
+
+			@include horizontal-list;
+			line-height: 1;
+			display: inline-block;
+
+			li {
+
+				@extend %small-caps;
+				margin-right: var(--space-xs);
+				padding: 0;
+
+				a {
+					color: inherit;
+				}
+			}
 		}
 	}
 
-	ol {
-		list-style: decimal;
-	}
-
 	blockquote {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
 		padding-left: calc(var(--component-padding) + var(--space-lg));
 		padding-right: calc(var(--component-padding) + var(--space-lg));
 	}
 
+	.wp-block-image {
+		max-width: 950px;
+		margin: var(--space-md) auto;
+		text-align: center;
+	}
+}
 
+.entry-meta-social {
+	background-color: var(--color-midnight);
+	padding: var(--space-xs) var(--component-padding);
+	margin-bottom: var(--component-padding);
+	display: inline-block;
+
+	> * {
+		margin-right: var(--space-xs);
+	}
 }
 
 .large-width .entry-content > * {
@@ -49,7 +67,6 @@
 }
 
 .entry-title {
-	margin-bottom: var(--component-padding);
 	padding: var(--space-sm) 0 var(--component-padding);
 	border-bottom: 1px solid var(--color-silver);
 }
@@ -78,35 +95,6 @@
 .entry-meta-text {
 
 	@extend %small-caps;
-}
-
-.entry-categories {
-
-	@include horizontal-list;
-	line-height: 1;
-	display: inline-block;
-}
-
-.entry-categories li {
-
-	@extend %small-caps;
-	margin-right: var(--space-xs);
-	padding: 0;
-}
-
-.entry-categories li a {
-	color: inherit;
-}
-
-.entry-meta-social {
-	background-color: var(--color-midnight);
-	padding: var(--space-xs) var(--component-padding);
-	margin-bottom: var(--component-padding);
-	display: inline-block;
-}
-
-.entry-meta-social > * {
-	margin-right: var(--space-xs);
 }
 
 @media (--bp-medium) {

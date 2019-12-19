@@ -2,7 +2,7 @@
 
 .header-block {
 	margin: 0 auto;
-	padding: var(--component-padding) 0;
+	padding: var(--component-padding) 0 0;
 
 	&-silo {
 		text-align: center;
@@ -34,14 +34,5 @@
 		&.wp-block-cover {
 			min-height: 750px;
 		}
-	}
-}
-
-@media (--bp-medium) {
-
-	.silo-template-default .tagline,
-	.post-type-silo .tagline {
-		display: inline-block;
-		max-width: 40%;
 	}
 }

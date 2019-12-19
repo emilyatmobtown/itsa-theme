@@ -1,0 +1,35 @@
+/* Priority Slider Block */
+
+.priority-slider-block {
+	padding-bottom: var(--component-padding);
+	border-bottom: 1px solid var(--color-silver);
+
+	.slides {
+
+		@include reset-list;
+	}
+
+	.slider-bullets {
+		position: absolute;
+		top: calc((100vw - 40px) * 0.55);
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+@media (--bp-medium) {
+
+	.priority-slider-block {
+		padding-bottom: 0;
+		border: 0;
+		
+		.slide {
+			height: auto;
+		}
+
+		.slider-bullets {
+			top: auto;
+			bottom: var(--space-md);
+		}
+	}
+}
