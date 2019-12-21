@@ -19,8 +19,8 @@ if ( ! empty( $header_block ) && isset( $header_block ) ) {
 	$header_image_url = Utility\get_header_image_url( $header_block );
 }
 
-if ( ! is_singular( 'news' ) ) {
-	$terms     = get_the_terms( $post->ID, 'news-type' );
+if ( ! is_singular( 'advocacy-material' ) ) {
+	$terms     = get_the_terms( $post->ID, 'advocacy-material-type' );
 	$term_name = ( ! empty( $terms && isset( $terms ) ) ) ? $terms[0]->name : '';
 }
 ?>
@@ -44,10 +44,10 @@ if ( ! is_singular( 'news' ) ) {
 	<?php } ?>
 
 	<div class="entry-content">
-		<?php if ( is_singular( 'news' ) ) { ?>
+		<?php if ( is_singular( 'advocacy-material' ) ) { ?>
 			<?php the_content(); ?>
 		<?php } else { ?>
-			<?php itsa_the_excerpt( '', true, true ); ?>
+			<?php itsa_the_excerpt( '', true ); ?>
 			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><button class="has-arrow-right">Read More</button></a>
 		<?php } ?>
 	</div><!-- .entry-content -->

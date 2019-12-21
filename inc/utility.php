@@ -14,6 +14,25 @@
 namespace ITSATheme\Utility;
 
 /**
+ * Change slug to title, replacing hyphens with spaces and capitalized
+ * first letters.
+ *
+ * @param string
+ * @return string
+ * @since 0.1.0
+ */
+function slug_to_title( $slug = '' ) {
+	$title = '';
+
+	if ( \is_string( $slug ) ) {
+		$title = \str_replace( '-', ' ', $slug );
+		$title = \ucwords( $title );
+	}
+
+	return $title;
+}
+
+/**
  * Fetch current post ID whie in block
  *
  */
@@ -27,7 +46,7 @@ function get_acf_post_id() {
 }
 
 /**
- * Recursively searches block array for given blocks.
+ * Recursively search block array for given blocks.
  *
  * @link https://www.billerickson.net/building-a-header-block-in-wordpress/
  *
@@ -46,7 +65,7 @@ function has_block( $blocks = array(), $blockname = '' ) {
 			return true;
 		} elseif ( isset( $block['innerBlocks'] ) && ! empty( $block['innerBlocks'] ) ) {
 			// Scan inner blocks
-			$inner_block = has_block( $block['innerBlocks'] );
+			$inner_block = has_block( $block['innerBlocks'], $blockname );
 			if ( $inner_block ) {
 				return true;
 			}
@@ -54,6 +73,71 @@ function has_block( $blocks = array(), $blockname = '' ) {
 	}
 
 	return false;
+}
+
+/**
+ * Get first matching block from array of blocks.
+ *
+ * @param array  $blocks
+ * @param string $blockname
+ * @return array
+ */
+function get_block( $blocks = array(), $blockname = '' ) {
+	foreach ( $blocks as $block ) {
+
+		if ( ! isset( $block['blockName'] ) ) {
+			continue;
+		}
+
+		if ( $blockname === $block['blockName'] ) {
+			return $block;
+		} elseif ( isset( $block['innerBlocks'] ) && ! empty( $block['innerBlocks'] ) ) {
+			// Scan inner blocks
+			$inner_block = get_block( $block['innerBlocks'], $blockname );
+			if ( ! empty( $inner_block ) && isset( $inner_block ) ) {
+				return $inner_block;
+			}
+		}
+	}
+
+	return null;
+}
+
+/**
+ * Get header image ID from acf/header block.
+ *
+ * @param array  $block
+ * @return array
+ */
+function get_header_image_id( $block ) {
+
+	if ( 'acf/header' !== $block['blockName'] ) {
+		return null;
+	}
+
+	if ( ! empty( $block['attrs']['data']['image'] ) && isset( $block['attrs']['data']['image'] ) ) {
+		return $block['attrs']['data']['image'];
+	}
+
+	return null;
+}
+
+function get_header_image_url( $block, $size = 'itsa-section-background' ) {
+	$header_image_url = '';
+
+	if ( ! empty( $block ) && isset( $block ) ) {
+		$header_image_id = get_header_image_id( $block );
+
+		if ( is_int( $header_image_id ) ) {
+			$header_image_array = \wp_get_attachment_image_src( $header_image_id, $size );
+		}
+
+		if ( ! empty( $header_image_array ) && isset( $header_image_array ) ) {
+			$header_image_url = $header_image_array[0];
+		}
+	}
+
+	return $header_image_url;
 }
 
 /**

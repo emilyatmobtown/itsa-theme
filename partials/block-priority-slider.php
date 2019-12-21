@@ -2,6 +2,15 @@
 /**
  * Template part for displaying the Priority Slider block
  *
+ * Note: This template calls the render template for the Priority block.
+ * This sets up nested rendering, which acf_render_block is not built for.
+ * If WP_DEBUG is enabled, a PHP error will be generated due to a missing 'id'
+ * index passed to acf_reset_meta at the completion of the rendering of this
+ * parent template. There is currently not a clear way to resolve this without
+ * rebuilding significant portions of the ACF plugin. However, other than
+ * creating a PHP warning, there do not appear to be any other undesirable
+ * consequences.
+ *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package ITSATheme
@@ -10,7 +19,11 @@
 $priorities = get_field( 'selected_priorities' );
 $the_title  = get_field( 'title' );
 
-if ( ! empty( $priorities ) && isset( $priorities ) ) {
+if ( is_admin() && empty( $priorities ) ) {
+	?>
+	<h2 role="textbox" aria-multiline="true" class="rich-text editor-rich-text__editable block-editor-rich-text__editable" contenteditable="true" aria-label="Add a subtitle" style="white-space: pre-wrap;">﻿<span data-rich-text-placeholder="Add a Priority Slider..." contenteditable="false"></span></h2>
+	<?php
+} elseif ( ! empty( $priorities ) && isset( $priorities ) ) {
 	?>
 
 	<div class="row max-width">
@@ -23,11 +36,13 @@ if ( ! empty( $priorities ) && isset( $priorities ) ) {
 						<h2 class="section-title"><?php echo esc_attr( $the_title ); ?></h2>
 					<?php } ?>
 				</header><!-- .section-header -->
-			<?php } ?>
+			<?php } ?><!-- .section -->
+
 			<div class="glide slider">
 				<div class="glide__track slider-track" data-glide-el="track">
 					<ul class="glide__slides slides">
 						<?php foreach ( $priorities as $priority ) { ?>
+
 							<li class="glide__slide slide">
 								<?php
 								$blocks = parse_blocks( $priority->post_content );
@@ -39,6 +54,7 @@ if ( ! empty( $priorities ) && isset( $priorities ) ) {
 								}
 								?>
 							</li>
+
 						<?php } ?>
 					</ul>
 				</div><!-- .glide__track -->

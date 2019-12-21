@@ -24,6 +24,7 @@ define( 'ITSA_THEME_PATH', get_template_directory() . '/' );
 define( 'ITSA_THEME_INC', ITSA_THEME_PATH . 'inc/' );
 
 require_once ITSA_THEME_INC . 'core.php';
+require_once ITSA_THEME_INC . 'classes/ITSABlockParser.php';
 require_once ITSA_THEME_INC . 'customizer.php';
 require_once ITSA_THEME_INC . 'overrides.php';
 require_once ITSA_THEME_INC . 'template-tags.php';
@@ -32,6 +33,7 @@ require_once ITSA_THEME_INC . 'blocks.php';
 
 // Run the setup functions.
 Core\setup();
+// ITSABlockParser\setup();
 Overrides\setup();
 Customizer\setup();
 Blocks\setup();

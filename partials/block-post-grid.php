@@ -13,9 +13,9 @@ $the_title = get_field( 'title' );
 
 if ( is_admin() && empty( $posttype ) ) {
 	?>
-	<p>Select type of post to display in grid.</p>
+	<h2 role="textbox" aria-multiline="true" class="rich-text editor-rich-text__editable block-editor-rich-text__editable" contenteditable="true" aria-label="Add a subtitle" style="white-space: pre-wrap;">﻿<span data-rich-text-placeholder="Add a Post Grid..." contenteditable="false"></span></h2>
 	<?php
-} elseif ( ! empty( $posttype ) && isset( $posttype ) ) {
+} elseif ( ! empty( $posttype ) ) {
 
 	// Set up initial query args
 	$args = array(
@@ -92,28 +92,7 @@ if ( is_admin() && empty( $posttype ) ) {
 				<div class="item-grid has-background inverse-color">
 					<?php while ( $the_query->have_posts() ) { ?>
 						<?php $the_query->the_post(); ?>
-
-						<article class="item">
-							<?php if ( ! empty( $type_names ) && isset( $type_names ) ) { ?>
-								<span class="item-tag"><?php echo esc_attr( $type_names[0] ); ?></span>
-							<?php } ?>
-							<?php if ( is_home() || is_front_page() ) { ?>
-								<h4 class="item-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-							<?php } else { ?>
-								<h3 class="item-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-							<?php } ?>
-
-							<?php the_date( '', '<span class="item-date"><time>', '</time></span>' ); ?>
-
-							<?php if ( has_excerpt() ) { ?>
-								<?php the_excerpt(); ?>
-							<?php } else { ?>
-								<p><?php echo wp_kses_post( wp_trim_words( get_the_content(), 40, '...' ) ); ?></p>
-							<?php } ?>
-
-							<a href="<?php the_permalink(); ?>"><button class="has-arrow-right">Read More</button></a>
-
-						</article><!-- .item -->
+						<?php get_template_part( 'partials/content', $posttype ); ?>
 					<?php } ?>
 				</div><!-- .item-grid -->
 			</section><!-- .section -->

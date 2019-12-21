@@ -11,6 +11,27 @@
 		display: block;
 		margin-bottom: var(--space-md);
 	}
+
+	.image-placeholder {
+		display: block;
+		position: relative;
+
+		&.has-overlay > * {
+			position: relative;
+			z-index: 5;
+		}
+
+		&.has-overlay::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: var(--color-section-overlay-background-fallback);
+			background: var(--color-section-overlay-background);
+		}
+	}
 }
 
 @media (--bp-medium) {

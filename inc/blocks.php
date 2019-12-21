@@ -61,6 +61,12 @@ function register_blocks() {
 			'icon'            => 'format-image',
 			'mode'            => 'auto',
 			'keywords'        => array( 'hero', 'banner', 'heading' ),
+			'supports'        => array(
+				'align'           => false,
+				'customClassName' => false,
+				'html'            => false,
+				'anchor'          => true,
+			),
 		)
 	);
 
@@ -74,6 +80,12 @@ function register_blocks() {
 			'icon'            => 'screenoptions',
 			'mode'            => 'auto',
 			'keywords'        => array( 'posts', 'issues', 'row' ),
+			'supports'        => array(
+				'align'           => false,
+				'customClassName' => false,
+				'html'            => false,
+				'anchor'          => true,
+			),
 		)
 	);
 
@@ -87,6 +99,12 @@ function register_blocks() {
 			'icon'            => 'slides',
 			'mode'            => 'auto',
 			'keywords'        => array( 'posts', 'issues', 'priorities' ),
+			'supports'        => array(
+				'align'           => false,
+				'customClassName' => false,
+				'html'            => false,
+				'anchor'          => true,
+			),
 		)
 	);
 
@@ -100,6 +118,13 @@ function register_blocks() {
 			'icon'            => 'editor-quote',
 			'mode'            => 'auto',
 			'keywords'        => array( 'testimonial', 'quote' ),
+			'supports'        => array(
+				'align'           => false,
+				'customClassName' => false,
+				'html'            => false,
+				'anchor'          => true,
+				'inserter'        => false,
+			),
 		)
 	);
 
@@ -113,6 +138,14 @@ function register_blocks() {
 			'icon'            => 'star-filled',
 			'mode'            => 'auto',
 			'keywords'        => array(),
+			'post_types'      => array( 'priority' ),
+			'supports'        => array(
+				'align'           => false,
+				'customClassName' => false,
+				'html'            => false,
+				'anchor'          => true,
+				'inserter'        => false,
+			),
 		)
 	);
 
@@ -126,6 +159,12 @@ function register_blocks() {
 			'icon'            => 'star-filled',
 			'mode'            => 'auto',
 			'keywords'        => array( 'slider', 'priority' ),
+			'supports'        => array(
+				'align'           => false,
+				'customClassName' => false,
+				'html'            => false,
+				'anchor'          => true,
+			),
 		)
 	);
 
@@ -139,6 +178,12 @@ function register_blocks() {
 			'icon'            => 'thumbs-up',
 			'mode'            => 'auto',
 			'keywords'        => array( 'call to action', 'membership', 'jobs' ),
+			'supports'        => array(
+				'align'           => false,
+				'customClassName' => false,
+				'html'            => false,
+				'anchor'          => true,
+			),
 		)
 	);
 
@@ -152,6 +197,12 @@ function register_blocks() {
 			'icon'            => 'images-alt2',
 			'mode'            => 'auto',
 			'keywords'        => array( 'members', 'logos' ),
+			'supports'        => array(
+				'align'           => false,
+				'customClassName' => false,
+				'html'            => false,
+				'anchor'          => true,
+			),
 		)
 	);
 }

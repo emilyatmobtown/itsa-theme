@@ -5,6 +5,14 @@
 	box-sizing: border-box;
 }
 
+// *:empty {
+// 	display: none;
+// }
+
+br:empty {
+	display: block;
+}
+
 html {
 	font-size: 100%;
 }

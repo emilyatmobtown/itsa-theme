@@ -24,10 +24,18 @@
 	text-transform: lowercase;
 }
 
+.hidden-sm {
+	display: none;
+}
+
 @media (--bp-medium) {
 
 	.restricted-width > * {
 		padding-right: 20%;
+	}
+
+	.hidden-sm {
+		display: initial;
 	}
 }
 

@@ -1,11 +1,20 @@
 /* Post Type News */
 
+.news-template-default,
+.post-type-news {
+
+	article {
+		background-repeat: no-repeat;
+		background-size: 1px;
+	}
+}
+
 @media (--bp-medium) {
 
 	.news-template-default,
 	.post-type-news {
 
-		article > .row:first-child {
+		article > .row.max-width {
 			max-width: var(--max-content-width);
 		}
 	}

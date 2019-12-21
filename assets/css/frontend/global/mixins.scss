@@ -14,3 +14,9 @@
 		margin: 0;
 	}
 }
+
+@mixin gradient-background( $i: false ) {
+	$important: if($i, "!important", "");
+	background: var(--color-grid-item-background-fallback) #{$important};
+	background: var(--color-grid-item-background) #{$important};
+}

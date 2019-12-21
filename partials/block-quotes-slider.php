@@ -9,7 +9,13 @@
 
 $quotes = get_field( 'selected_quotes' );
 
-if ( ! empty( $quotes ) && isset( $quotes ) ) {
+if ( is_admin() && empty( $quotes ) ) {
+	?>
+
+	<h2 role="textbox" aria-multiline="true" class="rich-text editor-rich-text__editable block-editor-rich-text__editable" contenteditable="true" aria-label="Add a subtitle" style="white-space: pre-wrap;">﻿<span data-rich-text-placeholder="Add a Quotes Slider..." contenteditable="false"></span></h2>
+
+	<?php
+} elseif ( ! empty( $quotes ) && isset( $quotes ) ) {
 	?>
 
 	<div class="row max-width">

@@ -7,15 +7,17 @@
  * @package ITSATheme
  */
 
+use ITSATheme\Utility;
+
 $posttype  = get_field( 'post_type' );
 $issues    = get_field( 'issue' );
 $the_title = get_field( 'title' );
 
 if ( is_admin() && empty( $posttype ) ) {
 	?>
-	<p>Select type of post to display in slider.</p>
+	<h2 role="textbox" aria-multiline="true" class="rich-text editor-rich-text__editable block-editor-rich-text__editable" contenteditable="true" aria-label="Add a subtitle" style="white-space: pre-wrap;">﻿<span data-rich-text-placeholder="Add a Post Slider..." contenteditable="false"></span></h2>
 	<?php
-} elseif ( ! empty( $posttype ) && isset( $posttype ) ) {
+} elseif ( ! empty( $posttype ) ) {
 
 	// Set up initial query args
 	$args = array(
@@ -73,6 +75,7 @@ if ( is_admin() && empty( $posttype ) ) {
 		$args['tax_query']['relation'] = 'AND';
 	}
 	$the_query = new WP_Query( $args );
+	$count     = $the_query->post_count;
 
 	if ( $the_query->have_posts() ) {
 		?>
@@ -85,43 +88,26 @@ if ( is_admin() && empty( $posttype ) ) {
 						<?php } else { ?>
 							<h2 class="section-title"><?php echo esc_attr( $the_title ); ?></h2>
 						<?php } ?>
-						<a class="section-link more-link has-arrow has-arrow-right">See All <span class="show-md"><?php echo esc_attr( ucwords( $posttype ) ); ?></span></a>
+						<a class="section-link more-link has-arrow has-arrow-right">See All<span class="hidden-sm"> <?php echo esc_attr( itsa_get_post_type_plural_label( $posttype ) ); ?></span></a>
 					</header><!-- .section-header -->
-				<?php } ?>
+				<?php } ?><!-- .section -->
 
-				<!-- <div class="item-grid has-background inverse-color"> -->
 				<div class="glide slider">
 					<div class="glide__track slider-track" data-glide-el="track">
 						<ul class="glide__slides slides">
 							<?php while ( $the_query->have_posts() ) { ?>
 								<?php $the_query->the_post(); ?>
-
-								<li class="glide__slide slide restricted-width">
-									<article class="item">
-										<?php if ( ! empty( $type_names ) && isset( $type_names ) ) { ?>
-											<span class="item-tag"><?php echo esc_attr( $type_names[0] ); ?></span>
-										<?php } ?>
-										<?php if ( is_home() || is_front_page() ) { ?>
-											<h4 class="item-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-										<?php } else { ?>
-											<h3 class="item-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-										<?php } ?>
-
-										<?php the_date( '', '<span class="item-date"><time>', '</time></span>' ); ?>
-
-										<?php if ( has_excerpt() ) { ?>
-											<?php the_excerpt(); ?>
-										<?php } else { ?>
-											<p><?php echo wp_kses_post( wp_trim_words( get_the_content(), 40, '...' ) ); ?></p>
-										<?php } ?>
-
-										<a href="<?php the_permalink(); ?>"><button class="has-arrow-right">Read More</button></a>
-
-									</article><!-- .item -->
-								</li>
+									<li class="glide__slide slide">
+										<?php get_template_part( 'partials/content', $posttype ); ?>
+									</li>
 							<?php } ?>
 						</ul>
 					</div><!-- .glide__track -->
+					<div class="glide__bullets slider-bullets" data-glide-el="controls[nav]">
+						<?php for ( $i = 0; $i < $count; $i++ ) { ?>
+							<button class="glide__bullet slider-bullet" data-glide-dir="=<?php echo esc_attr( $i ); ?>" aria-hidden="true"></button>
+						<?php } ?>
+					</div><!-- .glide__bullets -->
 				</div><!-- .glide -->
 			</section><!-- .section -->
 		</div><!-- .row -->

@@ -6,6 +6,7 @@ button {
 	height: calc(var(--space-md) * 2.5);
 	padding: 0 var(--space-md);
 	color: var(--color-button-text);
+	font-family: var(--font-primary);
 	line-height: 1;
 	font-weight: 700;
 	cursor: pointer;

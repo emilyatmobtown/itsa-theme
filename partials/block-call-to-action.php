@@ -16,7 +16,11 @@ $external    = empty( $url ) ? false : true;
 $block_style = get_field( 'block_style' );
 $block_style = empty( $block_style ) ? 'block-style-solid' : $block_style;
 
-if ( ! empty( $headline ) && ! empty( $text ) ) {
+if ( is_admin() && ( empty( $headline ) || ! empty( $text ) ) ) {
+	?>
+	<h2 role="textbox" aria-multiline="true" class="rich-text editor-rich-text__editable block-editor-rich-text__editable" contenteditable="true" aria-label="Add a subtitle" style="white-space: pre-wrap;">﻿<span data-rich-text-placeholder="Add a Call to Action..." contenteditable="false"></span></h2>
+	<?php
+} elseif ( ! empty( $headline ) && ! empty( $text ) ) {
 	?>
 
 	<div class="row max-width">

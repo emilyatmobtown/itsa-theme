@@ -35,21 +35,22 @@
 	.item {
 
 		@extend %flex;
-		width: 100%;
+		flex-direction: column;
+		flex-basis: 100%;
 		margin-bottom: var(--component-padding);
 
 		> * {
-			width: 100%;
+			flex: 0 1 auto;
 
 			&:last-child {
-				align-self: flex-end;
+				flex-grow: 1;
 			}
 		}
 	}
 
 	&.has-background .item {
-		background: var(--color-grid-item-background-fallback);
-		background: var(--color-grid-item-background);
+
+		@include gradient-background;
 		padding: var(--component-padding);
 	}
 }
@@ -60,12 +61,22 @@
 	.item-grid {
 
 		.item {
-			width: calc(100% / 3 - calc(var(--space-lg) / 2));
+			flex-basis: calc(100% / 2 - calc(var(--space-lg) / 2));
 		}
 
 		&.has-background .item {
 			padding-left: var(--space-lg);
 			padding-right: var(--space-lg);
+		}
+	}
+}
+
+@media (--bp-large) {
+
+	.item-grid {
+
+		.item {
+			flex-basis: calc(100% / 3 - calc(var(--space-lg) / 2));
 		}
 	}
 }

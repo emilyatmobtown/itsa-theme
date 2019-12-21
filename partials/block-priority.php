@@ -16,14 +16,14 @@ $image      = get_field( 'image' );
 if ( is_admin() && empty( $the_title ) ) {
 	?>
 
-	<p>Add a Priority...</p>
+	<h1 role="textbox" aria-multiline="true" class="rich-text editor-rich-text__editable block-editor-rich-text__editable" contenteditable="true" aria-label="Add a subtitle" style="white-space: pre-wrap;">﻿<span data-rich-text-placeholder="Add a Priority..." contenteditable="false"></span></h1>
 
 	<?php
 } elseif ( ! empty( $the_title ) && ! empty( $image ) ) {
 	?>
 
-	<article class="priority-block has-background has-overlay" style="background-image:url(<?php echo esc_url( $image['sizes']['itsa-header'] ); ?>)">
-		<div class="image-placeholder has-overlay" style="background-image:url(<?php echo esc_url( $image['sizes']['itsa-header'] ); ?>)"></div>
+	<article class="priority-block has-background has-overlay" style="background-image:url(<?php echo esc_url( $image['sizes']['itsa-section-background'] ); ?>)">
+		<div class="image-placeholder has-overlay" style="background-image:url(<?php echo esc_url( $image['sizes']['itsa-section-background'] ); ?>)"></div>
 		<?php if ( ! empty( $the_title ) ) { ?>
 			<h3 class="priority-title font-weight-600"><?php echo esc_attr( $the_title ); ?></h3>
 			<hr class="hrule">

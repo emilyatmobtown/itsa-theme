@@ -9,7 +9,13 @@
 
 $logos = get_field( 'logos' );
 
-if ( ! empty( $logos ) && isset( $logos ) ) {
+if ( is_admin() && empty( $logos ) ) {
+	?>
+
+	<h1 role="textbox" aria-multiline="true" class="rich-text editor-rich-text__editable block-editor-rich-text__editable" contenteditable="true" aria-label="Add a subtitle" style="white-space: pre-wrap;">﻿<span data-rich-text-placeholder="Add Member Logos..." contenteditable="false"></span></h1>
+
+	<?php
+} elseif ( ! empty( $logos ) && isset( $logos ) ) {
 	?>
 
 	<div class="row max-width full-width">

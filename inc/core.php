@@ -55,6 +55,7 @@ function theme_setup() {
 	add_theme_support( 'align-wide' );
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'title-tag' );
+	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'post-formats', array( 'quote' ) );
 	add_theme_support(
 		'html5',
@@ -393,6 +394,12 @@ function add_image_sizes() {
 			'height' => 720,
 			'crop'   => true,
 		),
+		array(
+			'name'   => 'itsa-section-background',
+			'width'  => 1860,
+			'height' => 640,
+			'crop'   => true,
+		),
 	);
 
 	if ( ! empty( $sizes ) && isset( $sizes ) ) {
@@ -412,9 +419,11 @@ function add_image_size_names( $sizes ) {
 		$sizes,
 		array(
 			// translators: This is the name of the custom image size for the ITSA Member Logo.
-			'itsa-member-logo' => __( 'ITSA Member Logo' ),
+			'itsa-member-logo'        => __( 'ITSA Member Logo' ),
 			// translators: This is the name of the custom image size for the ITSA Hero Image.
-			'itsa-hero-image'  => __( 'ITSA Hero Image' ),
+			'itsa-hero-image'         => __( 'ITSA Hero Image' ),
+			// translators: This is the name of the custom image size for the ITSA Section Background.
+			'itsa-section-background' => __( 'ITSA Section Background' ),
 		)
 	);
 }

@@ -25,6 +25,10 @@
 		margin: var(--space-lg) auto 0;
 		display: inline-block;
 	}
+
+	.hrule {
+		display: none;
+	}
 }
 
 @media (--bp-medium) {
