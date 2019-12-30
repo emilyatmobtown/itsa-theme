@@ -72,6 +72,25 @@ function register_blocks() {
 
 	acf_register_block_type(
 		array(
+			'name'            => 'content-grid',
+			// translators: This is the name of the Content Grid block.
+			'title'           => __( 'Content Grid', 'itsa-theme' ),
+			'render_template' => 'partials/block-content-grid.php',
+			'category'        => 'itsa-blocks',
+			'icon'            => 'screenoptions',
+			'mode'            => 'auto',
+			'keywords'        => array( 'content', 'blocks', 'row' ),
+			'supports'        => array(
+				'align'           => false,
+				'customClassName' => false,
+				'html'            => false,
+				'anchor'          => true,
+			),
+		)
+	);
+
+	acf_register_block_type(
+		array(
 			'name'            => 'post-grid',
 			// translators: This is the name of the Post Grid block.
 			'title'           => __( 'Post Grid', 'itsa-theme' ),

@@ -55,7 +55,15 @@ function itsa_get_entry_meta() {
 				<div class="entry-meta">';
 
 	if ( is_singular( $posttype ) ) {
-		$html .= '<span class="entry-meta-text">' . itsa_get_post_type_plural_label( $posttype ) . '</span>';
+		// Get the event type, news type, or advocacy material type
+		$terms = get_the_terms( $post, $posttype . '-type' );
+		if ( ! empty( $terms ) && isset( $terms ) ) {
+			// Display the first term only
+			$term  = $terms[0]->name;
+			$html .= '<span class="entry-meta-text">' . $term . '</span>';
+		} else {
+			$html .= '<span class="entry-meta-text">' . itsa_get_post_type_plural_label( $posttype ) . '</span>';
+		}
 	}
 
 	if ( has_term( '', 'issue', $post ) && is_singular( $posttype ) ) {
@@ -69,10 +77,170 @@ function itsa_get_entry_meta() {
 		$html .= '<time class="entry-meta-text" datetime="' . get_the_date( 'c', $post->ID ) . '"  itemprop="datePublished">' . get_the_date( '', $post->ID ) . '</time>';
 	}
 
+	if ( 'event' === $posttype ) {
+		$html .= '<div class="entry-meta-event">';
+
+		$start_date = get_field( 'event_start_date', $post->ID );
+		$end_date   = get_field( 'event_end_date', $post->ID );
+		$start_time = get_field( 'event_start_time', $post->ID );
+		$end_time   = get_field( 'event_end_time', $post->ID );
+		$timezone   = get_field( 'event_timezone', $post->ID );
+
+		$location = get_field( 'event_location', $post->ID );
+		if ( ! has_term( 'webinars', 'event-type', $post ) ) {
+			// translators: This is the label that appears when no location is set.
+			$location = empty( $location ) ? __( 'Location TBD', 'itsa-theme' ) : $location;
+		}
+
+		$presenter = get_field( 'event_presenter', $post->ID );
+
+		if ( ! empty( $start_date ) ) {
+			$html .= '<span class="entry-meta-text display-block">' . itsa_get_date_span( $start_date, $end_date );
+
+			if ( ! empty( $start_time ) ) {
+				$html .= ' | ' . itsa_get_time_span( $start_time, $end_time, $timezone );
+			}
+
+			$html .= '</span>';
+		}
+
+		if ( ! empty( $location ) ) {
+			$html .= '<span class="entry-meta-text display-block">' . $location . '</span>';
+		}
+
+		if ( ! empty( $presenter ) ) {
+			// translators: This is the label preceding the presenter for an Event.
+			$html .= '<span class="entry-meta-text display-block">' . __( 'Presented by', 'itsa-theme' ) . ': ' . $presenter . '</span>';
+		}
+
+		$html .= '</div><!-- .entry-meta-event -->';
+	}
+
 	$html .= '</div><!-- .entry-meta -->
 			</div><!-- .row -->';
 
 	return $html;
+}
+
+/**
+ * Get formatted string for span between two dates
+ *
+ * @param  string $start
+ * @param  string $end
+ * @param  string $timezone
+ * @return string
+ * @since 0.1.0
+ */
+function itsa_get_date_span( $start = '', $end = '' ) {
+	$date_span = '';
+
+	if ( is_string( $start ) && ! empty( $start ) ) {
+		$start_date = getdate( strtotime( $start ) );
+	}
+
+	if ( ! empty( $start_date ) ) {
+		$date_span .= $start_date['month'] . ' ' . $start_date['mday'];
+
+		if ( is_string( $end ) && ! empty( $end ) ) {
+			$end_date = getdate( strtotime( $end ) );
+		}
+
+		if ( ! empty( $end_date ) ) {
+			if ( $start_date['year'] !== $end_date['year'] ) {
+				$date_span .= ', ' . $start_date['year'] . ' - ' . $end_date['month'] . ' ' . $end_date['mday'];
+			} else {
+				if ( $start_date['month'] !== $end_date['month'] ) {
+					$date_span .= ' - ' . $end_date['month'] . ' ' . $end_date['mday'];
+				} else {
+					$date_span .= '-' . $end_date['mday'];
+				}
+			}
+			$date_span .= ', ' . $end_date['year'];
+		} else {
+			$date_span .= ', ' . $start_date['year'];
+		}
+	}
+
+	return $date_span;
+}
+
+/**
+ * Get formatted string for span between two times, including optional timezone.
+ *
+ * @param  string $start
+ * @param  string $end
+ * @param  string $timezone
+ * @return string
+ * @since 0.1.0
+ */
+function itsa_get_time_span( $start = '', $end = '', $timezone = '' ) {
+	$time_span = '';
+
+	if ( is_string( $start ) && ! empty( $start ) ) {
+		$start_time = getdate( strtotime( $start ) );
+	}
+
+	if ( ! empty( $start_time ) ) {
+		$start_suffix = 'pm';
+		if ( $start_time['hours'] > 12 ) {
+			$time_span .= $start_time['hours'] - 12;
+		} elseif ( 0 === $start_time['hours'] ) {
+			$start_suffix = 'am';
+			$time_span   .= '12';
+		} else {
+			$start_suffix = 'am';
+			$time_span   .= $start_time['hours'];
+		}
+
+		if ( $start_time['minutes'] < 10 ) {
+			$time_span .= ':0' . $start_time['minutes'];
+		} else {
+			$time_span .= ':' . $start_time['minutes'];
+		}
+
+		if ( is_string( $end ) && ! empty( $end ) ) {
+			$end_time = getdate( strtotime( $end ) );
+
+			if ( ! empty( $end_time ) ) {
+				$time_span .= '-';
+				$end_suffix = 'pm';
+				if ( $end_time['hours'] > 12 ) {
+					if ( $start_suffix !== $end_suffix ) {
+						$time_span .= ' ' . $start_suffix;
+					}
+					$time_span .= '-' . ( $end_time['hours'] - 12 );
+				} elseif ( 0 === $end_time['hours'] ) {
+					$end_suffix = 'am';
+					if ( $start_suffix !== $end_suffix ) {
+						$time_span .= ' ' . $start_suffix;
+					}
+					$time_span .= '-12';
+				} else {
+					$end_suffix = 'am';
+					if ( $start_suffix !== $end_suffix ) {
+						$time_span .= ' ' . $start_suffix;
+					}
+					$time_span .= '-' . $end_time['hours'];
+				}
+
+				if ( $end_time['minutes'] < 10 ) {
+					$time_span .= ':0' . $end_time['minutes'];
+				} else {
+					$time_span .= ':' . $end_time['minutes'];
+				}
+
+				$time_span .= ' ' . $end_suffix;
+			}
+		} else {
+			$time_span .= ' ' . $start_suffix;
+		}
+
+		if ( is_string( $timezone ) && ! empty( $timezone ) ) {
+			$time_span .= ' ' . $timezone;
+		}
+	}
+
+	return $time_span;
 }
 
 /**

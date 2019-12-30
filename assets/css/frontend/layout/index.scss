@@ -29,8 +29,7 @@
 
 .item-grid {
 
-	@extend %flex-between-stretch;
-	width: 100%;
+	@extend %flex;
 
 	.item {
 
@@ -59,14 +58,21 @@
 @media (--bp-medium) {
 
 	.item-grid {
+		margin-left: calc(-0.5 * var(--component-padding));
+		margin-right: calc(-0.5 * var(--component-padding));
 
 		.item {
-			flex-basis: calc(100% / 2 - calc(var(--space-lg) / 2));
+			flex-basis: calc(100% / 2 - var(--component-padding));
+			margin-left: calc(var(--component-padding) / 2);
+			margin-right: calc(var(--component-padding) / 2);
 		}
 
-		&.has-background .item {
-			padding-left: var(--space-lg);
-			padding-right: var(--space-lg);
+		&.no-wrap {
+			flex-wrap: nowrap;
+
+			.item {
+				flex-basis: auto;
+			}
 		}
 	}
 }
@@ -76,7 +82,12 @@
 	.item-grid {
 
 		.item {
-			flex-basis: calc(100% / 3 - calc(var(--space-lg) / 2));
+			flex-basis: calc(100% / 3 - var(--component-padding));
+		}
+
+		&.has-background .item {
+			padding-left: var(--space-lg);
+			padding-right: var(--space-lg);
 		}
 	}
 }

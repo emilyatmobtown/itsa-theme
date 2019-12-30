@@ -29,9 +29,9 @@ if ( is_admin() && empty( $the_title ) ) {
 			<hr class="hrule">
 		<?php } ?>
 		<?php if ( ! empty( $fact_sheet ) ) { ?>
-			<span class="display-block small-caps">Fact Sheet</span>
+			<span class="display-block small-caps"><?php esc_html_e( 'Fact Sheet', 'itsa-theme' ); ?></span>
 			<span class="priority-file-name"><?php echo esc_attr( $fact_sheet['title'] ); ?></span>
-			<a href="<?php echo esc_url( $fact_sheet['url'] ); ?>" target="_blank"><button class="has-arrow-down">Download</button></a>
+			<a href="<?php echo esc_url( $fact_sheet['url'] ); ?>" target="_blank"><button class="has-arrow-down"><?php esc_html_e( 'Download', 'itsa-theme' ); ?></button></a>
 		<?php } ?>
 	</article><!-- .priority-block -->
 

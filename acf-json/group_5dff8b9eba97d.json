@@ -1,0 +1,212 @@
+{
+    "key": "group_5dff8b9eba97d",
+    "title": "Event Details",
+    "fields": [
+        {
+            "key": "field_5dff8bea31a01",
+            "label": "Date",
+            "name": "event_start_date",
+            "type": "date_picker",
+            "instructions": "Enter the date of the event. If the event is more than one day, then enter the start date.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "m\/d\/Y",
+            "return_format": "F j, Y",
+            "first_day": 0
+        },
+        {
+            "key": "field_5dff8c9a31a02",
+            "label": "End Date",
+            "name": "event_end_date",
+            "type": "date_picker",
+            "instructions": "Enter the end date if the event is more than one day.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5dff8bea31a01",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "m\/d\/Y",
+            "return_format": "F j, Y",
+            "first_day": 0
+        },
+        {
+            "key": "field_5dff8db3fe0d8",
+            "label": "Time",
+            "name": "event_start_time",
+            "type": "time_picker",
+            "instructions": "Enter the time of the event.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5dff8bea31a01",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i a",
+            "return_format": "g:i a"
+        },
+        {
+            "key": "field_5dff8de4fe0d9",
+            "label": "End Time",
+            "name": "event_end_time",
+            "type": "time_picker",
+            "instructions": "Enter an optional end time.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5dff8db3fe0d8",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i a",
+            "return_format": "g:i a"
+        },
+        {
+            "key": "field_5dff8e2cfe0da",
+            "label": "Location",
+            "name": "event_location",
+            "type": "text",
+            "instructions": "Enter the location of the event, if applicable.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5dff8bea31a01",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5dff979996dfd",
+            "label": "Presenter",
+            "name": "event_presenter",
+            "type": "text",
+            "instructions": "Enter the presenter.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5dff8bea31a01",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5dff98acb7f2e",
+            "label": "Registration Link",
+            "name": "event_url",
+            "type": "url",
+            "instructions": "Enter the URL for registration.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5dff8bea31a01",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "http:\/\/"
+        },
+        {
+            "key": "field_5e012dbb0169b",
+            "label": "Timezone",
+            "name": "event_timezone",
+            "type": "text",
+            "instructions": "Enter the appropriate time zone abbreviation.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5dff8db3fe0d8",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "i.e. EDT",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "event"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1577729326
+}

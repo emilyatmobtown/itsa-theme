@@ -68,6 +68,23 @@ if ( is_admin() && empty( $posttype ) ) {
 		);
 	}
 
+	// Add date ordering and filtering for event posts
+	if ( 'event' === $posttype ) {
+		// Order by event date
+		$args['meta_key'] = 'event_start_date';
+		$args['order']    = 'ASC';
+		$args['orderby']  = 'meta_value';
+
+		// Filter out dates ater today
+		$args['meta_query'] = array(
+			array(
+				'key'     => 'event_start_date',
+				'value'   => date( 'Ymd' ),
+				'compare' => '>',
+			),
+		);
+	}
+
 	// Add query arg for multiple taxonomies
 	if ( ! empty( $issues ) && isset( $issues ) && ! empty( $types ) && isset( $types ) ) {
 		$args['tax_query']['relation'] = 'AND';

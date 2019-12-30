@@ -28,7 +28,7 @@ $blocks = parse_blocks( $post->post_content );
 
 	<div class="row max-width">
 		<footer class="entry-footer">
-			<h2 class="entry-footer-title font-weight-600">Related</h2>
+			<h2 class="entry-footer-title font-weight-600"><?php esc_html_e( 'Related', 'itsa-theme' ); ?></h2>
 		</footer><!-- .entry-footer -->
 	</div><!-- .row -->
 </article><!-- #post-<?php the_ID(); ?> -->

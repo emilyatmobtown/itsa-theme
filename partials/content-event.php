@@ -24,9 +24,11 @@ if ( empty( $header_image_url ) ) {
 	$classes[] = 'block-style-solid';
 }
 
-if ( ! is_singular( 'news' ) ) {
-	$terms     = get_the_terms( $post->ID, 'news-type' );
-	$term_name = ( ! empty( $terms && isset( $terms ) ) ) ? $terms[0]->name : itsa_get_tax_plural_label( 'news' );
+if ( ! is_singular( 'event' ) ) {
+	$terms     = get_the_terms( $post->ID, 'event-type' );
+	$term_name = ( ! empty( $terms && isset( $terms ) ) ) ? $terms[0]->name : itsa_get_tax_plural_label( 'event' );
+} else {
+	$registration_url = get_field( 'event_url' );
 }
 ?>
 
@@ -49,11 +51,15 @@ if ( ! is_singular( 'news' ) ) {
 	<?php } ?>
 
 	<div class="entry-content">
-		<?php if ( is_singular( 'news' ) ) { ?>
+		<?php if ( is_singular( 'event' ) ) { ?>
 			<?php the_content(); ?>
 		<?php } else { ?>
 			<?php itsa_the_excerpt( '', true, true ); ?>
-			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><button class="has-arrow-right"><?php esc_html_e( 'Read More', 'itsa-theme' ); ?></button></a>
+			<?php if ( ! empty( $registration_url ) ) { ?>
+				<a href="<?php echo esc_url( $registration_url ); ?>" title="Register"><button class="has-arrow-right"><?php esc_html_e( 'Register', 'itsa-theme' ); ?></button></a>
+			<?php } else { ?>
+				<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><button class="has-arrow-right"><?php esc_html_e( 'Read More', 'itsa-theme' ); ?></button></a>
+			<?php } ?>
 		<?php } ?>
 	</div><!-- .entry-content -->
 

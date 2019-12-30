@@ -214,6 +214,10 @@
 		font-size: var(--text-md);
 		line-height: var(--body-line-height);
 	}
+
+	.post-grid-block .item-grid .item .item-title {
+		color: var(--color-white);
+	}
 }
 
 .section-title {

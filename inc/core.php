@@ -30,6 +30,7 @@ function setup() {
 	add_action( 'wp_head', $n( 'add_manifest' ), 10 );
 	add_action( 'init', $n( 'add_image_sizes' ) );
 
+	add_filter( 'wp_kses_allowed_html', $n( 'add_allowed_tags' ) );
 	add_filter( 'image_size_names_choose', $n( 'add_image_size_names' ) );
 	add_filter( 'script_loader_tag', $n( 'script_loader_tag' ), 10, 2 );
 }
@@ -55,7 +56,7 @@ function theme_setup() {
 	add_theme_support( 'align-wide' );
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'title-tag' );
-	add_theme_support( 'post-thumbnails' );
+	// add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'post-formats', array( 'quote' ) );
 	add_theme_support(
 		'html5',
@@ -426,4 +427,19 @@ function add_image_size_names( $sizes ) {
 			'itsa-section-background' => __( 'ITSA Section Background' ),
 		)
 	);
+}
+
+/**
+ * Add tags needed for this theme to the list allowed for sanitization
+ *
+ * @param  array $tags
+ * @return array
+ * @since  0.1.0
+ */
+function add_allowed_tags( $tags ) {
+	$tags['time'] = array(
+		'datetime' => true,
+	);
+
+	return $tags;
 }
