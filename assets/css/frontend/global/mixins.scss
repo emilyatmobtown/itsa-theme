@@ -20,3 +20,50 @@
 	background: var(--color-grid-item-background-fallback) #{$important};
 	background: var(--color-grid-item-background) #{$important};
 }
+
+@mixin gradient-background-alt( $i: false ) {
+	$important: if($i, "!important", "");
+	background: var(--color-grid-item-background-alt-fallback) #{$important};
+	background: var(--color-grid-item-background-alt) #{$important};
+}
+
+@mixin has-overlay {
+	display: block;
+	position: relative;
+
+	> * {
+		position: relative;
+		z-index: 5;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: var(--color-section-overlay-background-fallback);
+		background: var(--color-section-overlay-background);
+	}
+}
+
+@mixin has-overlay-horizontal {
+
+	@include has-overlay;
+
+	&::before {
+		background: var(--color-section-overlay-background-fallback);
+		background: var(--color-section-overlay-background-horizontal);
+	}
+}
+
+@mixin has-overlay-horizontal-reverse {
+
+	@include has-overlay;
+
+	&::before {
+		background: var(--color-section-overlay-background-fallback);
+		background: var(--color-section-overlay-background-horizontal-reverse);
+	}
+}

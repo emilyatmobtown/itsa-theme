@@ -78,8 +78,8 @@
                     "key": "field_5e0a7c7737f8e",
                     "label": "Icon",
                     "name": "icon",
-                    "type": "image",
-                    "instructions": "Select or upload an icon to appear with this block.",
+                    "type": "select",
+                    "instructions": "Select an icon to appear with this block.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -87,16 +87,20 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
-                    "preview_size": "medium",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": ""
+                    "choices": {
+                        "icon-style-connected-vehicle": "Connected Vehicle",
+                        "icon-style-automated-vehicle": "Automated Vehicle",
+                        "icon-style-cybersecurity": "Cybersecurity",
+                        "icon-mobility-on-demand": "Mobility on Demand",
+                        "icon-intelligent-infrastructure": "Intelligent Infrastructure"
+                    },
+                    "default_value": [],
+                    "allow_null": 1,
+                    "multiple": 0,
+                    "ui": 1,
+                    "ajax": 1,
+                    "return_format": "value",
+                    "placeholder": ""
                 }
             ]
         }
@@ -118,5 +122,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1577745620
+    "modified": 1578180413
 }

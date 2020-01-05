@@ -71,6 +71,11 @@
 	@extend %flex-between;
 	@extend %small-caps;
 	position: relative;
+	margin-bottom: var(--component-padding);
+
+	&:empty {
+		display: none;
+	}
 
 	> * {
 		flex: 0 100%;

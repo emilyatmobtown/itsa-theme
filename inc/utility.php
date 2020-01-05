@@ -52,9 +52,16 @@ function get_acf_post_id() {
  *
  * @param array  $blocks
  * @param string $blockname
+ * @param int | null $post_id
  * @return bool
  */
-function has_block( $blocks = array(), $blockname = '' ) {
+function has_block( $blocks = array(), $blockname = '', $post_id = null ) {
+	global $post;
+
+	if ( empty( $post_id ) ) {
+		$post_id = $post->ID;
+	}
+
 	foreach ( $blocks as $block ) {
 
 		if ( ! isset( $block['blockName'] ) ) {
@@ -65,7 +72,7 @@ function has_block( $blocks = array(), $blockname = '' ) {
 			return true;
 		} elseif ( isset( $block['innerBlocks'] ) && ! empty( $block['innerBlocks'] ) ) {
 			// Scan inner blocks
-			$inner_block = has_block( $block['innerBlocks'], $blockname );
+			$inner_block = has_block( $block['innerBlocks'], $blockname, $post_id );
 			if ( $inner_block ) {
 				return true;
 			}
@@ -80,9 +87,16 @@ function has_block( $blocks = array(), $blockname = '' ) {
  *
  * @param array  $blocks
  * @param string $blockname
+ * @param int | null $post_id
  * @return array
  */
-function get_block( $blocks = array(), $blockname = '' ) {
+function get_block( $blocks = array(), $blockname = '', $post_id = null ) {
+	global $post;
+
+	if ( empty( $post_id ) ) {
+		$post_id = $post->ID;
+	}
+
 	foreach ( $blocks as $block ) {
 
 		if ( ! isset( $block['blockName'] ) ) {
@@ -93,7 +107,7 @@ function get_block( $blocks = array(), $blockname = '' ) {
 			return $block;
 		} elseif ( isset( $block['innerBlocks'] ) && ! empty( $block['innerBlocks'] ) ) {
 			// Scan inner blocks
-			$inner_block = get_block( $block['innerBlocks'], $blockname );
+			$inner_block = get_block( $block['innerBlocks'], $blockname, $post_id );
 			if ( ! empty( $inner_block ) && isset( $inner_block ) ) {
 				return $inner_block;
 			}

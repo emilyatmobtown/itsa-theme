@@ -53,7 +53,7 @@ if ( ! is_singular( 'advocacy-material' ) ) {
 			<?php the_content(); ?>
 		<?php } else { ?>
 			<?php itsa_the_excerpt( '', true ); ?>
-			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><button class="has-arrow-right"><?php esc_html_e( 'Read More', 'itsa-theme' ); ?></button></a>
+			<?php itsa_the_post_button(); ?>
 		<?php } ?>
 	</div><!-- .entry-content -->
 

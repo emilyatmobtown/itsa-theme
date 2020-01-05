@@ -3,6 +3,8 @@
 .quotes-slider-block {
 
 	blockquote {
-		padding: 0 0 0 var(--space-lg);
+		padding-top: 0;
+		padding-bottom: 0;
+		padding-left: var(--space-lg);
 	}
 }

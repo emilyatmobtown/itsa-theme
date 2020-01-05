@@ -110,6 +110,24 @@ function register_blocks() {
 
 	acf_register_block_type(
 		array(
+			'name'            => 'featured-post-grid',
+			// translators: This is the name of the Featured Post Grid block.
+			'title'           => __( 'Featured Post Grid', 'itsa-theme' ),
+			'render_template' => 'partials/block-featured-post-grid.php',
+			'category'        => 'itsa-blocks',
+			'icon'            => 'screenoptions',
+			'mode'            => 'auto',
+			'keywords'        => array( 'posts', 'featured', 'row' ),
+			'supports'        => array(
+				'align'           => false,
+				'customClassName' => false,
+				'html'            => false,
+				'anchor'          => true,
+			),
+		)
+	);
+	acf_register_block_type(
+		array(
 			'name'            => 'post-slider',
 			// translators: This is the name of the Post Slider block.
 			'title'           => __( 'Post Slider', 'itsa-theme' ),

@@ -55,11 +55,7 @@ if ( ! is_singular( 'event' ) ) {
 			<?php the_content(); ?>
 		<?php } else { ?>
 			<?php itsa_the_excerpt( '', true, true ); ?>
-			<?php if ( ! empty( $registration_url ) ) { ?>
-				<a href="<?php echo esc_url( $registration_url ); ?>" title="Register"><button class="has-arrow-right"><?php esc_html_e( 'Register', 'itsa-theme' ); ?></button></a>
-			<?php } else { ?>
-				<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><button class="has-arrow-right"><?php esc_html_e( 'Read More', 'itsa-theme' ); ?></button></a>
-			<?php } ?>
+			<?php itsa_the_post_button(); ?>
 		<?php } ?>
 	</div><!-- .entry-content -->
 

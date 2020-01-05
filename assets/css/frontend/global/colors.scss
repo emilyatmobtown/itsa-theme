@@ -47,8 +47,8 @@
 	--color-nav-background-solid: var(--color-primary-dark);
 	--color-nav-submenu-background: linear-gradient(0deg, rgba(0, 26, 64, 0.95) 0%, rgba(0, 19, 51, 0.95) 100%);
 	--color-nav-submenu-background-fallback: rgba(0, 26, 64, 0.95);
-	--color-footer-background: var(--g-midnight);
-	--color-footer-background-fallback: var(--color-primary);
+	--color-footer-background: var(--color-grid-item-background-alt);
+	--color-footer-background-fallback: var(--color-grid-item-background-alt-fallback);
 	--color-footer-link: var(--color-white);
 	--color-footer-link-alt: var(--color-accent);
 	--color-bullet: var(--color-white);
@@ -61,6 +61,8 @@
 	--color-cover-background-fallback: rgba(0, 26, 64, 0.44);
 	--color-grid-item-background: linear-gradient(0deg, var(--color-secondary-dark) 0%, var(--color-secondary) 100%);
 	--color-grid-item-background-fallback: var(--color-secondary);
+	--color-grid-item-background-alt: linear-gradient(0deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+	--color-grid-item-background-alt-fallback: var(--color-primary);
 	--color-section-overlay-background: linear-gradient(180deg, hsla(0, 0%, 0%, 0) 0%, hsla(208, 100%, 4%, 0.54) 30%, hsla(208, 100%, 5%, 0.83) 100%);
 	--color-section-overlay-background-fallback: hsla(208, 100%, 4%, 0.54);
 	--color-section-overlay-background-horizontal: linear-gradient(90deg, hsla(208, 100%, 5%, 1) 0%, hsla(208, 100%, 5%, 1) 30%, hsla(208, 100%, 4%, 0.54) 50%, hsla(0, 0%, 0%, 0) 80%);

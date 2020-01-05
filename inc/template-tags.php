@@ -42,21 +42,128 @@ function itsa_the_social_share() {
 }
 
 /**
- * Get HTML for post meta
+ * Get HTML for button for more info on a post. Uses registration URL if the post
+ * is an event and one exists. Otherwise uses the permalink.
  *
+ * @param  WP_POST $the_post
  * @return string
  * @since 0.1.0
  */
-function itsa_get_entry_meta() {
+function itsa_get_post_button( $the_post = null ) {
 	global $post;
-	$posttype = get_post_type( $post->ID );
 
-	$html = '<div class="row max-width">
-				<div class="entry-meta">';
+	if ( empty( $the_post ) || ! isset( $the_post ) ) {
+		$the_post = $post;
+	}
+	$html = '';
+
+	$posttype = get_post_type( $the_post->ID );
+	if ( 'event' === $posttype ) {
+		$registration_url = get_field( 'event_url' );
+	}
+
+	if ( ! empty( $registration_url ) ) {
+		$html .= '<a href="' . $registration_url . '" title="Register"><button class="has-arrow-right">';
+		$html .= __( 'Register', 'itsa-theme' );
+		$html .= '</button></a>';
+	} else {
+		$html .= '<a href="' . get_the_permalink( $the_post->ID ) . '" title="' . get_the_title( $the_post->ID ) . '"><button class="has-arrow-right">';
+		$html .= __( 'Read More', 'itsa-theme' );
+		$html .= '</button></a>';
+	}
+
+	return $html;
+}
+
+/**
+ * Display HTML for button for more info on a post. Uses registration URL if the
+ * post is an event and one exists. Otherwise uses the permalink.
+ *
+ * @param  WP_POST $the_post
+ * @return string
+ * @since 0.1.0
+ */
+function itsa_the_post_button( $the_post = null ) {
+	echo wp_kses_post( itsa_get_post_button( $the_post ) );
+}
+
+/**
+ * Get HTML for post type and issue taxonomy
+ *
+ * @param  WP_POST $the_post
+ * @return string
+ * @since 0.1.0
+ */
+function itsa_get_type_and_term( $the_post = null ) {
+	global $post;
+
+	if ( empty( $the_post ) || ! isset( $the_post ) ) {
+		$the_post = $post;
+	}
+
+	$html = '';
+
+	$posttype = get_post_type( $the_post->ID );
+	$terms    = get_the_terms( $the_post, $posttype . '-type' );
+
+	if ( ! empty( $terms ) && isset( $terms ) ) {
+		// Display the first term only
+		$the_type = $terms[0]->name;
+	} else {
+		$the_type = itsa_get_post_type_plural_label( $posttype );
+	}
+
+	$issues = get_the_terms( $the_post, 'issue' );
+	if ( ! empty( $issues ) && isset( $issues ) ) {
+		// Display the first issue only
+		$issue = $issues[0]->name;
+	}
+
+	if ( ! ( empty( $the_type ) && empty( $issue ) ) ) {
+		$html .= '<span class="entry-tag">' . $the_type;
+
+		if ( ! empty( $issue ) ) {
+			$html .= ' | ' . $issue;
+		}
+
+		$html .= '</span>';
+	}
+
+	return $html;
+}
+
+/**
+ * Display HTML for post type and issue taxonomy
+ *
+ * @param  WP_POST $the_post
+ * @return string
+ * @since 0.1.0
+ */
+function itsa_the_type_and_term( $the_post = null ) {
+	echo wp_kses_post( itsa_get_type_and_term( $the_post ) );
+}
+
+/**
+ * Get HTML for post meta
+ *
+ * @param  WP_POST $the_post
+ * @return string
+ * @since 0.1.0
+ */
+function itsa_get_entry_meta( $the_post = null ) {
+	global $post;
+
+	if ( empty( $the_post ) || ! isset( $the_post ) ) {
+		$the_post = $post;
+	}
+
+	$posttype = get_post_type( $the_post->ID );
+
+	$html = '<div class="entry-meta">';
 
 	if ( is_singular( $posttype ) ) {
 		// Get the event type, news type, or advocacy material type
-		$terms = get_the_terms( $post, $posttype . '-type' );
+		$terms = get_the_terms( $the_post, $posttype . '-type' );
 		if ( ! empty( $terms ) && isset( $terms ) ) {
 			// Display the first term only
 			$term  = $terms[0]->name;
@@ -66,33 +173,33 @@ function itsa_get_entry_meta() {
 		}
 	}
 
-	if ( has_term( '', 'issue', $post ) && is_singular( $posttype ) ) {
+	if ( has_term( '', 'issue', $the_post ) && is_singular( $posttype ) ) {
 		$html .= '<div class="entry-meta-text">
 					<span>' . __( 'Issues', 'itsa-theme' ) . ': </span>';
-		$html .= get_the_term_list( $post->ID, 'issue', '<ul class="entry-categories"><li class="entry-category" rel="category tag">', ', </li><li class="entry-category">', '</li></ul>' );
+		$html .= get_the_term_list( $the_post->ID, 'issue', '<ul class="entry-categories"><li class="entry-category" rel="category tag">', ', </li><li class="entry-category">', '</li></ul>' );
 		$html .= '</div><!-- .entry-meta-text -->';
 	}
 
 	if ( 'news' === $posttype ) {
-		$html .= '<time class="entry-meta-text" datetime="' . get_the_date( 'c', $post->ID ) . '"  itemprop="datePublished">' . get_the_date( '', $post->ID ) . '</time>';
+		$html .= '<time class="entry-meta-text" datetime="' . get_the_date( 'c', $the_post->ID ) . '"  itemprop="datePublished">' . get_the_date( '', $the_post->ID ) . '</time>';
 	}
 
 	if ( 'event' === $posttype ) {
 		$html .= '<div class="entry-meta-event">';
 
-		$start_date = get_field( 'event_start_date', $post->ID );
-		$end_date   = get_field( 'event_end_date', $post->ID );
-		$start_time = get_field( 'event_start_time', $post->ID );
-		$end_time   = get_field( 'event_end_time', $post->ID );
-		$timezone   = get_field( 'event_timezone', $post->ID );
+		$start_date = get_field( 'event_start_date', $the_post->ID );
+		$end_date   = get_field( 'event_end_date', $the_post->ID );
+		$start_time = get_field( 'event_start_time', $the_post->ID );
+		$end_time   = get_field( 'event_end_time', $the_post->ID );
+		$timezone   = get_field( 'event_timezone', $the_post->ID );
 
-		$location = get_field( 'event_location', $post->ID );
-		if ( ! has_term( 'webinars', 'event-type', $post ) ) {
+		$location = get_field( 'event_location', $the_post->ID );
+		if ( ! has_term( 'webinars', 'event-type', $the_post ) ) {
 			// translators: This is the label that appears when no location is set.
 			$location = empty( $location ) ? __( 'Location TBD', 'itsa-theme' ) : $location;
 		}
 
-		$presenter = get_field( 'event_presenter', $post->ID );
+		$presenter = get_field( 'event_presenter', $the_post->ID );
 
 		if ( ! empty( $start_date ) ) {
 			$html .= '<span class="entry-meta-text display-block">' . itsa_get_date_span( $start_date, $end_date );
@@ -116,10 +223,20 @@ function itsa_get_entry_meta() {
 		$html .= '</div><!-- .entry-meta-event -->';
 	}
 
-	$html .= '</div><!-- .entry-meta -->
-			</div><!-- .row -->';
+	$html .= '</div><!-- .entry-meta -->';
 
 	return $html;
+}
+
+/**
+ * Display HTML for post meta
+ *
+ * @param  WP_POST $the_post
+ * @return string
+ * @since 0.1.0
+ */
+function itsa_the_entry_meta( $the_post = null ) {
+	echo wp_kses_post( itsa_get_entry_meta( $the_post ) );
 }
 
 /**
@@ -244,40 +361,38 @@ function itsa_get_time_span( $start = '', $end = '', $timezone = '' ) {
 }
 
 /**
- * Display HTML for post meta
- *
- * @return string
- * @since 0.1.0
- */
-function itsa_the_entry_meta() {
-	echo wp_kses_post( itsa_get_entry_meta() );
-}
-
-/**
  * Get HTML for post excerpt. If not excerpt exists, then extract excerpt from
  * the first paragraph block. Optionally, include the header if there's a
  * header block;
  *
+ * @param  int $length
+ * @param  bool $with_title
+ * @param  bool $with_entry_meta
+ * @param  WP_POST | null $the_post
  * @return string
  * @since 0.1.0
  */
-function itsa_get_excerpt( $length, $with_title = false, $with_entry_meta = false ) {
+function itsa_get_excerpt( $length, $with_title = false, $with_entry_meta = false, $the_post = null ) {
 	global $post;
+
+	if ( empty( $the_post ) || ! isset( $the_post ) ) {
+		$the_post = $post;
+	}
 
 	if ( empty( $length ) ) {
 		$length = 240;
 	}
 
 	$excerpt     = '';
-	$has_excerpt = has_excerpt( $post->ID );
+	$has_excerpt = has_excerpt( $the_post->ID );
 
 	// Only parse blocks if we need to
-	if ( $has_excerpt || $with_title ) {
-		$blocks = parse_blocks( $post->post_content );
+	if ( ( ! $has_excerpt ) || $with_title ) {
+		$blocks = parse_blocks( $the_post->post_content );
 	}
 
 	if ( $with_title ) {
-		$header_block = Utility\get_block( $blocks, 'acf/header' );
+		$header_block = Utility\get_block( $blocks, 'acf/header', $the_post->ID );
 
 		if ( ! empty( $header_block ) && isset( $header_block ) ) {
 			$excerpt .= render_block( $header_block );
@@ -285,11 +400,11 @@ function itsa_get_excerpt( $length, $with_title = false, $with_entry_meta = fals
 	}
 
 	if ( $with_entry_meta ) {
-		$excerpt .= itsa_get_entry_meta();
+		$excerpt .= itsa_get_entry_meta( $the_post );
 	}
 
 	if ( false === $has_excerpt ) {
-		$paragraph_block = Utility\get_block( $blocks, 'core/paragraph' );
+		$paragraph_block = Utility\get_block( $blocks, 'core/paragraph', $the_post->ID );
 
 		if ( ! empty( $paragraph_block ) && isset( $paragraph_block ) ) {
 			// Render paragraph block
@@ -306,7 +421,7 @@ function itsa_get_excerpt( $length, $with_title = false, $with_entry_meta = fals
 			$excerpt .= '<p>' . $text . '&hellip;</p>';
 		}
 	} else {
-		$excerpt .= '<p>' . get_the_excerpt( $post->ID ) . '</p>';
+		$excerpt .= '<p>' . get_the_excerpt( $the_post->ID ) . '</p>';
 	}
 
 	return $excerpt;
@@ -316,11 +431,15 @@ function itsa_get_excerpt( $length, $with_title = false, $with_entry_meta = fals
 * Display HTML for post excerpt using first paragraph block. Optionally, include
 * the title if there's a header block;
  *
+ * @param  int $length
+ * @param  bool $with_title
+ * @param  bool $with_entry_meta
+ * @param  WP_POST | null $the_post
  * @return string
  * @since 0.1.0
  */
-function itsa_the_excerpt( $length, $with_title = false, $with_entry_meta = false ) {
-	echo wp_kses_post( itsa_get_excerpt( $length, $with_title, $with_entry_meta ) );
+function itsa_the_excerpt( $length, $with_title = false, $with_entry_meta = false, $the_post = null ) {
+	echo wp_kses_post( itsa_get_excerpt( $length, $with_title, $with_entry_meta, $the_post ) );
 }
 
 /**

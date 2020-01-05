@@ -21,27 +21,28 @@ if ( is_admin() && ! have_rows( 'content_blocks' ) ) {
 				<?php
 				while ( have_rows( 'content_blocks' ) ) {
 					the_row();
-					$the_title = get_sub_field( 'title' );
-					$text      = get_sub_field( 'text' );
-					$the_link  = get_sub_field( 'link' );
-					$icon      = get_sub_field( 'icon' );
+					$the_title  = get_sub_field( 'title' );
+					$text       = get_sub_field( 'text' );
+					$the_link   = get_sub_field( 'link' );
+					$icon_style = get_sub_field( 'icon' );
 
 					if ( ! empty( $the_title ) || ! empty( $text ) ) {
 						?>
 
-						<article class="item has-background has-overlay block-style-solid">
+						<article class="item has-background has-overlay block-style-solid <?php echo esc_attr( $icon_style ); ?>">
 
-						<?php if ( ! empty( $the_title ) ) { ?>
-							<h2 class="section-title"><?php echo esc_html( $the_title ); ?></h2>
-						<?php } ?>
+							<?php if ( ! empty( $the_title ) ) { ?>
+								<h2 class="font-weight-600"><?php echo esc_html( $the_title ); ?></h2>
+							<?php } ?>
 
-						<?php if ( ! empty( $text ) ) { ?>
-							<p><?php echo esc_html( $text ); ?></p>
-						<?php } ?>
+							<?php if ( ! empty( $text ) ) { ?>
+								<p><?php echo esc_html( $text ); ?></p>
+							<?php } ?>
 
-						<?php if ( ! empty( $the_link ) ) { ?>
-							<a href="<?php echo esc_url( $the_link['url'] ); ?>" title="<?php echo esc_url( $the_link['title'] ); ?>"><button class="has-arrow-right"><?php esc_html_e( 'Learn More', 'itsa-theme' ); ?></button></a>
-						<?php } ?>
+							<?php if ( ! empty( $the_link ) ) { ?>
+								<a href="<?php echo esc_url( $the_link['url'] ); ?>" title="<?php echo esc_url( $the_link['title'] ); ?>"><button class="has-arrow-right"><?php esc_html_e( 'Learn More', 'itsa-theme' ); ?></button></a>
+							<?php } ?>
+
 						</article>
 
 						<?php

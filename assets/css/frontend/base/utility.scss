@@ -4,6 +4,10 @@
 	height: auto;
 }
 
+.no-max-width {
+	max-width: none !important;
+}
+
 .h-centered {
 	position: absolute;
 	transform: translateX(-50%);
