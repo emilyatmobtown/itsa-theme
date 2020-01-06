@@ -102,7 +102,7 @@ if ( is_admin() && empty( $posttype ) ) {
 						<?php } else { ?>
 							<h2 class="section-title"><?php echo esc_attr( $the_title ); ?></h2>
 						<?php } ?>
-						<a class="section-link more-link has-arrow has-arrow-right">See All <span class="show-md"><?php echo esc_attr( ucwords( $posttype ) ); ?></span></a>
+						<a class="section-link more-link has-arrow has-arrow-right">See All <span class="show-md"><?php echo esc_attr( itsa_get_post_type_plural_label( $posttype ) ); ?></span></a>
 					</header><!-- .section-header -->
 				<?php } ?>
 

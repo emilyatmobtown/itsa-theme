@@ -53,14 +53,14 @@ function register_blocks() {
 
 	acf_register_block_type(
 		array(
-			'name'            => 'header',
-			// translators: This is the name of the Header block.
-			'title'           => __( 'Header Block', 'itsa-theme' ),
-			'render_template' => 'partials/block-header.php',
+			'name'            => 'call-to-action',
+			// translators: This is the name of the Call to Action block.
+			'title'           => __( 'Call to Action Block', 'itsa-theme' ),
+			'render_template' => 'partials/block-call-to-action.php',
 			'category'        => 'itsa-blocks',
-			'icon'            => 'format-image',
+			'icon'            => 'thumbs-up',
 			'mode'            => 'auto',
-			'keywords'        => array( 'hero', 'banner', 'heading' ),
+			'keywords'        => array( 'call to action', 'membership', 'jobs' ),
 			'supports'        => array(
 				'align'           => false,
 				'customClassName' => false,
@@ -91,6 +91,82 @@ function register_blocks() {
 
 	acf_register_block_type(
 		array(
+			'name'            => 'featured-post-grid',
+			// translators: This is the name of the Featured Post Grid block.
+			'title'           => __( 'Featured Post Grid', 'itsa-theme' ),
+			'render_template' => 'partials/block-featured-post-grid.php',
+			'category'        => 'itsa-blocks',
+			'icon'            => 'screenoptions',
+			'mode'            => 'auto',
+			'keywords'        => array( 'posts', 'featured', 'row' ),
+			'supports'        => array(
+				'align'           => false,
+				'customClassName' => false,
+				'html'            => false,
+				'anchor'          => true,
+			),
+		)
+	);
+
+	acf_register_block_type(
+		array(
+			'name'            => 'header',
+			// translators: This is the name of the Header block.
+			'title'           => __( 'Header Block', 'itsa-theme' ),
+			'render_template' => 'partials/block-header.php',
+			'category'        => 'itsa-blocks',
+			'icon'            => 'format-image',
+			'mode'            => 'auto',
+			'keywords'        => array( 'hero', 'banner', 'heading' ),
+			'supports'        => array(
+				'align'           => false,
+				'customClassName' => false,
+				'html'            => false,
+				'anchor'          => true,
+			),
+		)
+	);
+
+	acf_register_block_type(
+		array(
+			'name'            => 'member-logos',
+			// translators: This is the name of the Member Logo block.
+			'title'           => __( 'Member Logo Block', 'itsa-theme' ),
+			'render_template' => 'partials/block-member-logos.php',
+			'category'        => 'itsa-blocks',
+			'icon'            => 'images-alt2',
+			'mode'            => 'auto',
+			'keywords'        => array( 'members', 'logos' ),
+			'supports'        => array(
+				'align'           => false,
+				'customClassName' => false,
+				'html'            => false,
+				'anchor'          => true,
+			),
+		)
+	);
+
+	acf_register_block_type(
+		array(
+			'name'            => 'partner-info',
+			// translators: This is the name of the Partner Info block.
+			'title'           => __( 'Partner Info Block', 'itsa-theme' ),
+			'render_template' => 'partials/block-partner-info.php',
+			'category'        => 'itsa-blocks',
+			'icon'            => 'images-alt2',
+			'mode'            => 'auto',
+			'keywords'        => array( 'partners', 'coalition', 'alliance' ),
+			'supports'        => array(
+				'align'           => false,
+				'customClassName' => false,
+				'html'            => false,
+				'anchor'          => true,
+			),
+		)
+	);
+
+	acf_register_block_type(
+		array(
 			'name'            => 'post-grid',
 			// translators: This is the name of the Post Grid block.
 			'title'           => __( 'Post Grid', 'itsa-theme' ),
@@ -108,24 +184,6 @@ function register_blocks() {
 		)
 	);
 
-	acf_register_block_type(
-		array(
-			'name'            => 'featured-post-grid',
-			// translators: This is the name of the Featured Post Grid block.
-			'title'           => __( 'Featured Post Grid', 'itsa-theme' ),
-			'render_template' => 'partials/block-featured-post-grid.php',
-			'category'        => 'itsa-blocks',
-			'icon'            => 'screenoptions',
-			'mode'            => 'auto',
-			'keywords'        => array( 'posts', 'featured', 'row' ),
-			'supports'        => array(
-				'align'           => false,
-				'customClassName' => false,
-				'html'            => false,
-				'anchor'          => true,
-			),
-		)
-	);
 	acf_register_block_type(
 		array(
 			'name'            => 'post-slider',
@@ -196,44 +254,6 @@ function register_blocks() {
 			'icon'            => 'star-filled',
 			'mode'            => 'auto',
 			'keywords'        => array( 'slider', 'priority' ),
-			'supports'        => array(
-				'align'           => false,
-				'customClassName' => false,
-				'html'            => false,
-				'anchor'          => true,
-			),
-		)
-	);
-
-	acf_register_block_type(
-		array(
-			'name'            => 'call-to-action',
-			// translators: This is the name of the Call to Action block.
-			'title'           => __( 'Call to Action Block', 'itsa-theme' ),
-			'render_template' => 'partials/block-call-to-action.php',
-			'category'        => 'itsa-blocks',
-			'icon'            => 'thumbs-up',
-			'mode'            => 'auto',
-			'keywords'        => array( 'call to action', 'membership', 'jobs' ),
-			'supports'        => array(
-				'align'           => false,
-				'customClassName' => false,
-				'html'            => false,
-				'anchor'          => true,
-			),
-		)
-	);
-
-	acf_register_block_type(
-		array(
-			'name'            => 'member-logos',
-			// translators: This is the name of the Member Logo block.
-			'title'           => __( 'Member Logo Block', 'itsa-theme' ),
-			'render_template' => 'partials/block-member-logos.php',
-			'category'        => 'itsa-blocks',
-			'icon'            => 'images-alt2',
-			'mode'            => 'auto',
-			'keywords'        => array( 'members', 'logos' ),
 			'supports'        => array(
 				'align'           => false,
 				'customClassName' => false,

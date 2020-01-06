@@ -51,8 +51,8 @@
 	--color-footer-background-fallback: var(--color-grid-item-background-alt-fallback);
 	--color-footer-link: var(--color-white);
 	--color-footer-link-alt: var(--color-accent);
-	--color-bullet: var(--color-white);
-	--color-bullet-active: rgba(229, 238, 245, 0.5);
+	--color-bullet: rgba(229, 238, 245, 0.5);
+	--color-bullet-active: var(--color-white);
 	--color-button-background: var(--color-accent);
 	--color-button-background-alt: var(--color-blizzard-blue);
 	--color-button-text: var(--color-primary);
@@ -67,6 +67,7 @@
 	--color-section-overlay-background-fallback: hsla(208, 100%, 4%, 0.54);
 	--color-section-overlay-background-horizontal: linear-gradient(90deg, hsla(208, 100%, 5%, 1) 0%, hsla(208, 100%, 5%, 1) 30%, hsla(208, 100%, 4%, 0.54) 50%, hsla(0, 0%, 0%, 0) 80%);
 	--color-section-overlay-background-horizontal-reverse: linear-gradient(-90deg, hsla(208, 100%, 5%, 1) 0%, hsla(208, 100%, 5%, 0.85) 30%, hsla(208, 100%, 4%, 0.65) 60%, hsla(0, 0%, 0%, 0) 90%);
+	--color-partner-overlay-background-lg: linear-gradient(180deg, hsla(0, 0%, 0%, 0.85) 0%, hsla(208, 100%, 5%, 0.85) 100%);
 
 	/* Solid colors */
 	--color-transparent: rgba(0, 0, 0, 0);

@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying the Featured ost Grid block
+ * Template part for displaying the Featured Post Grid block
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

@@ -401,6 +401,12 @@ function add_image_sizes() {
 			'height' => 640,
 			'crop'   => true,
 		),
+		array(
+			'name'   => 'itsa-partner-logo',
+			'width'  => 600,
+			'height' => 0,
+			'crop'   => false,
+		),
 	);
 
 	if ( ! empty( $sizes ) && isset( $sizes ) ) {
@@ -425,6 +431,8 @@ function add_image_size_names( $sizes ) {
 			'itsa-hero-image'         => __( 'ITSA Hero Image' ),
 			// translators: This is the name of the custom image size for the ITSA Section Background.
 			'itsa-section-background' => __( 'ITSA Section Background' ),
+			// translators: This is the name of the custom image size for the ITSA Partner Logo.
+			'itsa-partner-logo'       => __( 'ITSA Partner Logo' ),
 		)
 	);
 }

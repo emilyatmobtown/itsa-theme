@@ -4,6 +4,10 @@
 	padding-bottom: var(--component-padding);
 	border-bottom: 1px solid var(--color-silver);
 
+	.slider {
+		margin-bottom: var(--component-padding);
+	}
+
 	.slides {
 
 		@include reset-list;

@@ -19,6 +19,10 @@
 		margin-right: auto;
 	}
 
+	> .row:last-child {
+		margin-bottom: 0;
+	}
+
 	ul,
 	ol {
 		padding-left: calc(var(--component-padding) + var(--space-lg));

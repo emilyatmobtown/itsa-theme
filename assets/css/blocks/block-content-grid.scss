@@ -56,8 +56,6 @@
 			flex-wrap: wrap;
 
 			.item {
-				display: flex;
-				flex-direction: column;
 				flex-basis: 100%;
 
 				&[class*="icon-style-"] {
@@ -76,14 +74,10 @@
 					padding-left: 0;
 					padding-right: 0;
 					flex: 0 1 auto;
-					width: 100%;
+				}
 
-					&:last-child {
-
-						display: flex;
-						align-items: flex-end;
-						flex-grow: 1;
-					}
+				> p:last-of-type {
+					flex-grow: 1;
 				}
 			}
 		}

@@ -27,6 +27,8 @@ module.exports = ( { file, options, env } ) => ( { /* eslint-disable-line */
 					'[readonly]',
 					'[disabled]',
 				],
+				tagSuffix:
+					':not(.button):not([class^="acf-"]):not(.link-url):not([class^="components-"]):not([class^="editor-"]):not([class^="block-"]):not([aria-owns]):not([id^="mceu_"])'
 			} : false,
 		// Minify style on production using cssano.
 		cssnano: 'production' === env ?

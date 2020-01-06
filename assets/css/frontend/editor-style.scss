@@ -218,6 +218,10 @@
 	.post-grid-block .item-grid .item .item-title {
 		color: var(--color-white);
 	}
+
+	input[type="checkbox"]:checked {
+		background: var(--color-white);
+	}
 }
 
 .editor-block-list__block-edit .inverse-color {

@@ -63,7 +63,9 @@ function itsa_get_post_button( $the_post = null ) {
 	}
 
 	if ( ! empty( $registration_url ) ) {
-		$html .= '<a href="' . $registration_url . '" title="Register"><button class="has-arrow-right">';
+		$html .= '<a href="' . $registration_url . '" title="';
+		$html .= __( 'Register', 'itsa-theme' );
+		$html .= '"><button class="has-arrow-right">';
 		$html .= __( 'Register', 'itsa-theme' );
 		$html .= '</button></a>';
 	} else {

@@ -22,6 +22,12 @@
 			background-image: url("../images/background-highway-streaks-sm.jpg");
 		}
 
+		&.block-style-blurred-lights {
+			padding-top: var(--space-xl);
+			background-color: var(--color-secondary-light);
+			background-image: url("../images/background-blurred-lights-sm.jpg");
+		}
+
 		&.block-style-solid {
 			background-color: var(--color-secondary-light);
 		}
@@ -77,6 +83,10 @@
 			&.block-style-highway-blur {
 				background-image: url("../images/background-highway-streaks-md.jpg");
 			}
+
+			&.block-style-blurred-lights {
+				background-image: url("../images/background-blurred-lights-md.jpg");
+			}
 		}
 	}
 }
@@ -100,6 +110,10 @@
 
 			&.block-style-highway-blur {
 				background-image: url("../images/background-highway-streaks-lg.jpg");
+			}
+
+			&.block-style-blurred-lights {
+				background-image: url("../images/background-blurred-lights-lg.jpg");
 			}
 		}
 	}
