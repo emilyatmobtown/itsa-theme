@@ -146,8 +146,8 @@
 		margin-bottom: var(--space-md);
 	}
 
-	ul,
-	ol {
+	ul:not([class^="acf-"]),
+	ol:not([class^="acf-"]) {
 		font-family: var(--font-primary);
 		font-size: var(--text-md);
 		line-height: var(--body-line-height);
@@ -161,7 +161,7 @@
 		}
 	}
 
-	ol {
+	ol:not([class^="acf-"]) {
 		list-style: decimal;
 	}
 

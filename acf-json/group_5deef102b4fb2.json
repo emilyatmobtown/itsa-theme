@@ -22,13 +22,46 @@
             "maxlength": ""
         },
         {
+            "key": "field_5e1a0801245d6",
+            "label": "Header Type",
+            "name": "header_type",
+            "type": "select",
+            "instructions": "Select the type of header to use. \"Featured Post\" will display the title, image, and excerpt form a selected post. \"Default\" will give the option to enter an optional tagline, background image and link.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "default": "Default",
+                "featured_post": "Featured Post"
+            },
+            "default_value": [],
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 1,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
             "key": "field_5deef157db75c",
             "label": "Tagline",
             "name": "tagline",
             "type": "text",
             "instructions": "Enter an optional tagline to appear below the title.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e1a0801245d6",
+                        "operator": "==",
+                        "value": "default"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -47,7 +80,15 @@
             "type": "image",
             "instructions": "Upload or select an optional background image. Additional optional fields for a tagline and a button will appear once an image is selected.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e1a0801245d6",
+                        "operator": "==",
+                        "value": "default"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -65,17 +106,18 @@
             "mime_types": "jpg, jpeg, png"
         },
         {
-            "key": "field_5defea53b4f06",
-            "label": "Button Text",
-            "name": "button_text",
-            "type": "text",
-            "instructions": "Enter text for an optional button.",
+            "key": "field_5e19f72c755d5",
+            "label": "Link",
+            "name": "link",
+            "type": "link",
+            "instructions": "Add an optional linked button.",
             "required": 0,
             "conditional_logic": [
                 [
                     {
-                        "field": "field_5deef110db75b",
-                        "operator": "!=empty"
+                        "field": "field_5e1a0801245d6",
+                        "operator": "==",
+                        "value": "default"
                     }
                 ]
             ],
@@ -84,28 +126,21 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "return_format": "array"
         },
         {
-            "key": "field_5defeb15b4f07",
-            "label": "Button Page Link",
-            "name": "button_page_link",
-            "type": "page_link",
-            "instructions": "Select a page to link to. To use a link not on this site, enter the URL under \"Button External URL\" below.",
+            "key": "field_5e1a0916245d7",
+            "label": "Featured Post",
+            "name": "featured_post",
+            "type": "relationship",
+            "instructions": "Select a post to feature.",
             "required": 0,
             "conditional_logic": [
                 [
                     {
-                        "field": "field_5defea53b4f06",
-                        "operator": "!=empty"
-                    },
-                    {
-                        "field": "field_5defeb9e8746e",
-                        "operator": "==empty"
+                        "field": "field_5e1a0801245d6",
+                        "operator": "==",
+                        "value": "featured_post"
                     }
                 ]
             ],
@@ -115,40 +150,20 @@
                 "id": ""
             },
             "post_type": [
-                "post",
-                "page"
+                "event",
+                "news",
+                "advocacy-material"
             ],
             "taxonomy": "",
-            "allow_null": 1,
-            "allow_archives": 0,
-            "multiple": 0
-        },
-        {
-            "key": "field_5defeb9e8746e",
-            "label": "Button External URL",
-            "name": "button_external_url",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5defea53b4f06",
-                        "operator": "!=empty"
-                    },
-                    {
-                        "field": "field_5defeb15b4f07",
-                        "operator": "==empty"
-                    }
-                ]
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
             ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "http:\/\/"
+            "elements": "",
+            "min": 0,
+            "max": 1,
+            "return_format": "object"
         }
     ],
     "location": [
@@ -168,5 +183,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1576084682
+    "modified": 1578765685
 }

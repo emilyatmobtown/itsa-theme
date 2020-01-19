@@ -25,8 +25,7 @@ if ( is_admin() && empty( $featured_post ) && empty( $additional_posts ) ) {
 
 				<?php
 				$classes          = 'featured-post-grid-outer-grid-item has-overlay';
-				$blocks           = parse_blocks( $featured_post->post_content );
-				$header_block     = Utility\get_block( $blocks, 'acf/header', $featured_post->ID );
+				$header_block     = Utility\get_block( 'acf/header', $featured_post );
 				$header_image_url = '';
 
 				if ( ! empty( $header_block ) && isset( $header_block ) ) {
@@ -42,7 +41,7 @@ if ( is_admin() && empty( $featured_post ) && empty( $additional_posts ) ) {
 					<article id="post-<?php echo esc_attr( $featured_post->ID ); ?>" class="featured-post-grid-item top-post">
 						<?php itsa_the_type_and_term( $featured_post ); ?>
 						<h3 class="featured-post-grid-title top-post-title"><?php echo esc_html( $featured_post->post_title ); ?></h3>
-						<?php itsa_the_excerpt( '', false, true, $featured_post ); ?>
+						<?php itsa_the_excerpt( null, false, true, $featured_post ); ?>
 						<?php itsa_the_post_button( $featured_post ); ?>
 					</article>
 

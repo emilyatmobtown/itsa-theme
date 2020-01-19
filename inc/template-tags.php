@@ -388,13 +388,8 @@ function itsa_get_excerpt( $length, $with_title = false, $with_entry_meta = fals
 	$excerpt     = '';
 	$has_excerpt = has_excerpt( $the_post->ID );
 
-	// Only parse blocks if we need to
-	if ( ( ! $has_excerpt ) || $with_title ) {
-		$blocks = parse_blocks( $the_post->post_content );
-	}
-
 	if ( $with_title ) {
-		$header_block = Utility\get_block( $blocks, 'acf/header', $the_post->ID );
+		$header_block = Utility\get_block( 'acf/header', $the_post );
 
 		if ( ! empty( $header_block ) && isset( $header_block ) ) {
 			$excerpt .= render_block( $header_block );
@@ -406,7 +401,7 @@ function itsa_get_excerpt( $length, $with_title = false, $with_entry_meta = fals
 	}
 
 	if ( false === $has_excerpt ) {
-		$paragraph_block = Utility\get_block( $blocks, 'core/paragraph', $the_post->ID );
+		$paragraph_block = Utility\get_block( 'core/paragraph', $the_post );
 
 		if ( ! empty( $paragraph_block ) && isset( $paragraph_block ) ) {
 			// Render paragraph block

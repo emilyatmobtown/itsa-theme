@@ -29,6 +29,30 @@
 	.hrule {
 		display: none;
 	}
+
+	article {
+		margin-top: var(--component-padding);
+
+		.entry-tag {
+			margin-bottom: var(--space-xs);
+			display: block;
+		}
+
+		.featured-post-title {
+
+			@extend .heading-4;
+			margin-top: 0;
+		}
+
+		.entry-meta {
+			margin-bottom: var(--space-sm);
+		}
+
+		a {
+			display: block;
+			margin-top: var(--space-sm);
+		}
+	}
 }
 
 @media (--bp-medium) {
@@ -37,6 +61,19 @@
 
 		&.wp-block-cover {
 			min-height: 750px;
+		}
+
+		article {
+
+			.entry-meta {
+				display: block;
+			}
+
+			p {
+				max-width: 66%;
+				margin-left: auto;
+				margin-right: auto;
+			}
 		}
 	}
 }

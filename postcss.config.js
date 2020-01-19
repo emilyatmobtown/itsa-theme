@@ -27,6 +27,17 @@ module.exports = ( { file, options, env } ) => ( { /* eslint-disable-line */
 					'[readonly]',
 					'[disabled]',
 				],
+				tags: [
+					'a',
+					'button',
+					'input',
+					'label',
+					'select',
+					'textarea',
+					'form',
+					'ul',
+					'li',
+				],
 				tagSuffix:
 					':not(.button):not([class^="acf-"]):not(.link-url):not([class^="components-"]):not([class^="editor-"]):not([class^="block-"]):not([aria-owns]):not([id^="mceu_"])'
 			} : false,

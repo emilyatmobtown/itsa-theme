@@ -33,6 +33,11 @@ function setup() {
 	add_filter( 'wp_kses_allowed_html', $n( 'add_allowed_tags' ) );
 	add_filter( 'image_size_names_choose', $n( 'add_image_size_names' ) );
 	add_filter( 'script_loader_tag', $n( 'script_loader_tag' ), 10, 2 );
+
+	add_action( 'wp_ajax_post-grid-filter', $n( 'post_grid_filter_ajax_handler' ) );
+	add_action( 'wp_ajax_nopriv_post-grid-filter', $n( 'post_grid_filter_ajax_handler' ) );
+	add_action( 'wp_ajax_post-grid-load-more', $n( 'post_grid_load_more_ajax_handler' ) );
+	add_action( 'wp_ajax_nopriv_post-grid-filter', $n( 'post_grid_load_more_ajax_handler' ) );
 }
 
 /**
@@ -198,13 +203,39 @@ function register_sidebars() {
  */
 function scripts() {
 
-	wp_enqueue_script(
-		'frontend',
-		ITSA_THEME_TEMPLATE_URL . '/dist/js/frontend.js',
-		[],
-		ITSA_THEME_VERSION,
-		true
-	);
+	if ( is_page( array( 'events', 'newsroom', 'advocacy-materials' ) ) ) {
+		// global $wp_query;
+
+		wp_enqueue_script(
+			'frontend',
+			ITSA_THEME_TEMPLATE_URL . '/dist/js/frontend.js',
+			array( 'jquery' ),
+			ITSA_THEME_VERSION,
+			true
+		);
+// var_dump( $wp_query->query_vars );
+		// wp_localize_script(
+		// 	'frontend',
+		// 	'postGridFilterArgs',
+		// 	array(
+		// 		'ajaxurl'      => admin_url( 'admin-ajax.php' ),
+		// 		'posts'        => wp_json_encode( $wp_query->query_vars ),
+		// 		'current_page' => $wp_query->query_vars['paged'] ? $wp_query->query_vars['paged'] : 1,
+		// 		'max_page'     => $wp_query->max_num_pages,
+		// 	)
+		// );
+
+		// wp_enqueue_script( 'frontend' );
+
+	} else {
+		wp_enqueue_script(
+			'frontend',
+			ITSA_THEME_TEMPLATE_URL . '/dist/js/frontend.js',
+			[],
+			ITSA_THEME_VERSION,
+			true
+		);
+	}
 
 	// wp_enqueue_script(
 	// 	'shared',
@@ -450,4 +481,95 @@ function add_allowed_tags( $tags ) {
 	);
 
 	return $tags;
+}
+
+/**
+ * Displays filtered posts in response to post-grid-filter AJAX request
+ *
+ * @since  0.1.0
+ */
+function post_grid_filter_ajax_handler() {
+	$on_page = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+	$args    = array(
+		'update_post_meta_cache' => false,
+		'posts_per_page'         => 3,
+		'paged'                  => $on_page,
+	);
+
+	if ( isset( $_POST['post-grid-filter-by-issue'] ) && ! empty( $_POST['post-grid-filter-by-issue'] ) ) {
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => 'issue',
+				'field'    => 'id',
+				'terms'    => array( $_POST['post-grid-filter-by-issue'] ),
+			),
+		);
+	}
+
+	if ( isset( $_POST['post-type'] ) ) {
+		$args['post_type'] = $_POST['post-type'];
+	}
+
+	// Add date ordering and filtering for event posts
+	if ( 'event' === $_POST['post-type'] ) {
+		// Order by event date
+		$args['meta_key'] = 'event_start_date';
+		$args['order']    = 'ASC';
+		$args['orderby']  = 'meta_value';
+
+		// Filter out dates ater today
+		$args['meta_query'] = array(
+			array(
+				'key'     => 'event_start_date',
+				'value'   => date( 'Ymd' ),
+				'compare' => '>',
+			),
+		);
+	}
+
+	$the_query = new \WP_Query( $args );
+	if ( $the_query->have_posts() ) {
+		ob_start();
+		while ( $the_query->have_posts() ) {
+			$the_query->the_post();
+			get_template_part( 'partials/content', $_POST['post-type'] );
+		}
+		$html = ob_get_contents();
+		ob_end_clean();
+	} else {
+		$html = 'No posts found';
+	}
+
+	echo wp_json_encode(
+		array(
+			'posts'      => wp_json_encode( $the_query->query_vars ),
+			'maxPage'    => $the_query->max_num_pages,
+			'foundPosts' => $the_query->found_posts,
+			'content'    => $html,
+		),
+		JSON_FORCE_OBJECT // Forces object to meet strict comparison of AJAX dataType
+	);
+
+	wp_die();
+}
+
+/**
+ * Loads next group of posts in response to post-grid-load-more AJAX request
+ *
+ * @since  0.1.0
+ */
+function post_grid_load_more_ajax_handler() {
+	$args                = json_decode( wp_specialchars_decode( stripslashes( $_POST['query'] ) ), true );
+	$args['paged']       = $_POST['page'] + 1;
+	$args['post_status'] = 'publish';
+
+	$the_query = new \WP_Query( $args );
+
+	if ( $the_query->have_posts() ) {
+		while ( $the_query->have_posts() ) {
+			$the_query->the_post();
+			get_template_part( 'partials/content', $_POST['type'] );
+		}
+	}
+	wp_die();
 }

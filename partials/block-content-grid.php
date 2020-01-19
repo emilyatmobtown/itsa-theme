@@ -23,7 +23,7 @@ if ( is_admin() && ! have_rows( 'content_blocks' ) ) {
 					the_row();
 					$the_title  = get_sub_field( 'title' );
 					$text       = get_sub_field( 'text' );
-					$the_link   = get_sub_field( 'link' );
+					$button     = get_sub_field( 'link' );
 					$icon_style = get_sub_field( 'icon' );
 
 					if ( ! empty( $the_title ) || ! empty( $text ) ) {
@@ -39,8 +39,8 @@ if ( is_admin() && ! have_rows( 'content_blocks' ) ) {
 								<p><?php echo esc_html( $text ); ?></p>
 							<?php } ?>
 
-							<?php if ( ! empty( $the_link ) ) { ?>
-								<a href="<?php echo esc_url( $the_link['url'] ); ?>" title="<?php echo esc_url( $the_link['title'] ); ?>"><button class="has-arrow-right"><?php esc_html_e( 'Learn More', 'itsa-theme' ); ?></button></a>
+							<?php if ( ! empty( $button ) ) { ?>
+								<a href="<?php echo esc_url( $button['url'] ); ?>" title="<?php echo esc_url( $button['title'] ); ?>"><button class="has-arrow-right"><?php esc_html_e( 'Learn More', 'itsa-theme' ); ?></button></a>
 							<?php } ?>
 
 						</article>

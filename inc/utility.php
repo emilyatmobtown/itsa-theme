@@ -50,16 +50,19 @@ function get_acf_post_id() {
  *
  * @link https://www.billerickson.net/building-a-header-block-in-wordpress/
  *
- * @param array  $blocks
  * @param string $blockname
- * @param int | null $post_id
+ * @param WP_POST $the_post
+ * @param array $blocks
  * @return bool
  */
-function has_block( $blocks = array(), $blockname = '', $post_id = null ) {
+function has_block( $blockname = '', $the_post = null, $blocks = [] ) {
 	global $post;
+	if ( empty( $the_post ) ) {
+		$the_post = $post;
+	}
 
-	if ( empty( $post_id ) ) {
-		$post_id = $post->ID;
+	if ( empty( $blocks ) ) {
+		$blocks = parse_blocks( $the_post->post_content );
 	}
 
 	foreach ( $blocks as $block ) {
@@ -72,7 +75,7 @@ function has_block( $blocks = array(), $blockname = '', $post_id = null ) {
 			return true;
 		} elseif ( isset( $block['innerBlocks'] ) && ! empty( $block['innerBlocks'] ) ) {
 			// Scan inner blocks
-			$inner_block = has_block( $block['innerBlocks'], $blockname, $post_id );
+			$inner_block = has_block( $blockname, null, $block['innerBlocks'] );
 			if ( $inner_block ) {
 				return true;
 			}
@@ -85,16 +88,20 @@ function has_block( $blocks = array(), $blockname = '', $post_id = null ) {
 /**
  * Get first matching block from array of blocks.
  *
- * @param array  $blocks
  * @param string $blockname
- * @param int | null $post_id
- * @return array
+ * @param WP_POST $the_post
+ * @param array $blocks
+ * @return array|null
  */
-function get_block( $blocks = array(), $blockname = '', $post_id = null ) {
+function get_block( $blockname = '', $the_post = null, $blocks = [] ) {
 	global $post;
 
-	if ( empty( $post_id ) ) {
-		$post_id = $post->ID;
+	if ( empty( $the_post ) ) {
+		$the_post = $post;
+	}
+
+	if ( empty( $blocks ) ) {
+		$blocks = parse_blocks( $the_post->post_content );
 	}
 
 	foreach ( $blocks as $block ) {
@@ -107,7 +114,7 @@ function get_block( $blocks = array(), $blockname = '', $post_id = null ) {
 			return $block;
 		} elseif ( isset( $block['innerBlocks'] ) && ! empty( $block['innerBlocks'] ) ) {
 			// Scan inner blocks
-			$inner_block = get_block( $block['innerBlocks'], $blockname, $post_id );
+			$inner_block = get_block( $blockname, null, $block['innerBlocks'] );
 			if ( ! empty( $inner_block ) && isset( $inner_block ) ) {
 				return $inner_block;
 			}
@@ -136,22 +143,34 @@ function get_header_image_id( $block ) {
 	return null;
 }
 
-function get_header_image_url( $block, $size = 'itsa-section-background' ) {
-	$header_image_url = '';
+/**
+ * Get header image URL from post.
+ *
+ * @param  WP_POST $the_post
+ * @return array
+ */
+function get_header_image_url( $the_post = null, $size = 'itsa-section-background' ) {
+	global $post;
+	if ( empty( $the_post ) ) {
+		$the_post = $post;
+	}
+
+	$url    = '';
+	$block  = get_block( 'acf/header', $the_post );
 
 	if ( ! empty( $block ) && isset( $block ) ) {
-		$header_image_id = get_header_image_id( $block );
+		$image_id = get_header_image_id( $block );
 
-		if ( is_int( $header_image_id ) ) {
-			$header_image_array = \wp_get_attachment_image_src( $header_image_id, $size );
+		if ( is_int( $image_id ) ) {
+			$image_array = \wp_get_attachment_image_src( $image_id, $size );
 		}
 
-		if ( ! empty( $header_image_array ) && isset( $header_image_array ) ) {
-			$header_image_url = $header_image_array[0];
+		if ( ! empty( $image_array ) && isset( $image_array ) ) {
+			$url = $image_array[0];
 		}
 	}
 
-	return $header_image_url;
+	return $url;
 }
 
 /**

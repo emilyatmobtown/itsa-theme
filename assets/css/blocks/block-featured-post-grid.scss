@@ -81,12 +81,15 @@
 
 @media (--bp-medium) {
 
-	.top-post {
+	.featured-post-grid-block {
 
-		p {
-			max-width: 66%;
-			margin-left: auto;
-			margin-right: auto;
+		article.top-post {
+
+			p {
+				max-width: 66%;
+				margin-left: auto;
+				margin-right: auto;
+			}
 		}
 	}
 }

@@ -9,16 +9,8 @@
 
 use ITSATheme\Utility;
 
-global $post;
-$blocks  = parse_blocks( $post->post_content );
-$classes = array( 'item', 'has-background', 'has-overlay' );
-
-$header_image_url = '';
-$header_block     = Utility\get_block( $blocks, 'acf/header' );
-
-if ( ! empty( $header_block ) && isset( $header_block ) ) {
-	$header_image_url = Utility\get_header_image_url( $header_block );
-}
+$classes          = array( 'item', 'has-background', 'has-overlay' );
+$header_image_url = Utility\get_header_image_url();
 
 if ( empty( $header_image_url ) ) {
 	$classes[] = 'block-style-solid';
@@ -52,7 +44,7 @@ if ( ! is_singular( 'advocacy-material' ) ) {
 		<?php if ( is_singular( 'advocacy-material' ) ) { ?>
 			<?php the_content(); ?>
 		<?php } else { ?>
-			<?php itsa_the_excerpt( '', true ); ?>
+			<?php itsa_the_excerpt( null, true ); ?>
 			<?php itsa_the_post_button(); ?>
 		<?php } ?>
 	</div><!-- .entry-content -->

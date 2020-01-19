@@ -8,13 +8,10 @@
  */
 
 use ITSATheme\Utility;
-
-global $post;
-$blocks = parse_blocks( $post->post_content );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'large-width' ); ?>>
-	<?php if ( ! Utility\has_block( $blocks, 'acf/header' ) ) { ?>
+	<?php if ( ! Utility\has_block( 'acf/header' ) ) { ?>
 		<div class="row max-width">
 			<header class="entry-header">
 				<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>

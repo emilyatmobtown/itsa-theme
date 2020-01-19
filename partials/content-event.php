@@ -9,16 +9,8 @@
 
 use ITSATheme\Utility;
 
-global $post;
-$blocks  = parse_blocks( $post->post_content );
-$classes = array( 'item', 'has-background', 'has-overlay' );
-
-$header_image_url = '';
-$header_block     = Utility\get_block( $blocks, 'acf/header' );
-
-if ( ! empty( $header_block ) && isset( $header_block ) ) {
-	$header_image_url = Utility\get_header_image_url( $header_block );
-}
+$classes          = array( 'item', 'has-background', 'has-overlay' );
+$header_image_url = Utility\get_header_image_url();
 
 if ( empty( $header_image_url ) ) {
 	$classes[] = 'block-style-solid';
@@ -42,7 +34,7 @@ if ( ! is_singular( 'event' ) ) {
 		<span class="entry-tag"><?php echo esc_attr( $term_name ); ?></span>
 	<?php } ?>
 
-	<?php if ( empty( $header_block ) ) { ?>
+	<?php if ( ! Utility\has_block( 'acf/header' ) ) { ?>
 		<div class="row max-width">
 			<header class="entry-header">
 				<?php the_title( '<h1 class="entry-title item-title">', '</h1>' ); ?>
@@ -54,7 +46,7 @@ if ( ! is_singular( 'event' ) ) {
 		<?php if ( is_singular( 'event' ) ) { ?>
 			<?php the_content(); ?>
 		<?php } else { ?>
-			<?php itsa_the_excerpt( '', true, true ); ?>
+			<?php itsa_the_excerpt( null, true, true ); ?>
 			<?php itsa_the_post_button(); ?>
 		<?php } ?>
 	</div><!-- .entry-content -->
