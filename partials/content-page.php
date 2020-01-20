@@ -23,9 +23,9 @@ use ITSATheme\Utility;
 		<?php the_content(); ?>
 	</div><!-- .entry-content -->
 
-	<div class="row max-width">
+	<!-- <div class="row max-width">
 		<footer class="entry-footer">
 			<h2 class="entry-footer-title font-weight-600"><?php esc_html_e( 'Related', 'itsa-theme' ); ?></h2>
-		</footer><!-- .entry-footer -->
+		</footer><!-- .entry-footer
 	</div><!-- .row -->
 </article><!-- #post-<?php the_ID(); ?> -->

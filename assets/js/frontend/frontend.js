@@ -3,12 +3,15 @@ new Navigation();
 
 import jQuery from 'jquery';
 jQuery( function( $ ){
-	/* global ajaxUrl, postType, maxPageMyAjax:writable, postsMyAjax:writable, currentPageMyAjax:writable */
+	/* global ajaxUrl, postType, loadMoreNonce, maxPageMyAjax:writable, postsMyAjax:writable, currentPageMyAjax:writable */
 
-	$( '#post-grid-filter' ).submit( function() {
-		const filter         = $( '#post-grid-filter' );
-		const loadMoreButton = $( '#post-grid-load-more' );
-		const results        = $( '#post-grid-filter-results' );
+	const filter         = $( '#post-grid-filter' );
+	const results        = $( '#post-grid-filter-results' );
+	const loadMoreButton = $( '#post-grid-load-more' );
+	const filterLoader   = $( '#post-grid-filter-loader' );
+	const loadMoreLoader = $( '#post-grid-load-more-loader' );
+
+	$( '#post-grid-filter select' ).change( function() {
 
 		$.ajax( {
 			url : ajaxUrl,
@@ -16,35 +19,35 @@ jQuery( function( $ ){
 			dataType : 'json',
 			type : 'POST',
 			/**
-		    * Updates the button text before sending the request
-		    */
-			beforeSend : function(){
-				filter.find( 'button' ).text( 'Processing...' );
+			* Shows loader icon before sending request
+			*/
+			beforeSend : function() {
+				filterLoader.removeClass( 'hidden' );
 			},
 			/**
-		    * Updates the globals and the button text. Toggles the load more
+			* Updates the globals and the button text. Toggles the load more
 			* button. Displays the updated content.
 			* @params {object} data
-		    */
+			*/
 			success : function( data ){
 				currentPageMyAjax = 1;
 				postsMyAjax       = data.posts;
 				maxPageMyAjax     = data.maxPage;
 
+				filterLoader.addClass( 'hidden' );
 				results.html( data.content );
-				filter.find( 'button' ).text( 'Apply filter' );
 
 				if ( 2 > data.maxPage ) {
-					loadMoreButton.hide();
+					loadMoreButton.detach();
 				} else {
-					loadMoreButton.show();
+					loadMoreButton.insertAfter( results );
 				}
 			},
 			/**
-		    * Displays the error message.
+			* Displays the error message.
 			* @params {object} req
 			* @params {string} err
-		    */
+			*/
 			error : function( req, err ) {
 				console.error( `error: ${ err }` );
 			}
@@ -52,8 +55,7 @@ jQuery( function( $ ){
 		return false;
 	} );
 
-	$( '#post-grid-load-more' ).click( function() {
-		const loadMoreButton = $( this );
+	loadMoreButton.click( function() {
 
 		$.ajax( {
 			url : ajaxUrl, // AJAX handler
@@ -62,37 +64,39 @@ jQuery( function( $ ){
 				'query'  : postsMyAjax,
 				'page'   : currentPageMyAjax,
 				'type'   : postType,
+				'nonce'  : loadMoreNonce,
 			},
 			type : 'POST',
 			/**
-		    * Updates the button text before sending the request
-		    */
-			beforeSend : function () {
-				loadMoreButton.text( 'Loading...' );
+			* Shows loader icon before sending request
+			*/
+			beforeSend : function() {
+				loadMoreLoader.removeClass( 'hidden' );
 			},
 			/**
-		    * Updates the currentPageMyAjax and the button text. Toggles the
+			* Updates the currentPageMyAjax and the button text. Toggles the
 			* load more button. Displays the updated content.
 			* @params {object} data
-		    */
+			*/
 			success : function( data ) {
 				if ( data ) {
-					loadMoreButton.text( 'More posts' );
-					$( '#post-grid-filter-results' ).append( data );
+					loadMoreLoader.addClass( 'hidden' );
+					results.append( data );
 
 					currentPageMyAjax++;
 					if ( currentPageMyAjax === maxPageMyAjax ) {
-						loadMoreButton.hide();
+						loadMoreButton.detach();
 					}
 				} else {
-					loadMoreButton.hide();
+					loadMoreLoader.addClass( 'hidden' );
+					loadMoreButton.detach();
 				}
 			},
 			/**
-		    * Displays the error message.
+			* Displays the error message.
 			* @params {object} req
 			* @params {string} err
-		    */
+			*/
 			error : function( req, err ) {
 				console.error( `error: ${ err }` );
 			}

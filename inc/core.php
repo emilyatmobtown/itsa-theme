@@ -204,8 +204,6 @@ function register_sidebars() {
 function scripts() {
 
 	if ( is_page( array( 'events', 'newsroom', 'advocacy-materials' ) ) ) {
-		// global $wp_query;
-
 		wp_enqueue_script(
 			'frontend',
 			ITSA_THEME_TEMPLATE_URL . '/dist/js/frontend.js',
@@ -213,20 +211,6 @@ function scripts() {
 			ITSA_THEME_VERSION,
 			true
 		);
-// var_dump( $wp_query->query_vars );
-		// wp_localize_script(
-		// 	'frontend',
-		// 	'postGridFilterArgs',
-		// 	array(
-		// 		'ajaxurl'      => admin_url( 'admin-ajax.php' ),
-		// 		'posts'        => wp_json_encode( $wp_query->query_vars ),
-		// 		'current_page' => $wp_query->query_vars['paged'] ? $wp_query->query_vars['paged'] : 1,
-		// 		'max_page'     => $wp_query->max_num_pages,
-		// 	)
-		// );
-
-		// wp_enqueue_script( 'frontend' );
-
 	} else {
 		wp_enqueue_script(
 			'frontend',
@@ -237,14 +221,6 @@ function scripts() {
 		);
 	}
 
-	// wp_enqueue_script(
-	// 	'shared',
-	// 	ITSA_THEME_TEMPLATE_URL . '/dist/js/shared.js',
-	// 	[],
-	// 	ITSA_THEME_VERSION,
-	// 	true
-	// );
-	//
 	if ( is_page_template( 'templates/page-styleguide.php' ) ) {
 		wp_enqueue_script(
 			'styleguide',
@@ -489,6 +465,10 @@ function add_allowed_tags( $tags ) {
  * @since  0.1.0
  */
 function post_grid_filter_ajax_handler() {
+
+	// Verify nonce. Defaults to die if invalid.
+	check_ajax_referer( 'post-grid-filter-nonce', 'filter-nonce' );
+
 	$on_page = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 	$args    = array(
 		'update_post_meta_cache' => false,
@@ -496,39 +476,37 @@ function post_grid_filter_ajax_handler() {
 		'paged'                  => $on_page,
 	);
 
-	if ( isset( $_POST['post-grid-filter-by-issue'] ) && ! empty( $_POST['post-grid-filter-by-issue'] ) ) {
+	if ( ! empty( $_POST['post-grid-filter-by-issue'] ) ) {
 		$args['tax_query'] = array(
 			array(
 				'taxonomy' => 'issue',
 				'field'    => 'id',
-				'terms'    => array( $_POST['post-grid-filter-by-issue'] ),
+				'terms'    => array( sanitize_key( $_POST['post-grid-filter-by-issue'] ) ),
 			),
 		);
 	}
 
-	if ( isset( $_POST['post-type'] ) ) {
-		$args['post_type'] = $_POST['post-type'];
+	if ( ! empty( $_POST['post-grid-filter-by-type'] ) ) {
+		$args['tax_query'][] = array(
+			'taxonomy' => sanitize_text_field( $_POST['post-type'] ) . '-type',
+			'field'    => 'id',
+			'terms'    => array( sanitize_key( $_POST['post-grid-filter-by-type'] ) ),
+		);
+	}
+
+	if ( ! empty( $_POST['post-type'] ) ) {
+		$args['post_type'] = sanitize_key( $_POST['post-type'] );
 	}
 
 	// Add date ordering and filtering for event posts
-	if ( 'event' === $_POST['post-type'] ) {
+	if ( ! empty( $_POST['post-type'] ) && 'event' === $_POST['post-type'] ) {
 		// Order by event date
 		$args['meta_key'] = 'event_start_date';
-		$args['order']    = 'ASC';
 		$args['orderby']  = 'meta_value';
-
-		// Filter out dates ater today
-		$args['meta_query'] = array(
-			array(
-				'key'     => 'event_start_date',
-				'value'   => date( 'Ymd' ),
-				'compare' => '>',
-			),
-		);
 	}
 
 	$the_query = new \WP_Query( $args );
-	if ( $the_query->have_posts() ) {
+	if ( $the_query->have_posts() && ! empty( $_POST['post-type'] ) ) {
 		ob_start();
 		while ( $the_query->have_posts() ) {
 			$the_query->the_post();
@@ -537,17 +515,21 @@ function post_grid_filter_ajax_handler() {
 		$html = ob_get_contents();
 		ob_end_clean();
 	} else {
-		$html = 'No posts found';
+		ob_start();
+		get_template_part( 'partials/content', 'none' );
+		$html = ob_get_contents();
+		ob_end_clean();
 	}
 
 	echo wp_json_encode(
-		array(
-			'posts'      => wp_json_encode( $the_query->query_vars ),
-			'maxPage'    => $the_query->max_num_pages,
-			'foundPosts' => $the_query->found_posts,
-			'content'    => $html,
-		),
-		JSON_FORCE_OBJECT // Forces object to meet strict comparison of AJAX dataType
+		wp_unslash(
+			array(
+				'posts'      => wp_json_encode( $the_query->query_vars ),
+				'maxPage'    => $the_query->max_num_pages,
+				'foundPosts' => $the_query->found_posts,
+				'content'    => $html,
+			)
+		)
 	);
 
 	wp_die();
@@ -559,17 +541,25 @@ function post_grid_filter_ajax_handler() {
  * @since  0.1.0
  */
 function post_grid_load_more_ajax_handler() {
-	$args                = json_decode( wp_specialchars_decode( stripslashes( $_POST['query'] ) ), true );
-	$args['paged']       = $_POST['page'] + 1;
-	$args['post_status'] = 'publish';
 
-	$the_query = new \WP_Query( $args );
+	// Verify nonce. Defaults to die if invalid.
+	check_ajax_referer( 'post-grid-load-more-nonce', 'nonce' );
 
-	if ( $the_query->have_posts() ) {
-		while ( $the_query->have_posts() ) {
-			$the_query->the_post();
-			get_template_part( 'partials/content', $_POST['type'] );
+	if ( ! empty( $_POST['query'] ) ) {
+		$args = json_decode( wp_specialchars_decode( wp_unslash( $_POST['query'] ) ), true );
+
+		if ( ! empty( $_POST['page'] ) ) {
+			$args['paged'] = $_POST['page'] + 1;
+		}
+
+		$the_query = new \WP_Query( $args );
+		if ( $the_query->have_posts() && ! empty( $_POST['type'] ) ) {
+			while ( $the_query->have_posts() ) {
+				$the_query->the_post();
+				get_template_part( 'partials/content', $_POST['type'] );
+			}
 		}
 	}
+
 	wp_die();
 }

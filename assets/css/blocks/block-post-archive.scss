@@ -1,0 +1,18 @@
+/* Post Archive Block */
+
+.post-archive-block {
+	margin-bottom: var(--space-lg);
+}
+
+@media (--bp-medium) {
+
+	.cap-wrapper {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+
+	.section-header {
+		flex: 1 0 auto;
+	}
+}

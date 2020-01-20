@@ -11,6 +11,19 @@
 
 .entry-content {
 
+	&.content-none {
+		width: 100%;
+		min-height: 250px;
+		padding: var(--space-xxl) var(--space-xxxl);
+
+		p {
+
+			@extend .heading-4;
+			color: var(--color-body-text);
+			text-align: center;
+		}
+	}
+
 	> * {
 		max-width: var(--max-content-width);
 		padding-left: var(--component-padding);
