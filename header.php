@@ -17,7 +17,7 @@
 	<body <?php body_class(); ?>>
 		<?php wp_body_open(); ?>
 		<div id="page" class="site">
-			<a class="skip-link screen-reader-text" href="#content">
+			<a class="skip-link screen-reader-text" href="#main">
 				<?php
 					// translators: This is the screen reader text to skip to the content.
 					esc_html_e( 'Skip to content', 'itsa-theme' );

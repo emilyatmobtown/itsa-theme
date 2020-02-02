@@ -1,0 +1,32 @@
+/* Call to Action Block */
+
+// .call-to-action-block {
+//
+// }
+//
+// @media (--bp-medium) {
+//
+// 	.call-to-action-block {
+//
+// 	}
+// }
+//
+@media (--bp-large) {
+
+	.call-to-action-block {
+
+		&.block-align-right {
+			text-align: right;
+
+			&.has-overlay {
+
+				@include has-overlay-horizontal-reverse;
+			}
+
+			.restricted-width > * {
+				padding-right: 0;
+				padding-left: 50%;
+			}
+		}
+	}
+}

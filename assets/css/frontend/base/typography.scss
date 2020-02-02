@@ -188,9 +188,16 @@ figcaption {
 	}
 }
 
+%muted,
+.muted {
+	color: var(--color-neutral-darkest);
+}
+
 /* Higlight Styles */
 .highlight {
 	display: inline;
+	font-weight: 400;
+	line-height: calc(var(--heading-line-height) * 1.6);
 	padding: var(--space-xs) 0;
 	box-decoration-break: clone;
 	box-shadow: var(--space-md) 0 0 var(--color-primary), calc(var(--space-md) * -1) 0 0 var(--color-primary);

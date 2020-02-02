@@ -41,11 +41,11 @@
             "new_lines": "wpautop"
         },
         {
-            "key": "field_5de844c98e267",
-            "label": "Button Text",
-            "name": "button_text",
-            "type": "text",
-            "instructions": "Enter the text for the button.",
+            "key": "field_5e36f6094ec27",
+            "label": "Button",
+            "name": "button",
+            "type": "link",
+            "instructions": "Add a button.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -53,78 +53,14 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_5de8592d598c3",
-            "label": "Button Page Link",
-            "name": "button_page_link",
-            "type": "page_link",
-            "instructions": "Select a page to link to. To use a link not on this site, enter the URL under \"Button External URL\" below.",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5de844c98e267",
-                        "operator": "!=empty"
-                    },
-                    {
-                        "field": "field_5de85873598c2",
-                        "operator": "==empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "page",
-                "post"
-            ],
-            "taxonomy": "",
-            "allow_null": 1,
-            "allow_archives": 0,
-            "multiple": 0
-        },
-        {
-            "key": "field_5de85873598c2",
-            "label": "Button External URL",
-            "name": "button_external_url",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5de844c98e267",
-                        "operator": "!=empty"
-                    },
-                    {
-                        "field": "field_5de8592d598c3",
-                        "operator": "==empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "http:\/\/"
+            "return_format": "array"
         },
         {
             "key": "field_5de8663924b46",
             "label": "Block Style",
             "name": "block_style",
             "type": "select",
-            "instructions": "",
+            "instructions": "Select background style.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -133,9 +69,15 @@
                 "id": ""
             },
             "choices": {
-                "block-style-highway-blur": "Highway Blur"
+                "block-style-solid": "Solid Blue",
+                "block-style-highway-blur": "Highway Blur",
+                "block-style-seat-belt": "Seat Belt",
+                "block-style-blurred-lights": "Blurred Lights",
+                "block-style-aerial-view": "Aerial View"
             },
-            "default_value": [],
+            "default_value": [
+                "block-style-solid"
+            ],
             "allow_null": 0,
             "multiple": 0,
             "ui": 0,
@@ -145,10 +87,10 @@
         },
         {
             "key": "field_5de84b7fb9620",
-            "label": "Reverse Alignment",
-            "name": "reverse_alignment",
-            "type": "true_false",
-            "instructions": "Toggle alignment on wider screens.",
+            "label": "Alignment",
+            "name": "alignment",
+            "type": "select",
+            "instructions": "Select layout alignment.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -156,11 +98,19 @@
                 "class": "",
                 "id": ""
             },
-            "message": "",
-            "default_value": 0,
-            "ui": 1,
-            "ui_on_text": "Right-aligned",
-            "ui_off_text": "Left-aligned"
+            "choices": {
+                "block-align-left": "Left",
+                "block-align-right": "Right"
+            },
+            "default_value": [
+                "block-align-left"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
         }
     ],
     "location": [
@@ -180,5 +130,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1575512264
+    "modified": 1580665731
 }

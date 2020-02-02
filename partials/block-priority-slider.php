@@ -30,11 +30,16 @@ if ( is_admin() && empty( $priorities ) ) {
 		<section class="section block priority-slider-block">
 			<?php if ( ! empty( $the_title ) ) { ?>
 				<header class="section-header">
-					<?php if ( is_home() || is_front_page() ) { ?>
-						<h3 class="section-title"><?php echo esc_attr( $the_title ); ?></h3>
-					<?php } else { ?>
-						<h2 class="section-title"><?php echo esc_attr( $the_title ); ?></h2>
-					<?php } ?>
+					<span class="section-title-wrapper">
+						<?php if ( is_home() || is_front_page() ) { ?>
+							<h3 class="section-title"><?php echo esc_attr( $the_title ); ?></h3>
+						<?php } else { ?>
+							<h2 class="section-title"><?php echo esc_attr( $the_title ); ?></h2>
+							<?php if ( has_term( 'issue', 'silo-type' ) ) { ?>
+								<span class="section-subtitle"><?php the_title(); ?></span>
+							<?php } ?>
+						<?php } ?>
+					</span>
 				</header><!-- .section-header -->
 			<?php } ?><!-- .section -->
 

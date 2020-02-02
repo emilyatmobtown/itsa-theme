@@ -8,7 +8,7 @@
 		text-align: center;
 
 		.entry-title {
-			margin: var(--space-xs) auto;
+			margin: 0 auto var(--space-xs);
 			padding: 0;
 			border: 0;
 		}
@@ -21,8 +21,13 @@
 		text-align: center;
 	}
 
+	.tagline {
+		font-size: var(--text-lg);
+		line-height: var(--heading-line-height);
+	}
+
 	a {
-		margin: var(--space-lg) auto 0;
+		margin: var(--component-padding) auto 0;
 		display: inline-block;
 	}
 
@@ -60,7 +65,7 @@
 	.header-block {
 
 		&.wp-block-cover {
-			min-height: 750px;
+			min-height: 720px;
 		}
 
 		article {

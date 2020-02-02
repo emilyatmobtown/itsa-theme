@@ -1,0 +1,19 @@
+/* Home Page */
+.home {
+
+	.header-block {
+
+		&.wp-block-cover.has-background-dim::before {
+			background: var(--color-home-cover-background-fallback);
+			background: var(--color-home-cover-background);
+		}
+
+		button {
+			background: var(--color-white);
+
+			&:hover {
+				background: var(--color-button-background-alt);
+			}
+		}
+	}
+}

@@ -394,7 +394,7 @@ function add_image_sizes() {
 			'name'   => 'itsa-member-logo',
 			'width'  => 400,
 			'height' => 280,
-			'crop'   => true,
+			'crop'   => false,
 		),
 		array(
 			'name'   => 'itsa-header',

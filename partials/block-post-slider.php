@@ -84,11 +84,16 @@ if ( is_admin() && empty( $posttype ) ) {
 			<section class="section block post-slider-block <?php echo esc_attr( $alignment ); ?>">
 				<?php if ( ! empty( $the_title ) ) { ?>
 					<header class="section-header">
-						<?php if ( is_home() || is_front_page() ) { ?>
-							<h3 class="section-title"><?php echo esc_attr( $the_title ); ?></h3>
-						<?php } else { ?>
-							<h2 class="section-title"><?php echo esc_attr( $the_title ); ?></h2>
-						<?php } ?>
+						<span class="section-title-wrapper">
+							<?php if ( is_home() || is_front_page() ) { ?>
+								<h3 class="section-title"><?php echo esc_attr( $the_title ); ?></h3>
+							<?php } else { ?>
+								<h2 class="section-title"><?php echo esc_attr( $the_title ); ?></h2>
+								<?php if ( has_term( 'issue', 'silo-type' ) ) { ?>
+									<span class="section-subtitle"><?php the_title(); ?></span>
+								<?php } ?>
+							<?php } ?>
+						</span>
 						<a class="section-link more-link has-arrow has-arrow-right" href="<?php echo esc_url( itsa_get_archive_url( $posttype ) ); ?>">See All<span class="hidden-sm"> <?php echo esc_attr( itsa_get_post_type_plural_label( $posttype ) ); ?></span></a>
 					</header><!-- .section-header -->
 				<?php } ?><!-- .section -->

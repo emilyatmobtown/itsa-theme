@@ -40,7 +40,7 @@ $row_style          = empty( $image_url ) ? 'max-width' : 'full-width';
 
 if ( is_admin() && empty( $the_title ) && empty( $header_type ) ) {
 	?>
-	<h1 role="textbox" aria-multiline="true" class="rich-text editor-rich-text__editable block-editor-rich-text__editable" contenteditable="true" aria-label="Add a subtitle" style="white-space: pre-wrap;">﻿<span data-rich-text-placeholder="Add a Header with Title..." contenteditable="false"></span></h1>
+	<h1 role="textbox" aria-multiline="true" class="rich-text editor-rich-text__editable block-editor-rich-text__editable" contenteditable="true" aria-label="Add a Header with Title..." style="white-space: pre-wrap;">﻿<span data-rich-text-placeholder="Add a Header with Title..." contenteditable="false"></span></h1>
 	<?php
 } elseif ( ! empty( $the_title ) || ! empty( $header_type ) ) {
 
@@ -87,7 +87,9 @@ if ( is_admin() && empty( $the_title ) && empty( $header_type ) ) {
 						<hr class="hrule">
 					<?php } ?>
 					<?php if ( ! empty( $button ) ) { ?>
-						<a href="<?php echo esc_url( $button['url'] ); ?>" title="<?php echo esc_url( $button['title'] ); ?>"><button class="has-arrow-right"><?php esc_html_e( 'Learn More', 'itsa-theme' ); ?></button></a>
+						<?php $button_text = $button['title'] ?? __( 'Learn More', 'itsa-theme' ); ?>
+						<?php $button_target = $button['target'] ? $button['target'] : '_self'; ?>
+						<a href="<?php echo esc_url( $button['url'] ); ?>" title="<?php echo esc_attr( $button_text ); ?>" target="<?php echo esc_attr( $button_target ); ?>"><button class="has-arrow-right"><?php echo esc_attr( $button_text ); ?></button></a>
 					<?php } ?>
 				<?php } ?>
 			</div><!-- .section-content -->

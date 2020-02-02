@@ -53,6 +53,25 @@ function register_blocks() {
 
 	acf_register_block_type(
 		array(
+			'name'            => 'tweets',
+			// translators: This is the name of the Tweets block.
+			'title'           => __( 'Tweets', 'itsa-theme' ),
+			'render_template' => 'partials/block-tweets.php',
+			'category'        => 'itsa-blocks',
+			'icon'            => 'twitter',
+			'mode'            => 'auto',
+			'keywords'        => array( 'twitter', 'social', 'tweet' ),
+			'supports'        => array(
+				'align'           => false,
+				'customClassName' => false,
+				'html'            => false,
+				'anchor'          => true,
+			),
+		)
+	);
+
+	acf_register_block_type(
+		array(
 			'name'            => 'call-to-action',
 			// translators: This is the name of the Call to Action block.
 			'title'           => __( 'Call to Action Block', 'itsa-theme' ),

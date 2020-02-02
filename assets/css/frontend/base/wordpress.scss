@@ -82,8 +82,10 @@
 
 	.tagline {
 		display: block;
+		font-size: var(--text-lg);
+		line-height: var(--heading-line-height);
 		max-width: 75%;
-		margin: var(--space-md) auto 0;
+		margin: var(--space-sm) auto 0;
 	}
 }
 

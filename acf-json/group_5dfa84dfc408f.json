@@ -43,9 +43,9 @@
             "default_value": [],
             "allow_null": 1,
             "multiple": 0,
-            "ui": 1,
-            "ajax": 1,
+            "ui": 0,
             "return_format": "value",
+            "ajax": 0,
             "placeholder": ""
         },
         {
@@ -182,9 +182,9 @@
             ],
             "allow_null": 0,
             "multiple": 0,
-            "ui": 1,
-            "ajax": 1,
+            "ui": 0,
             "return_format": "value",
+            "ajax": 0,
             "placeholder": ""
         }
     ],
@@ -205,5 +205,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1580609410
+    "modified": 1580665796
 }

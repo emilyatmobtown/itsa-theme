@@ -28,6 +28,12 @@
 			background-image: url("../images/background-blurred-lights-sm.jpg");
 		}
 
+		&.block-style-aerial-view {
+			padding-top: var(--space-xl);
+			background-color: var(--color-secondary-light);
+			background-image: url("../images/background-aerial-view-sm.jpg");
+		}
+
 		&.block-style-solid {
 			background-color: var(--color-secondary-light);
 		}
@@ -49,6 +55,19 @@
 	font-weight: 600;
 	line-height: 1;
 	margin-bottom: 0;
+}
+
+.section-title-wrapper {
+	line-height: 1;
+
+	.section-subtitle {
+
+		@extend %muted;
+		@extend %small-caps;
+		line-height: 1;
+		display: block;
+		margin-top: var(--space-xxs);
+	}
 }
 
 .section-link {
@@ -87,6 +106,10 @@
 			&.block-style-blurred-lights {
 				background-image: url("../images/background-blurred-lights-md.jpg");
 			}
+
+			&.block-style-aerial-view {
+				background-image: url("../images/background-aerial-view-md.jpg");
+			}
 		}
 	}
 }
@@ -114,6 +137,10 @@
 
 			&.block-style-blurred-lights {
 				background-image: url("../images/background-blurred-lights-lg.jpg");
+			}
+
+			&.block-style-aerial-view {
+				background-image: url("../images/background-aerial-view-lg.jpg");
 			}
 		}
 	}

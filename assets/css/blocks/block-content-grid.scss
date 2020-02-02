@@ -82,6 +82,11 @@
 					height: calc(var(--space-xl) * 1.125 * 1.25);
 				}
 
+				&.icon-style-smarter::after {
+					width: calc(var(--space-xl) * 1.125 * 1.25);
+					height: calc(var(--space-xl) * 1.125);
+				}
+
 				> * {
 					padding-left: 0;
 					padding-right: 0;
@@ -117,6 +122,11 @@
 				&[class*="icon-style-"]::after {
 					width: var(--space-xl);
 					height: calc(var(--space-xl) * 1.125);
+				}
+
+				&.icon-style-smarter::after {
+					width: calc(var(--space-xl) * 1.125);
+					height: var(--space-xl);
 				}
 			}
 		}
