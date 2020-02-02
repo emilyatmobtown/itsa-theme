@@ -510,12 +510,14 @@ function post_grid_filter_ajax_handler() {
 		ob_start();
 		while ( $the_query->have_posts() ) {
 			$the_query->the_post();
+			set_query_var( 'header_content', 'title_and_tags' );
 			get_template_part( 'partials/content', $_POST['post-type'] );
 		}
 		$html = ob_get_contents();
 		ob_end_clean();
 	} else {
 		ob_start();
+		set_query_var( 'header_content', 'title_and_tags' );
 		get_template_part( 'partials/content', 'none' );
 		$html = ob_get_contents();
 		ob_end_clean();
@@ -556,6 +558,7 @@ function post_grid_load_more_ajax_handler() {
 		if ( $the_query->have_posts() && ! empty( $_POST['type'] ) ) {
 			while ( $the_query->have_posts() ) {
 				$the_query->the_post();
+				set_query_var( 'header_content', 'title_and_tags' );
 				get_template_part( 'partials/content', $_POST['type'] );
 			}
 		}

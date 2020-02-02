@@ -91,8 +91,11 @@
                         "icon-style-connected-vehicle": "Connected Vehicle",
                         "icon-style-automated-vehicle": "Automated Vehicle",
                         "icon-style-cybersecurity": "Cybersecurity",
-                        "icon-mobility-on-demand": "Mobility on Demand",
-                        "icon-intelligent-infrastructure": "Intelligent Infrastructure"
+                        "icon-style-mobility-on-demand": "Mobility on Demand",
+                        "icon-style-intelligent-infrastructure": "Intelligent Infrastructure",
+                        "icon-style-safer": "Safer",
+                        "icon-style-greener": "Greener",
+                        "icon-style-smarter": "Smarter"
                     },
                     "default_value": [],
                     "allow_null": 1,
@@ -122,5 +125,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1578260490
+    "modified": 1580599790
 }

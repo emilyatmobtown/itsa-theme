@@ -24,6 +24,8 @@ select {
 	color: var(--color-neutral-darkest);
 	width: auto;
 	max-width: 100%;
+	height: auto;
+	min-height: unset;
 	margin: 0 0 var(--space-xs);
 	padding: var(--space-xxxs) var(--space-lg) var(--space-xxxs) var(--space-sm);
 	box-sizing: border-box;

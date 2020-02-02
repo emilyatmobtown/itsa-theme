@@ -28,7 +28,7 @@
 		justify-content: flex-end;
 
 		&.has-background {
-			padding: var(--space-xxxl) var(--component-padding) var(--space-xl);
+			padding: var(--space-xxxl) 20% var(--space-xl) var(--component-padding);
 			background-repeat: no-repeat;
 			background-size: cover;
 		}

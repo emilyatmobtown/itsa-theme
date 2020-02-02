@@ -38,7 +38,9 @@
                 "default": "Default",
                 "featured_post": "Featured Post"
             },
-            "default_value": [],
+            "default_value": [
+                "default"
+            ],
             "allow_null": 1,
             "multiple": 0,
             "ui": 1,
@@ -183,5 +185,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1578765685
+    "modified": 1580590003
 }

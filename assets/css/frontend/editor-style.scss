@@ -146,8 +146,8 @@
 		margin-bottom: var(--space-md);
 	}
 
-	ul:not([class^="acf-"]),
-	ol:not([class^="acf-"]) {
+	ul:not([class^="acf-"]):not([class^="glide"]),
+	ol:not([class^="acf-"]):not([class^="glide"]) {
 		font-family: var(--font-primary);
 		font-size: var(--text-md);
 		line-height: var(--body-line-height);
@@ -161,7 +161,7 @@
 		}
 	}
 
-	ol:not([class^="acf-"]) {
+	ol:not([class^="acf-"]):not([class^="glide"]) {
 		list-style: decimal;
 	}
 
@@ -221,6 +221,10 @@
 
 	input[type="checkbox"]:checked {
 		background: var(--color-white);
+	}
+
+	.filter select {
+		margin-bottom: 0 !important;
 	}
 }
 

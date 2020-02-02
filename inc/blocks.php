@@ -91,12 +91,31 @@ function register_blocks() {
 
 	acf_register_block_type(
 		array(
+			'name'            => 'featured-event-block',
+			// translators: This is the name of the Featured Event block.
+			'title'           => __( 'Featured Event Block', 'itsa-theme' ),
+			'render_template' => 'partials/block-featured-event.php',
+			'category'        => 'itsa-blocks',
+			'icon'            => 'calendar-alt',
+			'mode'            => 'auto',
+			'keywords'        => array( 'event', 'calendar', 'coming up' ),
+			'supports'        => array(
+				'align'           => false,
+				'customClassName' => false,
+				'html'            => false,
+				'anchor'          => true,
+			),
+		)
+	);
+
+	acf_register_block_type(
+		array(
 			'name'            => 'featured-post-grid',
 			// translators: This is the name of the Featured Post Grid block.
 			'title'           => __( 'Featured Post Grid', 'itsa-theme' ),
 			'render_template' => 'partials/block-featured-post-grid.php',
 			'category'        => 'itsa-blocks',
-			'icon'            => 'screenoptions',
+			'icon'            => 'align-left',
 			'mode'            => 'auto',
 			'keywords'        => array( 'posts', 'featured', 'row' ),
 			'supports'        => array(

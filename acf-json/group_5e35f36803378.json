@@ -1,0 +1,84 @@
+{
+    "key": "group_5e35f36803378",
+    "title": "Featured Event Block",
+    "fields": [
+        {
+            "key": "field_5e35f3a0dbaaf",
+            "label": "Title",
+            "name": "title",
+            "type": "text",
+            "instructions": "Enter an optional title to appear above the block.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5e35f40edbab0",
+            "label": "Featured Event",
+            "name": "featured_event",
+            "type": "post_object",
+            "instructions": "Select an event to be feature.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "event"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_5e360583ff1fa",
+            "label": "Show Additional Events",
+            "name": "show_additional_events",
+            "type": "true_false",
+            "instructions": "Indicate whether to show additional events below the featured event.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/featured-event-block"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1580598709
+}

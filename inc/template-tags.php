@@ -93,10 +93,11 @@ function itsa_the_post_button( $the_post = null ) {
  * Get HTML for post type and issue taxonomy
  *
  * @param  WP_POST $the_post
+ * @param  bool $default_to_featured
  * @return string
  * @since 0.1.0
  */
-function itsa_get_type_and_term( $the_post = null ) {
+function itsa_get_type_and_term( $the_post = null, $default_to_featured = false ) {
 	global $post;
 
 	if ( empty( $the_post ) || ! isset( $the_post ) ) {
@@ -111,6 +112,8 @@ function itsa_get_type_and_term( $the_post = null ) {
 	if ( ! empty( $terms ) && isset( $terms ) ) {
 		// Display the first term only
 		$the_type = $terms[0]->name;
+	} elseif ( $default_to_featured ) {
+		$the_type = __( 'Featured', 'itsa-theme' );
 	} else {
 		$the_type = itsa_get_post_type_plural_label( $posttype );
 	}
@@ -119,6 +122,8 @@ function itsa_get_type_and_term( $the_post = null ) {
 	if ( ! empty( $issues ) && isset( $issues ) ) {
 		// Display the first issue only
 		$issue = $issues[0]->name;
+	} elseif ( $default_to_featured ) {
+		$issue = __( 'Featured', 'itsa-theme' );
 	}
 
 	if ( ! ( empty( $the_type ) && empty( $issue ) ) ) {
@@ -138,11 +143,12 @@ function itsa_get_type_and_term( $the_post = null ) {
  * Display HTML for post type and issue taxonomy
  *
  * @param  WP_POST $the_post
+ * @param  bool $default_to_featured
  * @return string
  * @since 0.1.0
  */
-function itsa_the_type_and_term( $the_post = null ) {
-	echo wp_kses_post( itsa_get_type_and_term( $the_post ) );
+function itsa_the_type_and_term( $the_post = null, $default_to_featured = false ) {
+	echo wp_kses_post( itsa_get_type_and_term( $the_post, $default_to_featured ) );
 }
 
 /**
@@ -492,5 +498,28 @@ function itsa_get_tax_plural_label( $tax = '' ) {
 	if ( ! empty( $tax ) && taxonomy_exists( $tax ) ) {
 		$object = get_taxonomy( $tax );
 		return $object->labels->name;
+	}
+}
+
+/**
+ * Get URL for page displaying post archive
+ *
+ * @param string
+ * @return string
+ * @since 0.1.0
+ */
+function itsa_get_archive_url( $posttype ) {
+	switch ( $posttype ) {
+		case 'advocacy-material':
+			return home_url( '/advocacy-materials' );
+
+		case 'news':
+			return home_url( '/newsroom' );
+
+		case 'event':
+			return home_url( '/events' );
+
+		default:
+			return home_url();
 	}
 }

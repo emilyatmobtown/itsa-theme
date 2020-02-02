@@ -18,7 +18,7 @@ if ( empty( $header_image_url ) ) {
 
 if ( ! is_singular( 'event' ) ) {
 	$terms     = get_the_terms( $post->ID, 'event-type' );
-	$term_name = ( ! empty( $terms && isset( $terms ) ) ) ? $terms[0]->name : itsa_get_tax_plural_label( 'event' );
+	$term_name = ( ! empty( $terms ) && isset( $terms ) ) ? $terms[0]->name : itsa_get_post_type_plural_label( 'event' );
 } else {
 	$registration_url = get_field( 'event_url' );
 }
@@ -35,11 +35,15 @@ if ( ! is_singular( 'event' ) ) {
 	<?php } ?>
 
 	<?php if ( ! Utility\has_block( 'acf/header' ) ) { ?>
-		<div class="row max-width">
-			<header class="entry-header">
-				<?php the_title( '<h1 class="entry-title item-title">', '</h1>' ); ?>
-			</header><!-- .entry-header -->
-		</div><!-- .row -->
+		<?php if ( is_singular( 'event' ) ) { ?>
+			<div class="row max-width">
+				<header class="entry-header">
+					<?php the_title( '<h1 class="entry-title item-title">', '</h1>' ); ?>
+				</header><!-- .entry-header -->
+			</div><!-- .row -->
+		<?php } else { ?>
+			<?php the_title( '<h2 class="entry-title item-title">', '</h2>' ); ?>
+		<?php } ?>
 	<?php } ?>
 
 	<div class="entry-content">

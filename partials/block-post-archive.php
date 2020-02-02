@@ -94,6 +94,7 @@ if ( is_admin() && empty( $posttype ) ) {
 				<div id="post-grid-filter-results" class="item-grid has-background inverse-color">
 					<?php while ( $the_query->have_posts() ) { ?>
 						<?php $the_query->the_post(); ?>
+						<?php set_query_var( 'header_content', 'title_and_tags' ); ?>
 						<?php get_template_part( 'partials/content', $posttype ); ?>
 					<?php } ?>
 				</div><!-- .item-grid -->

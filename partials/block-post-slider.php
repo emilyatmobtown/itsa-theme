@@ -12,6 +12,7 @@ use ITSATheme\Utility;
 $posttype  = get_field( 'post_type' );
 $issues    = get_field( 'issue' );
 $the_title = get_field( 'title' );
+$alignment = get_field( 'alignment' );
 
 if ( is_admin() && empty( $posttype ) ) {
 	?>
@@ -80,7 +81,7 @@ if ( is_admin() && empty( $posttype ) ) {
 	if ( $the_query->have_posts() ) {
 		?>
 		<div class="row max-width">
-			<section class="section block post-slider-block">
+			<section class="section block post-slider-block <?php echo esc_attr( $alignment ); ?>">
 				<?php if ( ! empty( $the_title ) ) { ?>
 					<header class="section-header">
 						<?php if ( is_home() || is_front_page() ) { ?>
@@ -88,16 +89,17 @@ if ( is_admin() && empty( $posttype ) ) {
 						<?php } else { ?>
 							<h2 class="section-title"><?php echo esc_attr( $the_title ); ?></h2>
 						<?php } ?>
-						<a class="section-link more-link has-arrow has-arrow-right">See All<span class="hidden-sm"> <?php echo esc_attr( itsa_get_post_type_plural_label( $posttype ) ); ?></span></a>
+						<a class="section-link more-link has-arrow has-arrow-right" href="<?php echo esc_url( itsa_get_archive_url( $posttype ) ); ?>">See All<span class="hidden-sm"> <?php echo esc_attr( itsa_get_post_type_plural_label( $posttype ) ); ?></span></a>
 					</header><!-- .section-header -->
 				<?php } ?><!-- .section -->
 
-				<div class="glide slider">
+				<div class="glide slider inverse-color">
 					<div class="glide__track slider-track" data-glide-el="track">
 						<ul class="glide__slides slides">
 							<?php while ( $the_query->have_posts() ) { ?>
 								<?php $the_query->the_post(); ?>
 									<li class="glide__slide slide">
+										<?php set_query_var( 'header_content', 'full_header' ); ?>
 										<?php get_template_part( 'partials/content', $posttype ); ?>
 									</li>
 							<?php } ?>

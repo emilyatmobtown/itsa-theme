@@ -102,13 +102,14 @@ if ( is_admin() && empty( $posttype ) ) {
 						<?php } else { ?>
 							<h2 class="section-title"><?php echo esc_attr( $the_title ); ?></h2>
 						<?php } ?>
-						<a class="section-link more-link has-arrow has-arrow-right">See All <span class="show-md"><?php echo esc_attr( itsa_get_post_type_plural_label( $posttype ) ); ?></span></a>
+						<a class="section-link more-link has-arrow has-arrow-right" href="<?php echo esc_url( itsa_get_archive_url( $posttype ) ); ?>">See All <span class="show-md"><?php echo esc_attr( itsa_get_post_type_plural_label( $posttype ) ); ?></span></a>
 					</header><!-- .section-header -->
 				<?php } ?>
 
 				<div class="item-grid has-background inverse-color">
 					<?php while ( $the_query->have_posts() ) { ?>
 						<?php $the_query->the_post(); ?>
+						<?php set_query_var( 'header_content', 'title_and_tags' ); ?>
 						<?php get_template_part( 'partials/content', $posttype ); ?>
 					<?php } ?>
 				</div><!-- .item-grid -->

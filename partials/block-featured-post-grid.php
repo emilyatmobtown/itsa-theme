@@ -24,22 +24,15 @@ if ( is_admin() && empty( $featured_post ) && empty( $additional_posts ) ) {
 			<div class="featured-post-grid-outer-grid inverse-color">
 
 				<?php
+				$header_image_url = Utility\get_header_image_url( $featured_post );
 				$classes          = 'featured-post-grid-outer-grid-item has-overlay';
-				$header_block     = Utility\get_block( 'acf/header', $featured_post );
-				$header_image_url = '';
-
-				if ( ! empty( $header_block ) && isset( $header_block ) ) {
-					$header_image_url = Utility\get_header_image_url( $header_block );
-					$classes         .= ' has-background';
-				} else {
-					$classes .= ' block-style-solid';
-				}
+				$classes         .= ( ! empty( $header_image_url ) ) ? ' has-background' : ' block-style-solid';
 				?>
 
 				<div class="<?php echo esc_html( $classes ); ?>" style="background-image:url(<?php echo esc_url( $header_image_url ); ?>)">
 
 					<article id="post-<?php echo esc_attr( $featured_post->ID ); ?>" class="featured-post-grid-item top-post">
-						<?php itsa_the_type_and_term( $featured_post ); ?>
+						<?php itsa_the_type_and_term( $featured_post, true ); ?>
 						<h3 class="featured-post-grid-title top-post-title"><?php echo esc_html( $featured_post->post_title ); ?></h3>
 						<?php itsa_the_excerpt( null, false, true, $featured_post ); ?>
 						<?php itsa_the_post_button( $featured_post ); ?>

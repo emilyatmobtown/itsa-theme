@@ -23,9 +23,10 @@
 	article {
 		background-repeat: no-repeat;
 		background-size: 1px;
+		color: var(--color-body-text);
 
 		.entry-content {
-			color: var(--color-black);
+			color: var(--color-body-text);
 
 			> * {
 				padding-left: 0;
@@ -33,7 +34,21 @@
 			}
 		}
 
-		.wp-block-cover {
+		.entry-title {
+
+			@extend .heading-3;
+			color: inherit;
+			font-weight: 600;
+			margin: 0 0 var(--space-xs);
+			padding: 0;
+			border: 0;
+			max-width: unset;
+		}
+
+		.wp-block-cover,
+		.entry-tag,
+		time,
+		p {
 			color: inherit;
 		}
 
@@ -44,6 +59,10 @@
 		.image-placeholder {
 
 			@include has-overlay;
+
+			&::before {
+				display: none;
+			}
 		}
 
 		&.block-style-solid .image-placeholder {
@@ -69,7 +88,7 @@
 				@extend .heading-3;
 				color: inherit;
 				font-weight: 600;
-				margin: var(--space-sm) 0 var(--space-xs);
+				margin: 0 0 var(--space-xs);
 				max-width: unset;
 
 				.highlight-primary {
@@ -120,7 +139,7 @@
 			justify-content: flex-end;
 
 			&.has-background {
-				padding: var(--space-xxxl) var(--component-padding) var(--space-xl);
+				padding: var(--space-xxxl) 20% var(--space-xl) var(--component-padding);
 				background-repeat: no-repeat;
 				background-size: cover;
 			}
@@ -132,6 +151,10 @@
 			&.has-overlay {
 
 				@include has-overlay;
+			}
+
+			.entry-title {
+				color: var(--color-white);
 			}
 
 			.entry-content {
@@ -171,6 +194,21 @@
 			&.has-overlay {
 
 				@include has-overlay-horizontal-reverse;
+			}
+		}
+
+		&.block-align-left {
+
+			article {
+
+				&.has-background {
+					padding: var(--space-xxl) 50% var(--space-xxl) var(--space-lg);
+				}
+
+				&.has-overlay {
+
+					@include has-overlay-horizontal;
+				}
 			}
 		}
 	}
