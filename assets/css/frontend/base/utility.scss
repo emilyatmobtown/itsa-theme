@@ -45,12 +45,24 @@
 	.hidden-sm {
 		display: initial;
 	}
+
+	.hidden-md {
+		display: none;
+	}
 }
 
 @media (--bp-large) {
 
 	.restricted-width > * {
 		padding-right: 25%;
+	}
+
+	.hidden-md {
+		display: initial;
+	}
+
+	.hidden-lg {
+		display: none;
 	}
 }
 

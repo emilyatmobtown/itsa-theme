@@ -21,13 +21,13 @@ export default class Navigation {
 			return;
 		}
 
-		this.button = this.container.getElementsByTagName( 'button' )[0];
+		this.button = this.container.getElementsByTagName( 'button' )[0]; // eslint-disable-line
 		if ( 'undefined' === typeof this.button ) {
 			console.error( 'Navigation: No nav button.' ); // eslint-disable-line
 			return;
 		}
 
-		this.menu = this.container.getElementsByTagName( 'ul' )[0];
+		this.menu = this.container.getElementsByTagName( 'ul' )[0]; // eslint-disable-line
 
 		// Hide menu toggle button if menu is empty and return early.
 		if ( 'undefined' === typeof this.menu ) {
@@ -35,7 +35,6 @@ export default class Navigation {
 			this.button.style.display = 'none';
 			return;
 		}
-
 		this.setupNav( this.container, this.button, this.menu );
 	}
 
@@ -59,7 +58,7 @@ export default class Navigation {
 
 		// Empty href for parent links
 		for ( let i = 0, len = parents.length; i < len; i++ ) {
-			const link = parents[i].getElementsByTagName( 'a' )[0];
+			const link = parents[i].getElementsByTagName( 'a' )[0]; // eslint-disable-line
 			link.removeAttribute( 'href' );
 		}
 
@@ -135,7 +134,7 @@ export default class Navigation {
 	 */
 	toggleChildren() {
 		const parent = this;
-		const child = parent.getElementsByTagName( 'ul' )[0];
+		const child = parent.getElementsByTagName( 'ul' )[0]; // eslint-disable-line
 
 		if ( -1 !== parent.className.indexOf( 'submenu-toggled' ) ) {
 			parent.className = parent.className.replace( ' submenu-toggled', '' );
@@ -145,35 +144,4 @@ export default class Navigation {
 			child.setAttribute( 'aria-expanded', 'true' );
 		}
 	}
-
-	/**
-	 * Toggles `focus` class to allow submenu access on tablets.
-	 */
-	// ( function( container ) {
-	// 	let touchStartFn, i,
-	// 		parentLink = container.querySelectorAll( '.menu-item-has-children > a, .page_item_has_children > a' );
-	//
-	// 	if ( 'ontouchstart' in window ) {
-	// 		touchStartFn = function( e ) {
-	// 			let menuItem = this.parentNode, i;
-	//
-	// 			if ( ! menuItem.classList.contains( 'focus' ) ) {
-	// 				e.preventDefault();
-	// 				for ( i = 0; i < menuItem.parentNode.children.length; ++i ) {
-	// 					if ( menuItem === menuItem.parentNode.children[i] ) {
-	// 						continue;
-	// 					}
-	// 					menuItem.parentNode.children[i].classList.remove( 'focus' );
-	// 				}
-	// 				menuItem.classList.add( 'focus' );
-	// 			} else {
-	// 				menuItem.classList.remove( 'focus' );
-	// 			}
-	// 		};
-	//
-	// 		for ( i = 0; i < parentLink.length; ++i ) {
-	// 			parentLink[i].addEventListener( 'touchstart', touchStartFn, false );
-	// 		}
-	// 	}
-	// }( container ) );
 }

@@ -57,6 +57,7 @@ function i18n() {
  * Sets up theme defaults and registers support for various WordPress features.
  */
 function theme_setup() {
+	add_post_type_support( 'page', 'excerpt' );
 	add_theme_support( 'editor-styles' );
 	add_theme_support( 'align-wide' );
 	add_theme_support( 'automatic-feed-links' );
@@ -131,6 +132,8 @@ function theme_setup() {
 			'footer-2' => __( 'Footer Menu 2', 'itsa-theme' ),
 			// translators: This is the name of the third footer menu used in the theme.
 			'footer-3' => __( 'Footer Menu 3', 'itsa-theme' ),
+			// translators: This is the name of the fourth footer menu used in the theme.
+			'footer-3' => __( 'Footer Menu 4', 'itsa-theme' ),
 		)
 	);
 }
@@ -203,23 +206,13 @@ function register_sidebars() {
  */
 function scripts() {
 
-	if ( is_page( array( 'events', 'newsroom', 'advocacy-materials' ) ) ) {
-		wp_enqueue_script(
-			'frontend',
-			ITSA_THEME_TEMPLATE_URL . '/dist/js/frontend.js',
-			array( 'jquery' ),
-			ITSA_THEME_VERSION,
-			true
-		);
-	} else {
-		wp_enqueue_script(
-			'frontend',
-			ITSA_THEME_TEMPLATE_URL . '/dist/js/frontend.js',
-			[],
-			ITSA_THEME_VERSION,
-			true
-		);
-	}
+	wp_enqueue_script(
+		'frontend',
+		ITSA_THEME_TEMPLATE_URL . '/dist/js/frontend.js',
+		array( 'jquery' ),
+		ITSA_THEME_VERSION,
+		true
+	);
 
 	if ( is_page_template( 'templates/page-styleguide.php' ) ) {
 		wp_enqueue_script(

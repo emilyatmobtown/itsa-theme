@@ -1,6 +1,12 @@
 import Navigation from './components/Navigation';
 new Navigation();
 
+import Search from './components/Search';
+new Search();
+
+import SocialBar from './components/SocialBar';
+new SocialBar();
+
 import jQuery from 'jquery';
 jQuery( function( $ ){
 	/* global ajaxUrl, postType, loadMoreNonce, maxPageMyAjax:writable, postsMyAjax:writable, currentPageMyAjax:writable */

@@ -24,9 +24,8 @@ use ITSATheme\Utility;
 function itsa_get_social_share() {
 	$html = '<div class="entry-meta-social inverse-color">
 				<span class="entry-meta-text">' . __( 'Share', 'itsa-theme' ) . '</span>
-				<a class="icon social-icon twitter-icon" href="#"><span class="screen-reader-text">' . __( 'Twitter', 'itsa-theme' ) . '</span></a>
-				<a class="icon social-icon facebook-icon" href="#"><span class="screen-reader-text">' . __( 'Facebook', 'itsa-theme' ) . '</span></a>
-				<a class="icon social-icon instagram-icon" href="#"><span class="screen-reader-text">' . __( 'Instagram', 'itsa-theme' ) . '</span></a>
+				<a class="icon twitter-icon" href="' . Utility\get_twitter_share_url() . '" target="_blank" aria-label="' . __( 'Share on Twitter', 'itsa-theme' ) . '"></a>
+				<a class="icon facebook-icon" href="' . Utility\get_facebook_share_url() . '" target="_blank"  aria-label="' . __( 'Share on Facebook', 'itsa-theme' ) . '"></a>
 			</div><!-- .entry-meta-social -->';
 	return $html;
 }
@@ -369,7 +368,7 @@ function itsa_get_time_span( $start = '', $end = '', $timezone = '' ) {
 }
 
 /**
- * Get HTML for post excerpt. If not excerpt exists, then extract excerpt from
+ * Get HTML for post excerpt. If no excerpt exists, then extract excerpt from
  * the first paragraph block. Optionally, include the header if there's a
  * header block;
  *

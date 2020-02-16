@@ -54,7 +54,6 @@
 						</div>
 						<span class="screen-reader-text">Toggle Primary Navigation</span>
 					</button>
-					<div class="nav-bgrd"></div>
 					<nav id="site-navigation" class="main-navigation" role="navigation">
 						<?php
 						wp_nav_menu(
@@ -65,6 +64,12 @@
 							)
 						);
 						?>
+						<div id="site-search-side" class="search-form-wrapper header-search hidden-lg">
+							<?php get_search_form(); ?>
+						</div><!-- .header-search -->
 					</nav><!-- #site-navigation -->
+					<div id="site-search-top" class="search-form-wrapper header-search hidden-sm hidden-md">
+						<?php get_search_form(); ?>
+					</div><!-- .header-search -->
 				</div><!-- .site-header-content -->
 			</header><!-- #masthead -->

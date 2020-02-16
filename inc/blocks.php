@@ -19,13 +19,10 @@ function setup() {
 
 	add_action( 'enqueue_block_assets', $n( 'blocks_scripts' ) );
 	add_action( 'enqueue_block_editor_assets', $n( 'blocks_editor_scripts' ) );
-	// add_action( 'admin_init', $n( 'add_editor_styles' ) );
+	add_action( 'acf/init', $n( 'register_blocks' ) );
+	add_action( 'init', $n( 'remove_block_styles' ) );
 
 	add_filter( 'block_categories', $n( 'blocks_categories' ), 10, 2 );
-
-	add_action( 'acf/init', $n( 'register_blocks' ) );
-
-	add_action( 'init', $n( 'remove_block_styles' ) );
 }
 
 /**

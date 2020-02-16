@@ -221,3 +221,41 @@ function adjust_brightness( $hex, $steps ) {
 	return $return;
 
 }
+
+/**
+ * Return the Twitter sharing URL for a post
+ *
+ * @param  WP_POST $the_post
+ * @return string url
+ */
+function get_twitter_share_url( $the_post = null ) {
+	global $post;
+	if ( empty( $the_post ) ) {
+		$the_post = $post;
+	}
+
+	$permalink = get_the_permalink( $the_post->ID );
+	$the_title = get_the_title( $the_post->ID );
+	$handle    = get_theme_mod( 'twitter_handle' );
+
+	return 'https://twitter.com/intent/tweet?text=' . rawurlencode( $the_title ) . '&url=' . $permalink . '&via=' . $handle;
+}
+
+/**
+ * Return the Facebook sharing URL for a post
+ *
+ * @param  WP_POST $the_post
+ * @return string url
+ */
+function get_facebook_share_url( $the_post = null ) {
+	global $post;
+	if ( empty( $the_post ) ) {
+		$the_post = $post;
+	}
+
+	$permalink = get_the_permalink( $the_post->ID );
+	$the_title = get_the_title( $the_post->ID );
+	$handle    = get_theme_mod( 'facebook_url' );
+
+	return 'http://www.facebook.com/sharer.php?&u=' . $permalink;
+}

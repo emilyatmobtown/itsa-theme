@@ -12,39 +12,52 @@
 }
 
 .main-navigation {
-	width: 100%;
+	width: calc(var(--space-unit) * 18);
 	display: block;
-	position: absolute;
-	top: -500px;
-	right: 0;
+	position: fixed;
+	top: 60px;
+	bottom: 0;
+	right: calc(var(--space-unit) * -18);
 	z-index: 1;
 	background: var(--color-nav-submenu-background-fallback);
 	background: var(--color-nav-submenu-background);
-	padding: var(--component-padding);
 	-webkit-font-smoothing: subpixel-antialiased;
-	transition: top 0.2s linear 0s;
+	transition: right 0.2s linear 0s;
+	overflow: scroll;
 }
 
 .menu-toggled .main-navigation {
-	top: 60px;
+	right: 0;
 }
+
+body.admin-bar .main-navigation {
+	top: 92px;
+}
+
+@media (--wp-medium-max) {
+
+	body.admin-bar .main-navigation {
+		top: 106px;
+	}
+}
+
 
 @media (--bp-large) {
 
 	.main-navigation,
-	.menu-toggled .main-navigation {
-		width: auto;
-		display: inline-block;
-		vertical-align: middle;
+	.menu-toggled .main-navigation,
+	body.admin-bar .main-navigation {
 		background-color: var(--color-transparent);
 		background-image: none;
 		position: relative;
 		top: auto;
+		bottom: auto;
 		right: auto;
-		padding: 0;
 		margin-left: var(--space-xs);
 		z-index: 10;
-		transition: top 0 linear 0s;
+		transition: none;
+		overflow: visible;
+		flex: 1 0 auto;
 	}
 }
 
@@ -52,25 +65,26 @@
 .header-nav {
 
 	@include horizontal-list;
-	font-size: var(--text-lg);
+	font-size: var(--text-md);
 	line-height: var(--body-line-height);
 	color: var(--color-nav-text-solid);
 	font-weight: 400;
 
 	li {
 		display: block;
+		padding: 0;
+		border-bottom: 1px solid var(--color-neutral-darkest);
 
 		a {
 			display: inline-block;
 			color: var(--color-nav-text-solid);
-			border-top: 2px solid var(--color-transparent);
-			border-bottom: 2px solid var(--color-transparent);
+			text-decoration: none;
 			margin: var(--space-xxs) 0;
-			transition: border-color 0.1s linear 0s;
+			padding: var(--space-xs) var(--component-padding);
 			cursor: pointer;
 
 			&:hover {
-				border-bottom-color: var(--color-link);
+				text-decoration: underline;
 			}
 		}
 
@@ -81,18 +95,25 @@
 			&::after {
 
 				@extend %has-icon;
-				content: ">";
+				content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 15 15'%3E%3Cpath d='M7.5,0,6.136,1.364,11.3,6.526H0V8.474H11.3L6.136,13.636,7.5,15,15,7.5Z' fill='%23fff'/%3E%3C/svg%3E");
 				display: inline-block;
 				margin-left: var(--space-xxs);
+				margin-top: calc(-0.5 * var(--space-xxs));
 				transform: rotate(90deg);
 				transition: transform 0.2s linear 0s;
 			}
 		}
 
 		ul {
-			font-size: var(--text-lg);
-			line-height: var(--body-line-height);
+			padding: 0;
+			margin-bottom: 0;
 			display: none;
+
+			li {
+				border: 0;
+				border-top: 1px solid var(--color-neutral-darkest);
+				background: var(--color-primary-dark);
+			}
 		}
 
 		&.submenu-toggled > ul {
@@ -110,38 +131,42 @@
 	.header-nav {
 
 		@include horizontal-list;
-		font-size: var(--text-md);
 		line-height: 1;
 		display: block;
 
 		li {
-			margin: 0 var(--space-sm);
+			border: 0;
 			position: relative;
+
+			a {
+				padding-left: var(--space-sm);
+				padding-right: var(--space-sm);
+			}
 
 			ul {
 				font-size: var(--text-md);
 				line-height: var(--body-line-height);
 				position: absolute;
-				top: calc(100% + 11px);
-				left: calc(var(--component-padding) * -1);
 				width: auto;
 				min-width: var(--space-xxxxl);
-				background-color: var(--color-nav-submenu-background-fallback);
-				background-image: var(--color-nav-submenu-background);
-				padding: var(--space-xs) var(--component-padding) var(--component-padding);
-				margin-left: 0;
-				display: block;
-				opacity: 0;
-				transition: opacity 0.1s linear 0s;
+				background: var(--color-primary-darker);
 
 				li {
 					display: block;
+					background: transparent;
+					border: 0;
+					border-bottom: 1px solid var(--color-neutral-darkest);
 					margin: 0;
-				}
-			}
 
-			&.submenu-toggled > ul {
-				opacity: 1;
+					&:last-child {
+						border: 0;
+					}
+
+					a {
+						padding-top: var(--space-xxxs);
+						padding-bottom: var(--space-xxxs);
+					}
+				}
 			}
 		}
 	}
