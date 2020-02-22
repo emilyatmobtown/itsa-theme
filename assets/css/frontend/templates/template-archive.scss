@@ -4,4 +4,11 @@
 	.entry-content > .max-width {
 		max-width: var(--max-width);
 	}
+
+	.entry-header,
+	.entry-footer {
+		max-width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+	}
 }

@@ -16,7 +16,7 @@ if ( empty( $header_image_url ) ) {
 	$classes[] = 'block-style-solid';
 }
 
-if ( ! is_singular( 'news' ) ) {
+if ( ! is_single( get_the_ID() ) ) {
 	$terms     = get_the_terms( $post->ID, 'news-type' );
 	$term_name = ( ! empty( $terms ) && isset( $terms ) ) ? $terms[0]->name : itsa_get_post_type_plural_label( 'news' );
 }
@@ -33,7 +33,7 @@ if ( ! is_singular( 'news' ) ) {
 	<?php } ?>
 
 	<?php if ( ! Utility\has_block( 'acf/header' ) ) { ?>
-		<?php if ( is_singular( 'news' ) ) { ?>
+		<?php if ( is_single( get_the_ID() ) ) { ?>
 			<div class="row max-width">
 				<header class="entry-header">
 					<?php the_title( '<h1 class="entry-title item-title">', '</h1>' ); ?>
@@ -45,7 +45,7 @@ if ( ! is_singular( 'news' ) ) {
 	<?php } ?>
 
 	<div class="entry-content">
-		<?php if ( is_singular( 'news' ) ) { ?>
+		<?php if ( is_single( get_the_ID() ) ) { ?>
 			<?php the_content(); ?>
 		<?php } else { ?>
 			<?php itsa_the_excerpt( null, true, true ); ?>

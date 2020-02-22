@@ -42,10 +42,40 @@
             "default_value": [],
             "allow_null": 1,
             "multiple": 0,
-            "ui": 1,
-            "ajax": 1,
+            "ui": 0,
             "return_format": "value",
+            "ajax": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_5e49a583bc04b",
+            "label": "Event Type",
+            "name": "event_type",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5e234baa4852b",
+                        "operator": "==",
+                        "value": "event"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "event-type",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0
         }
     ],
     "location": [
@@ -65,5 +95,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1579371515
+    "modified": 1581896555
 }

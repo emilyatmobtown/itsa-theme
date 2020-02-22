@@ -22,7 +22,7 @@ if ( is_admin() && empty( $posttype ) ) {
 		'post_type'              => $posttype,
 		'no_found_rows'          => true,
 		'update_post_meta_cache' => false,
-		'posts_per_page'         => 3,
+		'posts_per_page'         => 6,
 	);
 
 	// Use underscores for ACF field names
@@ -79,7 +79,7 @@ if ( is_admin() && empty( $posttype ) ) {
 		$args['meta_query'] = array(
 			array(
 				'key'     => 'event_start_date',
-				'value'   => date( 'Ymd' ),
+				'value'   => gmdate( 'Ymd' ),
 				'compare' => '>',
 			),
 		);

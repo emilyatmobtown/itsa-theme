@@ -7,7 +7,6 @@
  * @package ITSATheme
  */
 
-use ITSATheme\Utility;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( array( 'item', 'has-background', 'has-overlay', 'block-style-solid', 'search-item' ) ); ?> itemscope itemtype="https://schema.org/Thing">

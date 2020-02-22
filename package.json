@@ -63,7 +63,7 @@
     "browser-sync": "^2.26.3",
     "browser-sync-webpack-plugin": "^2.2.2",
     "browserslist": "^4.8.7",
-    "caniuse-db": "^1.0.30001027",
+    "caniuse-db": "^1.0.30001028",
     "clean-webpack-plugin": "^2.0.1",
     "copy-webpack-plugin": "^5.1.1",
     "core-js": "^3.6.4",

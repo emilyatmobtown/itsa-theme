@@ -122,7 +122,8 @@
 	}
 }
 
-body.search-no-results article {
+body.search-no-results article,
+body.error404 article {
 	width: 100%;
 	min-height: 250px;
 	padding: var(--space-xxl) 0;

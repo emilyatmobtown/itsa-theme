@@ -29,10 +29,16 @@
 
 			.tweet-link {
 				color: var(--color-white);
+				text-decoration: none;
 
 				&:hover {
-					color: var(--color-accent-lighter);
+					text-decoration: underline;
 				}
+			}
+
+			.tweet-date {
+
+				@extend %small-caps;
 			}
 		}
 	}
@@ -46,16 +52,7 @@
 			flex-wrap: wrap;
 
 			.item {
-
-				> * {
-					padding-left: 0;
-					padding-right: 0;
-					flex: 0 1 auto;
-				}
-
-				> a:last-of-type {
-					flex-grow: 1;
-				}
+				flex-basis: 100%;
 			}
 		}
 	}
@@ -71,9 +68,19 @@
 			margin-right: calc(-0.5 * var(--component-padding));
 
 			.item {
+				display: flex;
+				flex-direction: column;
 				flex-basis: calc(100% / 3 - var(--component-padding));
 				margin-left: calc(var(--component-padding) / 2);
 				margin-right: calc(var(--component-padding) / 2);
+
+				> .tweet-text {
+					flex: 1 0 auto;
+				}
+
+				> .tweet-date {
+					flex: 0 1 auto;
+				}
 			}
 		}
 	}

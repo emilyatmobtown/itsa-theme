@@ -20,8 +20,6 @@ $issues = get_terms(
 );
 
 $queried = get_queried_object();
-// var_dump( $tax_query );
-// var_dump( $wp_query );
 
 get_header(); ?>
 

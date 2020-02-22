@@ -60,13 +60,13 @@ class ITSABlockParser extends WP_Block_Parser {
 	public function process_output() {
 		$last_block_key    = 0;
 		$block_name_needle = 'acf/header';
-		// $the_id            = get_the_ID() ? get_the_ID() : Utility\get_acf_post_id();
+		$the_id            = get_the_ID() ? get_the_ID() : Utility\get_acf_post_id();
 
 		if ( ! is_array( $this->output ) ) {
 			return $this->output;
 		}
 		// Only inject into content for allowed post types
-		if ( ! is_admin() && in_array( get_post_type(), self::$allowed_post_types, true ) && is_singular( get_post_type() ) ) {
+		if ( ! is_admin() && in_array( get_post_type(), self::$allowed_post_types, true ) && is_single( $the_id ) ) {
 			$social_share_html = \itsa_get_social_share();
 			$entry_meta_html   = \itsa_get_entry_meta();
 

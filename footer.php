@@ -7,7 +7,7 @@
 
 ?>
 
-			<footer class="site-footer inverse-color">
+			<footer id="site-footer" class="site-footer inverse-color">
 				<div class="row max-width site-footer-content">
 					<?php for ( $i = 1; $i <= 5; $i++ ) { ?>
 						<?php if ( is_active_sidebar( 'footer-column-' . $i ) ) { ?>

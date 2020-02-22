@@ -7,8 +7,8 @@
  * @package ITSATheme
  */
 
-$handle     = get_theme_mod( 'twitter_handle' );
-$max_tweets = 3;
+$handle        = get_theme_mod( 'twitter_handle' );
+$tweet_classes = explode( ' ', 'item has-background has-overlay block-style-solid' );
 
 if ( is_admin() && empty( $handle ) ) {
 	?>
@@ -21,14 +21,7 @@ if ( is_admin() && empty( $handle ) ) {
 		<section class="section block tweets-block">
 			<div class="item-grid no-wrap has-background inverse-color">
 
-				<?php for ( $i = 0; $i < $max_tweets; $i++ ) { ?>
-
-						<article class="item has-background has-overlay block-style-solid">
-							<p class="tweet-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-							<a class="small-caps display-block tweet-link tweet-date" target="_blank">January 1, 2020</a>
-						</article>
-
-				<?php } ?>
+				<?php ITSACoreFunctionality\display_tweets( $handle, $tweet_classes ); ?>
 
 			</div><!-- .item-grid -->
 		</section><!-- .section -->

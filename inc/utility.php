@@ -155,8 +155,8 @@ function get_header_image_url( $the_post = null, $size = 'itsa-section-backgroun
 		$the_post = $post;
 	}
 
-	$url    = '';
-	$block  = get_block( 'acf/header', $the_post );
+	$url   = '';
+	$block = get_block( 'acf/header', $the_post );
 
 	if ( ! empty( $block ) && isset( $block ) ) {
 		$image_id = get_header_image_id( $block );

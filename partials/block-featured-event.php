@@ -68,7 +68,7 @@ if ( is_admin() && empty( $featured_event ) ) {
 					'meta_query'             => array(
 						array(
 							'key'     => 'event_start_date',
-							'value'   => date( 'Ymd' ),
+							'value'   => gmdate( 'Ymd' ),
 							'compare' => '>',
 						),
 					),

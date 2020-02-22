@@ -19,7 +19,7 @@ const settings = require( './webpack.settings.js' );
 const configureEntries = () => {
 	const entries = {};
 
-	for ( const [ key, value ] of Object.entries( settings.entries ) ) {
+	for ( const [ key, value ] of Object.entries( settings.entries ) ) { // eslint-disable-line
 		entries[ key ] = path.resolve( process.cwd(), value );
 	}
 

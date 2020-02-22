@@ -7,8 +7,8 @@
  * @package ITSATheme
  */
 
-$posttype  = get_field( 'post_type' );
 $the_title = get_field( 'title' );
+$posttype  = get_field( 'post_type' );
 
 if ( is_admin() && empty( $posttype ) ) {
 	?>
@@ -16,28 +16,28 @@ if ( is_admin() && empty( $posttype ) ) {
 	<?php
 } elseif ( ! empty( $posttype ) ) {
 
-	$type_name = $posttype . '-type';
-	$types     = get_terms(
-		array(
-			'taxonomy' => $type_name,
-			'orderby'  => 'name',
-		)
-	);
-	$issues    = get_terms(
-		array(
-			'taxonomy' => 'issue',
-			'orderby'  => 'name',
-		)
-	);
-
 	// Set up initial query args
 	$on_page = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 	$args    = array(
 		'post_type'              => $posttype,
 		'update_post_meta_cache' => false,
-		'posts_per_page'         => 3,
+		'posts_per_page'         => 6,
 		'paged'                  => $on_page,
 	);
+
+	$tax_type = get_field( $posttype . '_type' );
+
+	// Add taxonomy term to query args if selected in block editor
+	if ( ! empty( $tax_type ) ) {
+
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => $posttype . '-type',
+				'field'    => 'slug',
+				'terms'    => $tax_type->name,
+			),
+		);
+	}
 
 	// Add date ordering and filtering for event posts
 	if ( 'event' === $posttype ) {
@@ -50,9 +50,26 @@ if ( is_admin() && empty( $posttype ) ) {
 	if ( ! empty( $issues ) && isset( $issues ) && ! empty( $types ) && isset( $types ) ) {
 		$args['tax_query']['relation'] = 'AND';
 	}
+
 	$the_query = new WP_Query( $args );
 
 	if ( $the_query->have_posts() ) {
+
+		$types  = get_terms(
+			array(
+				'taxonomy'               => $posttype . '-type',
+				'orderby'                => 'name',
+				'update_term_meta_cache' => false,
+			)
+		);
+		$issues = get_terms(
+			array(
+				'taxonomy'               => 'issue',
+				'orderby'                => 'name',
+				'update_term_meta_cache' => false,
+			)
+		);
+
 		?>
 		<div class="row max-width">
 			<section id="post-grid-filtered" class="section block post-grid-block post-archive-block">
@@ -70,13 +87,17 @@ if ( is_admin() && empty( $posttype ) ) {
 					<form id="post-grid-filter" class="post-grid-form">
 						<div id="post-grid-filter-loader" class="loader-icon hidden"></div>
 						<label class="small-caps label-inline-md" for="post-grid-filter-by-issue"><?php esc_html_e( 'Filter By', 'itsa-theme' ); ?>:</label>
-						<?php if ( ! empty( $types ) ) { ?>
+
+						<?php // Hide the `-type` dropdown if a subtype term was already selected in the block editor ?>
+						<?php if ( ! empty( $types ) && empty( $tax_type ) ) { ?>
 							<select class="select-inline-md" name="post-grid-filter-by-type" id="post-grid-filter-by-type">
 								<option value="0">All</option>
 								<?php foreach ( $types as $ptype ) { ?>
 									<option value="<?php echo esc_attr( $ptype->term_id ); ?>"><?php echo esc_attr( $ptype->name ); ?></option>
 								<?php } ?>
 							</select>
+						<?php } elseif ( ! empty( $tax_type ) ) { ?>
+							<input type="hidden" name="post-grid-filter-by-type" value="<?php echo esc_attr( $tax_type->term_id ); ?>" />
 						<?php } ?>
 						<?php if ( ! empty( $issues ) ) { ?>
 							<select class="select-inline-md" name="post-grid-filter-by-issue" id="post-grid-filter-by-issue">
@@ -86,6 +107,7 @@ if ( is_admin() && empty( $posttype ) ) {
 								<?php } ?>
 							</select>
 						<?php } ?>
+
 						<input type="hidden" name="action" value="post-grid-filter" />
 						<input type="hidden" name="post-type" value="<?php echo esc_attr( $posttype ); ?>" />
 						<input type="hidden" name="filter-nonce" value="<?php echo esc_attr( wp_create_nonce( 'post-grid-filter-nonce' ) ); ?>" />

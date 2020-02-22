@@ -168,7 +168,7 @@ function itsa_get_entry_meta( $the_post = null ) {
 
 	$html = '<div class="entry-meta">';
 
-	if ( is_singular( $posttype ) ) {
+	if ( is_single( $the_post->ID ) ) {
 		// Get the event type, news type, or advocacy material type
 		$terms = get_the_terms( $the_post, $posttype . '-type' );
 		if ( ! empty( $terms ) && isset( $terms ) ) {
@@ -180,7 +180,7 @@ function itsa_get_entry_meta( $the_post = null ) {
 		}
 	}
 
-	if ( has_term( '', 'issue', $the_post ) && is_singular( $posttype ) ) {
+	if ( has_term( '', 'issue', $the_post ) && is_single( $the_post->ID ) ) {
 		$html .= '<div class="entry-meta-text">
 					<span>' . __( 'Issues', 'itsa-theme' ) . ': </span>';
 		$html .= get_the_term_list( $the_post->ID, 'issue', '<ul class="entry-categories"><li class="entry-category" rel="category tag">', ', </li><li class="entry-category">', '</li></ul>' );

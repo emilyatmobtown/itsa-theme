@@ -4,6 +4,17 @@
 	margin-bottom: var(--space-lg);
 }
 
+.post-grid-filter-no-results {
+	width: 100%;
+	min-height: 250px;
+	padding: var(--space-xxl) 0;
+	text-align: center;
+
+	h2 {
+		color: var(--color-body-text);
+	}
+}
+
 @media (--bp-medium) {
 
 	.cap-wrapper {

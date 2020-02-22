@@ -62,7 +62,6 @@ function theme_setup() {
 	add_theme_support( 'align-wide' );
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'title-tag' );
-	// add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'post-formats', array( 'quote' ) );
 	add_theme_support(
 		'html5',
@@ -133,7 +132,7 @@ function theme_setup() {
 			// translators: This is the name of the third footer menu used in the theme.
 			'footer-3' => __( 'Footer Menu 3', 'itsa-theme' ),
 			// translators: This is the name of the fourth footer menu used in the theme.
-			'footer-3' => __( 'Footer Menu 4', 'itsa-theme' ),
+			'footer-4' => __( 'Footer Menu 4', 'itsa-theme' ),
 		)
 	);
 }
@@ -465,7 +464,8 @@ function post_grid_filter_ajax_handler() {
 	$on_page = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 	$args    = array(
 		'update_post_meta_cache' => false,
-		'posts_per_page'         => 3,
+		'update_term_meta_cache' => false,
+		'posts_per_page'         => 6,
 		'paged'                  => $on_page,
 	);
 
@@ -511,7 +511,13 @@ function post_grid_filter_ajax_handler() {
 	} else {
 		ob_start();
 		set_query_var( 'header_content', 'title_and_tags' );
-		get_template_part( 'partials/content', 'none' );
+		?>
+
+		<div class="post-grid-filter-no-results">
+			<h2>There are no results for that filter. Please try again.</h2>
+		</div>
+
+		<?php
 		$html = ob_get_contents();
 		ob_end_clean();
 	}
